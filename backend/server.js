@@ -7,7 +7,7 @@ const dotenv = require('dotenv'); // zero dependency module to read environment 
 
 // dotenv.config({ path: './config/config.env' })
 
-// connectDB(); 
+connectDB(); 
 
 const app = express(); //initialize express app
 
