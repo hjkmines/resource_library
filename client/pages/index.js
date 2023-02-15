@@ -8,7 +8,6 @@ const Page = () => {
         <ChakraProvider>
             <Navbar />
             <main>
-                <h1>Our Hanawilo Resource Library Project</h1>
                 <div className={styles.center}>
                     <Image
                         src='/logo.svg'
