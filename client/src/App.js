@@ -14,6 +14,7 @@ function App() {
           <h1>Our Hanawilo Resource Library Project</h1>
         <img src={logo} className="App-logo" alt="logo" />
         </main>
+        <Footer />
       </Router>
     </ChakraProvider>
   );
