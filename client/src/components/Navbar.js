@@ -63,7 +63,7 @@ const Navbar = () => {
                                 borderWidth={2}
                                 borderColor='white'
                                 size='md'
-                                w='30em'
+                                w={['md', 'md', 'md', 'lg', '2xl', '4xl']}
                             />
                         </InputGroup>
                     </Flex>
