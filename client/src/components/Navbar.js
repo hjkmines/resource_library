@@ -20,14 +20,23 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
+    DrawerFooter,
+    IconButton,
+    Spacer,
+    Link,
+    NextLink,
+    Divider,
+    Center,
+    Stack,
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [placement, setPlacement] = useState('right');
+    const btnRef = useRef();
 
     function uploadFile(btn) {
         btn.click();
@@ -122,22 +131,121 @@ const Navbar = () => {
                 </Tabs>
             </Hide>
             <Show below='md'>
-                <Button colorScheme='blue' onClick={onOpen}>
-                    Menu
-                </Button>
-                <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
-                    <DrawerOverlay />
-                    <DrawerContent>
-                        <DrawerHeader borderBottomWidth='1px'>
-                            Basic Drawer
-                        </DrawerHeader>
-                        <DrawerBody>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                        </DrawerBody>
-                    </DrawerContent>
-                </Drawer>
+                <Flex p={1} bgColor='#FCB22E'>
+                    <Image ml={4} boxSize='3em' src='/logo.svg' />
+                    <Spacer />
+                    <Avatar mr={4} />
+                    <Spacer />
+                    <IconButton
+                        colorScheme='blue'
+                        onClick={onOpen}
+                        aria-label='Open Menu'
+                        size={'lg'}
+                        icon={<HamburgerIcon />}
+                    />
+                    <Drawer
+                        isOpen={isOpen}
+                        placement='left'
+                        onClose={onClose}
+                        finalFocusRef={btnRef}
+                    >
+                        <DrawerOverlay />
+                        <DrawerContent>
+                            <DrawerCloseButton
+                                borderWidth={1}
+                                color='white'
+                                bgColor='blue.600'
+                                size={'sm'}
+                            />
+                            <DrawerHeader
+                                borderBottomWidth='1px'
+                                bgColor='#FCB22E'
+                            >
+                                <Text fontSize='xl' fontWeight='bold'>
+                                    Hanawilo Resource Library
+                                </Text>
+                            </DrawerHeader>
+                            <DrawerBody>
+                                <Divider orientation='horizontal' />
+                                <Center height='50px'>
+                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                        Videos
+                                    </Link>
+                                </Center>
+                                <Divider orientation='horizontal' />
+                                <Center height='50px'>
+                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                        Articles
+                                    </Link>
+                                </Center>
+                                <Divider orientation='horizontal' />
+                                <Center height='50px'>
+                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                        Tools
+                                    </Link>
+                                </Center>
+                                <Divider orientation='horizontal' />
+                                <Center height='50px'>
+                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                        Events
+                                    </Link>
+                                </Center>
+                                <Divider orientation='horizontal' />
+                                <Center height='50px'>
+                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                        Humour
+                                    </Link>
+                                </Center>
+                                <Divider orientation='horizontal' />
+                                <DrawerFooter marginTop={100} bgColor='#FCB22E' borderRadius={10}>
+                                    <Stack spacing='24px'>
+                                        <Flex>
+                                            <InputGroup>
+                                                <InputLeftElement
+                                                    children={<FiSearch />}
+                                                    color='white'
+                                                    fontSize={20}
+                                                    pointerEvents='none'
+                                                />
+                                                <Input
+                                                    placeholder='Search for resources...'
+                                                    _placeholder={{
+                                                        color: 'white',
+                                                    }}
+                                                    textAlign={'center'}
+                                                    variant='outline'
+                                                    borderRadius={20}
+                                                    borderWidth={2}
+                                                    borderColor='white'
+                                                    size='md'
+                                                />
+                                            </InputGroup>
+                                        </Flex>
+                                        <Input
+                                            type='file'
+                                            id='upload'
+                                            display='none'
+                                        />
+                                        <Button
+                                            rightIcon={<FiUploadCloud />}
+                                            borderRadius='10'
+                                            color='white'
+                                            bgColor='whiteAlpha.500'
+                                            opacity={0.9}
+                                            variant='outline'
+                                            px={10}
+                                            onClick={() => {
+                                                uploadFile(upload);
+                                            }}
+                                        >
+                                            Upload
+                                        </Button>
+                                    </Stack>
+                                </DrawerFooter>
+                            </DrawerBody>
+                        </DrawerContent>
+                    </Drawer>
+                </Flex>
             </Show>
         </>
     );
