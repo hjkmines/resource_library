@@ -72,7 +72,7 @@ const Navbar = () => {
                                 borderWidth={2}
                                 borderColor='white'
                                 size='md'
-                                w={['md', 'md', 'md', 'lg', '2xl', '4xl']}
+                                width={['md', 'md', 'md', 'lg', '2xl', '4xl']}
                             />
                         </InputGroup>
                     </Flex>
@@ -93,42 +93,32 @@ const Navbar = () => {
                     </Button>
                     <Avatar mr={4} />
                 </Flex>
-                <Tabs isFitted variant='enclosed unstyled' size='lg'>
-                    <TabList>
-                        <Tab _selected={{ color: 'white', bg: 'blue.500' }}>
-                            Videos
-                        </Tab>
-                        <Tab _selected={{ color: 'white', bg: 'green.400' }}>
-                            Articles
-                        </Tab>
-                        <Tab _selected={{ color: 'white', bg: 'yellow.300' }}>
-                            Tools
-                        </Tab>
-                        <Tab _selected={{ color: 'white', bg: 'red.400' }}>
-                            Events
-                        </Tab>
-                        <Tab _selected={{ color: 'white', bg: 'pink.400' }}>
-                            Humour
-                        </Tab>
-                    </TabList>
-                    <TabPanels p='2em'>
-                        <TabPanel>
-                            <p>video resources</p>
-                        </TabPanel>
-                        <TabPanel>
-                            <p>article resources</p>
-                        </TabPanel>
-                        <TabPanel>
-                            <p>tool resources</p>
-                        </TabPanel>
-                        <TabPanel>
-                            <p>event resources</p>
-                        </TabPanel>
-                        <TabPanel>
-                            <p>humour resources</p>
-                        </TabPanel>
-                    </TabPanels>
-                </Tabs>
+                <Flex
+                    bgColor='#A4BB9A'
+                    height={50}
+                    alignItems='center'
+                    justifyContent='space-around'
+                >
+                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                        Videos
+                    </Link>
+                    <Divider orientation='vertical' />
+                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                        Articles
+                    </Link>
+                    <Divider orientation='vertical' />
+                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                        Tools
+                    </Link>
+                    <Divider orientation='vertical' />
+                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                        Events
+                    </Link>
+                    <Divider orientation='vertical' />
+                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                        Humour
+                    </Link>
+                </Flex>
             </Hide>
             <Show below='md'>
                 <Flex p={1} bgColor='#FCB22E'>
@@ -165,39 +155,47 @@ const Navbar = () => {
                                     Hanawilo Resource Library
                                 </Text>
                             </DrawerHeader>
-                            <DrawerBody>
+                            <DrawerBody
+                                bgColor='#A4BB9A'
+                                color='white'
+                                fontSize='2xl'
+                                >
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                    <Link as={NextLink} href='/'>
                                         Videos
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                    <Link as={NextLink} href='/'>
                                         Articles
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                    <Link as={NextLink} href='/'>
                                         Tools
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                    <Link as={NextLink} href='/'>
                                         Events
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/' fontSize='xl'>
+                                    <Link as={NextLink} href='/'>
                                         Humour
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
-                                <DrawerFooter marginTop={100} bgColor='#FCB22E' borderRadius={10}>
+                                <DrawerFooter
+                                    marginTop={100}
+                                    bgColor='#FCB22E'
+                                    borderRadius={10}
+                                >
                                     <Stack spacing='24px'>
                                         <Flex>
                                             <InputGroup>
