@@ -21,14 +21,17 @@ import {
     DrawerContent,
     DrawerCloseButton,
 } from '@chakra-ui/react';
-import { FiUploadCloud, FiSearch } from 'react-icons/fi';
+import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { useState } from 'react';
 
 const Navbar = () => {
-    
-const { isOpen, onOpen, onClose } = useDisclosure()
-const [placement, setPlacement] = useState('right')
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [placement, setPlacement] = useState('right');
+
+    function uploadFile(btn) {
+        btn.click();
+    }
 
     return (
         <>
@@ -64,6 +67,7 @@ const [placement, setPlacement] = useState('right')
                             />
                         </InputGroup>
                     </Flex>
+                    <Input type='file' id='upload' display='none' />
                     <Button
                         rightIcon={<FiUploadCloud />}
                         borderRadius='10'
@@ -72,7 +76,9 @@ const [placement, setPlacement] = useState('right')
                         opacity={0.9}
                         variant='outline'
                         px={10}
-                        type='submit'
+                        onClick={() => {
+                            uploadFile(upload);
+                        }}
                     >
                         Upload
                     </Button>
@@ -117,7 +123,7 @@ const [placement, setPlacement] = useState('right')
             </Hide>
             <Show below='md'>
                 <Button colorScheme='blue' onClick={onOpen}>
-                    Open
+                    Menu
                 </Button>
                 <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
                     <DrawerOverlay />
