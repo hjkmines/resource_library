@@ -7,7 +7,7 @@ const Page = () => {
     return (
         <ChakraProvider>
             <Navbar />
-            <div align='center'>
+            {/* <div align='center'>
                 <Image
                     src='/next.svg'
                     alt='Next.js Logo'
@@ -15,7 +15,7 @@ const Page = () => {
                     width={180}
                     height={37}
                 />
-            </div>
+            </div> */}
         </ChakraProvider>
     );
 };
