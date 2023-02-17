@@ -3,7 +3,6 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    MenuDivider,
     Image,
     Text,
     Flex,
@@ -28,7 +27,6 @@ import {
     Divider,
     Center,
     Stack,
-    textDecoration,
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
@@ -45,6 +43,8 @@ const Navbar = () => {
 
     return (
         <>
+            {/* Desktop View */}
+
             <Hide below='md'>
                 <Flex
                     alignItems='center'
@@ -97,6 +97,9 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
+
+                    {/* Desktop Avatar */}
+
                     <Flex alignItems={'center'}>
                         <Menu isLazy>
                             <MenuButton
@@ -196,6 +199,9 @@ const Navbar = () => {
                     </Link>
                 </Flex>
             </Hide>
+
+            {/* Mobile View */}
+
             <Show below='md'>
                 <Flex p={1} bgColor='#FCB22E'>
                     <Image ml={4} boxSize='3em' src='/logo.svg' />
