@@ -1,9 +1,9 @@
 import {
-    Tabs,
-    TabList,
-    TabPanels,
-    Tab,
-    TabPanel,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuDivider,
     Image,
     Text,
     Flex,
@@ -28,10 +28,11 @@ import {
     Divider,
     Center,
     Stack,
+    textDecoration,
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
@@ -47,7 +48,7 @@ const Navbar = () => {
             <Hide below='md'>
                 <Flex
                     alignItems='center'
-                    p={1}
+                    p={2}
                     bgColor='#FCB22E'
                     justifyContent='space-between'
                 >
@@ -96,31 +97,101 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
-                    <Avatar mr={4} />
+                    <Flex alignItems={'center'}>
+                        <Menu isLazy>
+                            <MenuButton
+                                as={Button}
+                                rounded={'full'}
+                                variant={'link'}
+                                cursor={'pointer'}
+                                minW={0}
+                            >
+                                <Avatar
+                                    size={'md'}
+                                    mr={4}
+                                    src={
+                                        'https://media.licdn.com/dms/image/D5603AQEiGKFLtXqACw/profile-displayphoto-shrink_200_200/0/1668567666454?e=1681948800&v=beta&t=35iR1f4ZwZwzXYx874ZHtJOErESr68w56FsBA8Xu1Uk'
+                                    }
+                                />
+                            </MenuButton>
+                            <MenuList>
+                                <Link
+                                    as={NextLink}
+                                    href='/'
+                                    _hover={{
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    <MenuItem>Logout</MenuItem>
+                                </Link>
+                            </MenuList>
+                        </Menu>
+                    </Flex>
                 </Flex>
+
                 <Flex
                     bgColor='#A4BB9A'
-                    height={50}
+                    p={3}
                     alignItems='center'
                     justifyContent='space-around'
                 >
-                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                    <Link
+                        as={NextLink}
+                        href='/'
+                        fontSize='2xl'
+                        color='white'
+                        _hover={{
+                            textDecoration: 'none',
+                        }}
+                    >
                         Videos
                     </Link>
-                    <Divider orientation='vertical' h='7'  />
-                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                    <Divider orientation='vertical' h='9' />
+                    <Link
+                        as={NextLink}
+                        href='/'
+                        fontSize='2xl'
+                        color='white'
+                        _hover={{
+                            textDecoration: 'none',
+                        }}
+                    >
                         Articles
                     </Link>
-                    <Divider orientation='vertical' h='7' />
-                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                    <Divider orientation='vertical' h='9' />
+                    <Link
+                        as={NextLink}
+                        href='/'
+                        fontSize='2xl'
+                        color='white'
+                        _hover={{
+                            textDecoration: 'none',
+                        }}
+                    >
                         Tools
                     </Link>
-                    <Divider orientation='vertical' h='7' />
-                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                    <Divider orientation='vertical' h='9' />
+                    <Link
+                        as={NextLink}
+                        href='/'
+                        fontSize='2xl'
+                        color='white'
+                        _hover={{
+                            textDecoration: 'none',
+                        }}
+                    >
                         Events
                     </Link>
-                    <Divider orientation='vertical' h='7' />
-                    <Link as={NextLink} href='/' fontSize='2xl' color='white'>
+                    <Divider orientation='vertical' h='9' />
+                    <Link
+                        as={NextLink}
+                        href='/'
+                        fontSize='2xl'
+                        color='white'
+                        _hover={{
+                            textDecoration: 'none',
+                        }}
+                    >
                         Humour
                     </Link>
                 </Flex>
@@ -129,7 +200,11 @@ const Navbar = () => {
                 <Flex p={1} bgColor='#FCB22E'>
                     <Image ml={4} boxSize='3em' src='/logo.svg' />
                     <Spacer />
-                    <Avatar mr={4} />
+                    <Avatar
+                        src={
+                            'https://media.licdn.com/dms/image/D5603AQEiGKFLtXqACw/profile-displayphoto-shrink_200_200/0/1668567666454?e=1681948800&v=beta&t=35iR1f4ZwZwzXYx874ZHtJOErESr68w56FsBA8Xu1Uk'
+                        }
+                    />
                     <Spacer />
                     <IconButton
                         colorScheme='blue'
@@ -165,42 +240,82 @@ const Navbar = () => {
                                 color='white'
                                 fontSize='2xl'
                             >
-                                <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/'>
+                                    <Link
+                                        as={NextLink}
+                                        href='/'
+                                        _hover={{
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         Videos
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/'>
+                                    <Link
+                                        as={NextLink}
+                                        href='/'
+                                        _hover={{
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         Articles
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/'>
+                                    <Link
+                                        as={NextLink}
+                                        href='/'
+                                        _hover={{
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         Tools
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/'>
+                                    <Link
+                                        as={NextLink}
+                                        href='/'
+                                        _hover={{
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         Events
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
-                                    <Link as={NextLink} href='/'>
+                                    <Link
+                                        as={NextLink}
+                                        href='/'
+                                        _hover={{
+                                            textDecoration: 'none',
+                                        }}
+                                    >
                                         Humour
                                     </Link>
                                 </Center>
                                 <Divider orientation='horizontal' />
+                                <Center height='50px'>
+                                    <Link
+                                        as={NextLink}
+                                        href='/'
+                                        _hover={{
+                                            textDecoration: 'none',
+                                        }}
+                                    >
+                                        Logout
+                                    </Link>
+                                </Center>
                                 <DrawerFooter
-                                    marginTop={5}
+                                    marginTop={3}
                                     bgColor='#FCB22E'
                                     borderRadius={10}
-                                    height={200}
+                                    height={150}
                                 >
                                     <Stack spacing='24px'>
                                         <Flex>

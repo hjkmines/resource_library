@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import styles from '@/styles/Home.module.css';
-import Navbar from '../src/components/Navbar';
 import Image from 'next/image';
+import Navbar from '../src/components/Navbar';
 
 const Page = () => {
     return (
