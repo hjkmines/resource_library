@@ -72,7 +72,12 @@ const Navbar = () => {
                                 borderWidth={2}
                                 borderColor='white'
                                 size='md'
-                                width={['md', 'md', 'md', 'lg', '2xl', '4xl']}
+                                width={{
+                                    md: 'md',
+                                    lg: 'xl',
+                                    xl: '2xl',
+                                    '2xl': '4xl',
+                                }}
                             />
                         </InputGroup>
                     </Flex>
@@ -102,19 +107,19 @@ const Navbar = () => {
                     <Link as={NextLink} href='/' fontSize='2xl' color='white'>
                         Videos
                     </Link>
-                    <Divider orientation='vertical' />
+                    <Divider orientation='vertical' h='7'  />
                     <Link as={NextLink} href='/' fontSize='2xl' color='white'>
                         Articles
                     </Link>
-                    <Divider orientation='vertical' />
+                    <Divider orientation='vertical' h='7' />
                     <Link as={NextLink} href='/' fontSize='2xl' color='white'>
                         Tools
                     </Link>
-                    <Divider orientation='vertical' />
+                    <Divider orientation='vertical' h='7' />
                     <Link as={NextLink} href='/' fontSize='2xl' color='white'>
                         Events
                     </Link>
-                    <Divider orientation='vertical' />
+                    <Divider orientation='vertical' h='7' />
                     <Link as={NextLink} href='/' fontSize='2xl' color='white'>
                         Humour
                     </Link>
@@ -159,7 +164,7 @@ const Navbar = () => {
                                 bgColor='#A4BB9A'
                                 color='white'
                                 fontSize='2xl'
-                                >
+                            >
                                 <Divider orientation='horizontal' />
                                 <Center height='50px'>
                                     <Link as={NextLink} href='/'>
@@ -192,9 +197,10 @@ const Navbar = () => {
                                 </Center>
                                 <Divider orientation='horizontal' />
                                 <DrawerFooter
-                                    marginTop={100}
+                                    marginTop={5}
                                     bgColor='#FCB22E'
                                     borderRadius={10}
+                                    height={200}
                                 >
                                     <Stack spacing='24px'>
                                         <Flex>
