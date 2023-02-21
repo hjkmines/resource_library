@@ -41,6 +41,10 @@ const Navbar = () => {
         btn.click();
     }
 
+    function onLoginClick() {
+        console.log('Login click');
+    }
+
     return (
         <>
             {/* Desktop View */}
@@ -105,7 +109,7 @@ const Navbar = () => {
                         variant='outline'
                         px={10}
                         onClick={() => {
-                            console.log('Login click');
+                            onLoginClick();
                         }}
                     >
                         Login
@@ -334,7 +338,7 @@ const Navbar = () => {
                                     marginTop={3}
                                     bgColor='#FCB22E'
                                     borderRadius={10}
-                                    height={150}
+                                    height={250}
                                 >
                                     <Stack spacing='24px'>
                                         <Flex>
@@ -377,6 +381,19 @@ const Navbar = () => {
                                             }}
                                         >
                                             Upload
+                                        </Button>
+                                        <Button
+                                            borderRadius='10'
+                                            color='white'
+                                            bgColor='whiteAlpha.500'
+                                            opacity={0.9}
+                                            variant='outline'
+                                            px={10}
+                                            onClick={() => {
+                                              onLoginClick();
+                                            }}
+                                        >
+                                            Login
                                         </Button>
                                     </Stack>
                                 </DrawerFooter>
