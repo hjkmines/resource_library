@@ -27,15 +27,19 @@ import {
     Divider,
     Center,
     Stack,
+    useColorModeValue,
+    useColorMode
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { useRef } from 'react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
+
+    const { colorMode, toggleColorMode } = useColorMode();
 
     function uploadFile(btn) {
         btn.click();
@@ -49,7 +53,7 @@ const Navbar = () => {
                 <Flex
                     alignItems='center'
                     p={2}
-                    bgColor='#FCB22E'
+                    bgColor={useColorModeValue('#FCB22E', 'gray.700')}
                     justifyContent='space-between'
                 >
                     <Image ml={4} boxSize='3em' src='/logo.svg' />
@@ -97,6 +101,16 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
+                    <Flex alignItems='center'>
+                        <IconButton
+                            aria-label='Toggle dark mode'
+                            icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                            onClick={toggleColorMode}
+                            bg={useColorModeValue('white', 'gray.800')} 
+                            borderRadius='full'
+                            ml={2}
+                        />
+                    </Flex>
 
                     {/* Desktop Avatar */}
 
@@ -131,7 +145,6 @@ const Navbar = () => {
                         </Menu>
                     </Flex>
                 </Flex>
-
                 <Flex
                     bgColor='#A4BB9A'
                     p={3}
