@@ -97,6 +97,19 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
+                    <Button
+                        borderRadius='10'
+                        color='white'
+                        bgColor='whiteAlpha.500'
+                        opacity={0.9}
+                        variant='outline'
+                        px={10}
+                        onClick={() => {
+                            console.log('Login click');
+                        }}
+                    >
+                        Login
+                    </Button>
 
                     {/* Desktop Avatar */}
 
