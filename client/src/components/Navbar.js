@@ -30,20 +30,27 @@ import {
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import  LoginModal  from './LoginModal';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [loginModalOpen, setLoginModalOpen] = useState(false);
+
     const btnRef = useRef();
 
     function uploadFile(btn) {
         btn.click();
     }
 
-    function onLoginClick() {
-        console.log('Login click');
-    }
+    const openLoginModal = () => {
+        setLoginModalOpen(true);
+    };
+    
+    const closeLoginModal = () => {
+        setLoginModalOpen(false);
+    };
 
     return (
         <>
@@ -108,12 +115,15 @@ const Navbar = () => {
                         opacity={0.9}
                         variant='outline'
                         px={10}
-                        onClick={() => {
-                            onLoginClick();
-                        }}
+                        onClick={openLoginModal}
                     >
                         Login
                     </Button>
+                    <LoginModal 
+                        loginModalOpen={loginModalOpen}
+                        openLoginModal={openLoginModal}
+                        closeLoginModal={closeLoginModal}
+                    />
 
                     {/* Desktop Avatar */}
 
@@ -389,12 +399,15 @@ const Navbar = () => {
                                             opacity={0.9}
                                             variant='outline'
                                             px={10}
-                                            onClick={() => {
-                                              onLoginClick();
-                                            }}
+                                            onClick={openLoginModal}
                                         >
                                             Login
                                         </Button>
+                                        <LoginModal 
+                                            loginModalOpen={loginModalOpen}
+                                            openLoginModal={openLoginModal}
+                                            closeLoginModal={closeLoginModal}
+                                        />        
                                     </Stack>
                                 </DrawerFooter>
                             </DrawerBody>
