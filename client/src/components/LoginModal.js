@@ -32,7 +32,10 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
 
   return (
     <Modal isOpen={loginModalOpen} onClose={closeLoginModal} isCentered>
-      <ModalOverlay />
+      <ModalOverlay 
+        // bg='blackAlpha.300'
+        backdropFilter='blur(10px) hue-rotate(90deg)'
+      />
       <ModalContent>
         <ModalHeader>Login</ModalHeader>
         <ModalCloseButton />
