@@ -31,7 +31,7 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
   };
 
   return (
-    <Modal isOpen={loginModalOpen} onClose={closeLoginModal}>
+    <Modal isOpen={loginModalOpen} onClose={closeLoginModal} isCentered>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Login</ModalHeader>
@@ -52,6 +52,7 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
           <Button mt={8} colorScheme="blue" onClick={handleLogin}>
             Login
           </Button>
+          <p>Not a Member yet?</p>
         </ModalBody>
       </ModalContent>
     </Modal>
