@@ -1,66 +1,177 @@
+import ReactPlayer from 'react-player/youtube';
 import {
-    Box,
-    Flex,
-    Text,
+    Container,
+    AspectRatio,
+    Card,
+    CardBody,
+    Stack,
     Heading,
-    Divider,
-    Show,
-    Hide,
+    Text,
+    SimpleGrid,
+    useColorModeValue,
 } from '@chakra-ui/react';
 
 const FeaturedVideos = () => {
+    const trailerUrl = [
+        'https://www.youtube-nocookie.com/embed/Ixq-y_r-lkE',
+        'https://youtu.be/anZtoPo2Fpw',
+    ];
+
     return (
-        <>
-            <Box align='center' marginTop={20}>
-                <Heading
-                    fontSize={['2xl', '3xl', '4xl', '4xl']}
-                    as='b'
-                    style={{ letterSpacing: 25, textTransform: 'uppercase' }}
-                    alignItems='center'
-                    ml={7}
-                >
-                    Latest
-                </Heading>
-            </Box>
-            <Show below='md'>
-                <Box align='center'>
-                    <Divider
-                        marginTop={5}
-                        orientation='horizontal'
-                        w='2xs'
-                        borderWidth={1}
-                        borderColor='black'
-                    />
-                </Box>
-            </Show>
-            <Flex align='center' justify='space-around' mt={5}>
-                <Hide below='md'>
-                    <Divider
-                        orientation='horizontal'
-                        w={['null', 'null', '2xs', 'sm', 'md', '2xl']}
-                        justifyContent='baseline'
-                        borderWidth={1}
-                        borderColor='black'
-                    />
-                </Hide>
-                <Text
-                    style={{ letterSpacing: 5, wordWrap: 'break-word' }}
-                    fontSize={['sm', 'md', 'lg', 'xl']}
-                    color='gray.400'
-                >
-                    Featured Videos
-                </Text>
-                <Hide below='md'>
-                    <Divider
-                        orientation='horizontal'
-                        w={['null', 'null', '2xs', 'sm', 'md', '2xl']}
-                        justifyContent='baseline'
-                        borderWidth={1}
-                        borderColor='black'
-                    />
-                </Hide>
-            </Flex>
-        </>
+        <SimpleGrid
+            templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
+            ml={{ base: '0', md: '10', lg: '20' }}
+            mt={{ base: '10', md: '10' }}
+        >
+            <Card
+                my={5}
+                maxW='sm'
+                rounded={'sm'}
+                border={'1px'}
+                borderColor='black'
+                boxShadow={useColorModeValue(
+                    '6px 6px 0 black',
+                    '6px 6px 0 cyan'
+                )}
+            >
+                <CardBody>
+                    <Container maxWidth='400px'>
+                        <AspectRatio ratio={4 / 3}>
+                            <ReactPlayer
+                                url={trailerUrl}
+                                width='100%'
+                                height='100%'
+                                controls={false}
+                                volume={0}
+                                muted={true}
+                                playing={false}
+                            />
+                        </AspectRatio>
+                    </Container>
+                    <Stack mt='6' spacing='3'>
+                        <Heading size='md'>Dune (mmorpg)</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Aspernatur facere, alias laudantium
+                            voluptatibus ab veniam cum iusto nemo iste delectus
+                            repudiandae et deleniti a commodi perferendis
+                            molestiae minus nostrum non?
+                        </Text>
+                    </Stack>
+                </CardBody>
+            </Card>
+            <Card
+                my={5}
+                maxW='sm'
+                rounded={'sm'}
+                border={'1px'}
+                borderColor='black'
+                boxShadow={useColorModeValue(
+                    '6px 6px 0 black',
+                    '6px 6px 0 cyan'
+                )}
+            >
+                <CardBody>
+                    <Container maxWidth='400px'>
+                        <AspectRatio ratio={4 / 3}>
+                            <ReactPlayer
+                                url={trailerUrl}
+                                width='100%'
+                                height='100%'
+                                controls={false}
+                                volume={0}
+                                muted={true}
+                                playing={false}
+                            />
+                        </AspectRatio>
+                    </Container>
+                    <Stack mt='6' spacing='3'>
+                        <Heading size='md'>Dune (mmorpg)</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Aspernatur facere, alias laudantium
+                            voluptatibus ab veniam cum iusto nemo iste delectus
+                            repudiandae et deleniti a commodi perferendis
+                            molestiae minus nostrum non?
+                        </Text>
+                    </Stack>
+                </CardBody>
+            </Card>
+            <Card
+                my={5}
+                maxW='sm'
+                rounded={'sm'}
+                border={'1px'}
+                borderColor='black'
+                boxShadow={useColorModeValue(
+                    '6px 6px 0 black',
+                    '6px 6px 0 cyan'
+                )}
+            >
+                <CardBody>
+                    <Container maxWidth='400px'>
+                        <AspectRatio ratio={4 / 3}>
+                            <ReactPlayer
+                                url={trailerUrl}
+                                width='100%'
+                                height='100%'
+                                controls={false}
+                                volume={0}
+                                muted={true}
+                                playing={false}
+                            />
+                        </AspectRatio>
+                    </Container>
+                    <Stack mt='6' spacing='3'>
+                        <Heading size='md'>Dune (mmorpg)</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Aspernatur facere, alias laudantium
+                            voluptatibus ab veniam cum iusto nemo iste delectus
+                            repudiandae et deleniti a commodi perferendis
+                            molestiae minus nostrum non?
+                        </Text>
+                    </Stack>
+                </CardBody>
+            </Card>
+            <Card
+                my={5}
+                maxW='sm'
+                rounded={'sm'}
+                border={'1px'}
+                borderColor='black'
+                boxShadow={useColorModeValue(
+                    '6px 6px 0 black',
+                    '6px 6px 0 cyan'
+                )}
+            >
+                <CardBody>
+                    <Container maxWidth='400px'>
+                        <AspectRatio ratio={4 / 3}>
+                            <ReactPlayer
+                                url={trailerUrl}
+                                width='100%'
+                                height='100%'
+                                controls={false}
+                                volume={0}
+                                muted={true}
+                                playing={false}
+                            />
+                        </AspectRatio>
+                    </Container>
+                    <Stack mt='6' spacing='3'>
+                        <Heading size='md'>Dune (mmorpg)</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Aspernatur facere, alias laudantium
+                            voluptatibus ab veniam cum iusto nemo iste delectus
+                            repudiandae et deleniti a commodi perferendis
+                            molestiae minus nostrum non?
+                        </Text>
+                    </Stack>
+                </CardBody>
+            </Card>
+        </SimpleGrid>
     );
 };
 
