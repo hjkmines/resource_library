@@ -7,6 +7,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  ModalFooter,
   FormControl,
   FormLabel,
   Input,
@@ -32,11 +33,11 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
 
   return (
     <Modal isOpen={loginModalOpen} onClose={closeLoginModal} isCentered>
-      <ModalOverlay 
-        // bg='blackAlpha.300'
+      <ModalOverlay
         backdropFilter='blur(10px) hue-rotate(90deg)'
       />
-      <ModalContent>
+      <ModalContent
+      >
         <ModalHeader>Login</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -52,11 +53,14 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
               onChange={handlePasswordChange}
             />
           </FormControl>
-          <Button mt={8} colorScheme="blue" onClick={handleLogin}>
-            Login
-          </Button>
-          <p>Not a Member yet?</p>
+
         </ModalBody>
+        <ModalFooter alignItems='center'>
+        <Button mr={3} bg="#FCB22E" onClick={handleLogin}>
+          Login
+        </Button>
+          <Button mr={3} bg="#A4BB9A">Sign Up!</Button>
+        </ModalFooter>
       </ModalContent>
     </Modal>
   );
