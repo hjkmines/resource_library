@@ -34,7 +34,7 @@ const FeaturedVideos = () => {
         <>
             <SimpleGrid
                 templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
-                ml={{ base: '20', sm: '10', md: '3', lg: '10' }}
+                ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
                 mt={{ base: '10', md: '10' }}
                 align='center'
             >
