@@ -149,10 +149,10 @@ const Navbar = () => {
                     >
                         Videos
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/articles'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -161,10 +161,10 @@ const Navbar = () => {
                     >
                         Articles
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/tools'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -173,10 +173,10 @@ const Navbar = () => {
                     >
                         Tools
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/events'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -185,10 +185,10 @@ const Navbar = () => {
                     >
                         Events
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/humour'
                         fontSize='2xl'
                         color='white'
                         _hover={{
