@@ -6,7 +6,7 @@ import {
     CardBody,
     Stack,
     Heading,
-    Text,
+    NextLink,
     SimpleGrid,
     useColorModeValue,
     Flex,
@@ -189,7 +189,7 @@ const FeaturedVideos = () => {
             </SimpleGrid>
             <Flex mt={5}>
                 <Spacer />
-                <Link href='/' as='videos'>
+                <Link href='/videos' as={NextLink}>
                     <Heading as='h2' size='lg' mr='100'>
                         see all videos
                         <ArrowForwardIcon boxSize={10} ml='5' />

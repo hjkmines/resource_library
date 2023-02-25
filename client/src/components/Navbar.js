@@ -140,7 +140,7 @@ const Navbar = () => {
                 >
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/videos'
                         fontSize='2xl'
                         color='white'
                         _hover={{
