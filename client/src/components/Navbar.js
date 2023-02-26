@@ -108,7 +108,7 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
-                    <Button
+                    {/* <Button
                         borderRadius='10'
                         color='white'
                         bgColor='whiteAlpha.500'
@@ -118,7 +118,7 @@ const Navbar = () => {
                         onClick={openLoginModal}
                     >
                         Login
-                    </Button>
+                    </Button> */}
                     <LoginModal 
                         loginModalOpen={loginModalOpen}
                         openLoginModal={openLoginModal}
@@ -145,6 +145,15 @@ const Navbar = () => {
                                 />
                             </MenuButton>
                             <MenuList>
+                                <Link
+                                    as={NextLink}
+                                    onClick={openLoginModal}
+                                    _hover={{
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    <MenuItem>Login</MenuItem>
+                                    </Link>
                                 <Link
                                     as={NextLink}
                                     href='/'
