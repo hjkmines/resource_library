@@ -30,16 +30,27 @@ import {
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import  LoginModal  from './LoginModal';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [loginModalOpen, setLoginModalOpen] = useState(false);
+
     const btnRef = useRef();
 
     function uploadFile(btn) {
         btn.click();
     }
+
+    const openLoginModal = () => {
+        setLoginModalOpen(true);
+    };
+    
+    const closeLoginModal = () => {
+        setLoginModalOpen(false);
+    };
 
     return (
         <>
@@ -97,6 +108,22 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
+                    <Button
+                        borderRadius='10'
+                        color='white'
+                        bgColor='whiteAlpha.500'
+                        opacity={0.9}
+                        variant='outline'
+                        px={10}
+                        onClick={openLoginModal}
+                    >
+                        Login
+                    </Button>
+                    <LoginModal 
+                        loginModalOpen={loginModalOpen}
+                        openLoginModal={openLoginModal}
+                        closeLoginModal={closeLoginModal}
+                    />
 
                     {/* Desktop Avatar */}
 
@@ -321,7 +348,7 @@ const Navbar = () => {
                                     marginTop={3}
                                     bgColor='#FCB22E'
                                     borderRadius={10}
-                                    height={150}
+                                    height={250}
                                 >
                                     <Stack spacing='24px'>
                                         <Flex>
@@ -365,6 +392,22 @@ const Navbar = () => {
                                         >
                                             Upload
                                         </Button>
+                                        <Button
+                                            borderRadius='10'
+                                            color='white'
+                                            bgColor='whiteAlpha.500'
+                                            opacity={0.9}
+                                            variant='outline'
+                                            px={10}
+                                            onClick={openLoginModal}
+                                        >
+                                            Login
+                                        </Button>
+                                        <LoginModal 
+                                            loginModalOpen={loginModalOpen}
+                                            openLoginModal={openLoginModal}
+                                            closeLoginModal={closeLoginModal}
+                                        />        
                                     </Stack>
                                 </DrawerFooter>
                             </DrawerBody>
