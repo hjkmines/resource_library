@@ -38,6 +38,10 @@ const SignupModal = ({ signupModalOpen, openSignupModal, closeSignupModal }) => 
   const handleSignup = () => {
     // You can add your signup logic here
     console.table(`Signup firstName: ${firstName} Signup lastName: ${lastName} Signup Email: ${email} Signup Password: ${password}`);
+    setFirstName();
+    setLastName();
+    setEmail();
+    setPassword();
     closeSignupModal();
   };
 
@@ -92,7 +96,7 @@ const SignupModal = ({ signupModalOpen, openSignupModal, closeSignupModal }) => 
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={handleSignup}>
+            <Button bg="#FCB22E" mr={3} onClick={handleSignup}>
               Save
             </Button>
             <Button onClick={closeSignupModal}>Cancel</Button>

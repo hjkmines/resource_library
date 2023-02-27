@@ -28,6 +28,8 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal, openSignu
   const handleLogin = () => {
     // You can add your login logic here
     console.log(`Login Email: ${email} Login Password: ${password}`);
+    setEmail();
+    setPassword();
     closeLoginModal();
   };
 
