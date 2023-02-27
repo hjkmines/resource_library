@@ -1,11 +1,11 @@
 const express = require('express'); // Import express web application framework
 const dotenv = require('dotenv'); // zero dependency module to read environment variables from .env file into process.env
-// const connectDB = require('./config/db')
+const connectDB = require('./config/database') // Import database connection
 // const logger = require('./utils/logger')
 // const user = require('./routes/user');
 // const bodyParser = require('body-parser')
 
-// dotenv.config({ path: './config/config.env' })
+dotenv.config({ path: './config/config.env' })
 
 connectDB(); 
 
