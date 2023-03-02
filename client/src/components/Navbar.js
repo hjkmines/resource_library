@@ -32,24 +32,37 @@ import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { useRef, useState } from 'react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import  LoginModal  from './LoginModal';
+import LoginModal  from './LoginModal';
+import SignupModal from './SignupModal';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [loginModalOpen, setLoginModalOpen] = useState(false);
+    const [signupModalOpen, setSignupModalOpen] = useState(false);
+
 
     const btnRef = useRef();
 
     function uploadFile(btn) {
         btn.click();
     }
-
+//opening the login modal on login btn click
     const openLoginModal = () => {
         setLoginModalOpen(true);
     };
-    
+
+// closing login modal on "x" click->ModalCloseButton
     const closeLoginModal = () => {
         setLoginModalOpen(false);
+    };
+// opening signup modal
+    const openSignupModal = () => {
+        setSignupModalOpen(true);
+        setLoginModalOpen(false);
+    };
+// closing signup modal on "x" click or "cancel"
+    const closeSignupModal = () => {
+        setSignupModalOpen(false);
     };
 
     return (
@@ -123,6 +136,12 @@ const Navbar = () => {
                         loginModalOpen={loginModalOpen}
                         openLoginModal={openLoginModal}
                         closeLoginModal={closeLoginModal}
+                        openSignupModal={openSignupModal}
+                    />
+                    <SignupModal 
+                        signupModalOpen={signupModalOpen}
+                        
+                        closeSignupModal={closeSignupModal}
                     />
 
                     {/* Desktop Avatar */}

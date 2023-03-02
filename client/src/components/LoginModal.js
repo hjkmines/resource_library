@@ -13,7 +13,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
+const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal, openSignupModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,7 +27,9 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
 
   const handleLogin = () => {
     // You can add your login logic here
-    console.log(`Email: ${email} Password: ${password}`);
+    console.log(`Login Email: ${email} Login Password: ${password}`);
+    setEmail();
+    setPassword();
     closeLoginModal();
   };
 
@@ -56,10 +58,12 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal }) => {
 
         </ModalBody>
         <ModalFooter alignItems='center'>
-        <Button mr={3} bg="#FCB22E" onClick={handleLogin}>
-          Login
-        </Button>
-          <Button mr={3} bg="#A4BB9A">Sign Up!</Button>
+          <Button mr={3} bg="#FCB22E" onClick={handleLogin}>
+            Login
+          </Button>
+          <Button mr={3} bg="#A4BB9A" onClick={openSignupModal}>
+            Sign Up!
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
