@@ -11,7 +11,7 @@ import {
     Center,
     LinkProps
 } from '@chakra-ui/react';
-import logo from '../logo.svg';
+import logo from '../../public/logo.svg';
 //react-icons
 import { FiLinkedin, FiTwitter, FiYoutube } from 'react-icons/fi';
 
@@ -91,7 +91,7 @@ const Footer = () => {
     );
 };
 
-const CustomLink = ({ children, ...props }: LinkProps) => {
+const CustomLink = ({ children, ...props }, LinkProps) => {
     return (
         <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} {...props}>
             {children}
