@@ -2,6 +2,9 @@ import { ChakraProvider } from '@chakra-ui/react';
 import Navbar from '../src/components/Navbar';
 import FeaturedBar from '../src/components/featured-section/FeatureBar';
 import FeaturedVideos from '../src/components/featured-section/FeaturedVideos';
+import EventBar from '../src/components/event/EventBar';
+import Events from '../src/components/event/Events';
+import Footer from '../src/components/Footer';
 
 const Page = () => {
     return (
@@ -9,6 +12,9 @@ const Page = () => {
             <Navbar />
             <FeaturedBar />
             <FeaturedVideos />
+            <EventBar />
+            <Events />
+            <Footer />
         </ChakraProvider>
     );
 };
