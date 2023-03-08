@@ -1,28 +1,27 @@
-const express = require('express'); // Import express web application framework
-const dotenv = require('dotenv'); // zero dependency module to read environment variables from .env file into process.env
-const connectDB = require('./config/database') // Import database connection
-const logger = require('./utils/logger')
-// const user = require('./routes/user');
-// const bodyParser = require('body-parser')
+const dotenv = require('dotenv');
+dotenv.config({ path: './config/config.env' });
+const express = require('express');
+const connectDB = require('./config/database');
+const logger = require('./utils/logger');
+const userRoutes = require('./routes/userRoutes');
 
-dotenv.config({ path: './config/config.env' })
+const app = express();
 
-connectDB(); 
+// Connect to database
+connectDB();
 
-const app = express(); //initialize express app
+app.use(express.json());
 
-// app.use(bodyParser.json());
+const PORT = process.env.PORT || 5001;
 
-const PORT = process.env.PORT || 5001; //creating a port. Read from config folder, if not then use 5001
+// Use routes
+app.use('/users', userRoutes);
 
-app.use(logger)
-// app.use('/user', user)
+const server = app.listen(PORT, () => {
+  console.log(`Server is listening on PORT ${PORT}`);
+});
 
-const server = app.listen(PORT, () => { //initialize server application to run
-    console.log(`Server is listening on PORT ${PORT}`) //confirmation message
-})
-
-process.on('unhandledRejection', (err) => { //handling unhandled promise rejection. whenever node sees an error it needs this to "gracefully shutdown" server 
-    console.log(`Error: ${err.message}`)
-    server.close(() => process.exit(1)) //terminates the node terminal synchronously-(1) indicates failure
-})
+process.on('unhandledRejection', (err) => {
+  console.log(`Error: ${err.message}`);
+  server.close(() => process.exit(1));
+});
