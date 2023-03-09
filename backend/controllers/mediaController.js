@@ -6,7 +6,7 @@ const getMedia = async (req, res, next) => {
         res
         .status(200)
         .setHeader('Content-Type', 'application/json')
-        .json(media);
+        .json({message: 'Found media', media});
     } catch (err){
         next(err);
     }
@@ -14,23 +14,23 @@ const getMedia = async (req, res, next) => {
 
 const createMedia = async (req, res, next) => {
     try {
-        const media = await Media.create(req.body);
+        const media = await Media.create(req.body)
         res
         .status(201)
         .setHeader('Content-Type', 'application/json')
-        .json(media);
-    } catch {
+        .json({message: 'Created media', media});
+    } catch (err) {
         next(err)
     }
 }
 
 const deleteMedia = async (req, res, next) => {
     try {
-        const media = await Media.deleteMedia();
+        const media = await Media.deleteOne();
         res
         .status(200)
         .setHeader('Content-Type', 'application/json')
-        .json(media);
+        .json({message: 'Deleted media', media});
     } catch (err) {
         next(err);
     }

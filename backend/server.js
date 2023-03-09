@@ -3,7 +3,8 @@ const dotenv = require('dotenv'); // zero dependency module to read environment 
 const connectDB = require('./config/database') // Import database connection
 const logger = require('./utils/logger')
 // const user = require('./routes/user');
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
+const media = require('./routes/media')
 
 dotenv.config({ path: './config/config.env' })
 
@@ -11,12 +12,13 @@ connectDB();
 
 const app = express(); //initialize express app
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5001; //creating a port. Read from config folder, if not then use 5001
 
 app.use(logger)
 // app.use('/user', user)
+app.use('/media', media)
 
 const server = app.listen(PORT, () => { //initialize server application to run
     console.log(`Server is listening on PORT ${PORT}`) //confirmation message
