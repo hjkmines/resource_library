@@ -26,7 +26,7 @@ const createMedia = async (req, res, next) => {
 
 const deleteMedia = async (req, res, next) => {
     try {
-        const media = await Media.deleteOne();
+        const media = await Media.deleteMany();
         res
         .status(200)
         .setHeader('Content-Type', 'application/json')
