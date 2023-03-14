@@ -11,8 +11,6 @@ import {
     Center,
     LinkProps
 } from '@chakra-ui/react';
-import logo from '../../public/logo.svg';
-//react-icons
 import { FiLinkedin, FiTwitter, FiYoutube } from 'react-icons/fi';
 
 const Footer = () => {
@@ -25,7 +23,7 @@ const Footer = () => {
             >
                 <Box maxW="600px">
                     <Link href="#" isExternal>
-                        <Image w="200px" src={logo} alt="Hanawilo" />
+                        <Image w="200px" src='/logo.svg' alt="Hanawilo" />
                     </Link>
                 </Box>
                 <HStack

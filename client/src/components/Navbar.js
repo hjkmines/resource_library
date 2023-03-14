@@ -140,7 +140,6 @@ const Navbar = () => {
                     />
                     <SignupModal 
                         signupModalOpen={signupModalOpen}
-                        
                         closeSignupModal={closeSignupModal}
                     />
 
@@ -426,7 +425,11 @@ const Navbar = () => {
                                             loginModalOpen={loginModalOpen}
                                             openLoginModal={openLoginModal}
                                             closeLoginModal={closeLoginModal}
-                                        />        
+                                        />
+                                        <SignupModal 
+                                            signupModalOpen={signupModalOpen}
+                                            closeSignupModal={closeSignupModal}
+                                        />   
                                     </Stack>
                                 </DrawerFooter>
                             </DrawerBody>
