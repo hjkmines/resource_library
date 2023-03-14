@@ -2,11 +2,7 @@ import React from "react";
 import {
   Card,
   CardBody,
-  CardFooter,
   Image,
-  Stack,
-  Container,
-  Text,
   Heading,
   Flex,
   Spacer,
