@@ -2,7 +2,9 @@ const express = require('express'); // Import express web application framework
 const dotenv = require('dotenv'); // zero dependency module to read environment variables from .env file into process.env
 const connectDB = require('./config/database') // Import database connection
 const logger = require('./utils/logger')
+const errorHandler = require('./utils/error')
 // const user = require('./routes/user');
+const event = require('./routes/event')
 // const bodyParser = require('body-parser')
 
 dotenv.config({ path: './config/config.env' })
@@ -16,6 +18,7 @@ const app = express(); //initialize express app
 const PORT = process.env.PORT || 5001; //creating a port. Read from config folder, if not then use 5001
 
 app.use(logger)
+app.use(errorHandler)
 // app.use('/user', user)
 
 const server = app.listen(PORT, () => { //initialize server application to run
