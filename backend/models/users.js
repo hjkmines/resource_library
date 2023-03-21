@@ -6,11 +6,11 @@ const userSchema = new Schema(
   {
     firstName: {
       type: String,
-      // required: [true, "Please provide a first name"],
+      required: [true, "Please provide a first name"],
     },
     lastName: {
       type: String,
-      // required: [true, "please provide a last name"],
+      required: [true, "Please provide a last name"],
     },
     email: {
       type: String,
@@ -19,7 +19,7 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      // required: [true, "please provide a password"],
+      required: [true, "Please provide a password"],
     },
     profileImage: {
       type: String,
@@ -32,8 +32,8 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-userSchema.methods.matchPasswords = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
+userSchema.methods.matchPasswords = function (enteredPassword) {
+  return bcrypt.compare(enteredPassword, this.password);
 };
 
 userSchema.pre('save', async function (next) {
