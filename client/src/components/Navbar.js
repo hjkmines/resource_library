@@ -27,11 +27,13 @@ import {
     Divider,
     Center,
     Stack,
+    useColorModeValue,
+    useColorMode
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
+import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useRef, useState } from 'react';
-import { HamburgerIcon } from '@chakra-ui/icons';
 import LoginModal  from './LoginModal';
 import SignupModal from './SignupModal';
 
@@ -42,6 +44,8 @@ const Navbar = () => {
 
 
     const btnRef = useRef();
+
+    const { colorMode, toggleColorMode } = useColorMode();
 
     function uploadFile(btn) {
         btn.click();
@@ -73,7 +77,7 @@ const Navbar = () => {
                 <Flex
                     alignItems='center'
                     p={2}
-                    bgColor='#FCB22E'
+                    bgColor={useColorModeValue('#FCB22E', 'gray.700')}
                     justifyContent='space-between'
                 >
                     <Image ml={4} boxSize='3em' src='/logo.svg' />
@@ -121,17 +125,16 @@ const Navbar = () => {
                     >
                         Upload
                     </Button>
-                    {/* <Button
-                        borderRadius='10'
-                        color='white'
-                        bgColor='whiteAlpha.500'
-                        opacity={0.9}
-                        variant='outline'
-                        px={10}
-                        onClick={openLoginModal}
-                    >
-                        Login
-                    </Button> */}
+                    <Flex alignItems='center'>
+                        <IconButton
+                            aria-label='Toggle dark mode'
+                            icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                            onClick={toggleColorMode}
+                            bg={useColorModeValue('white', 'gray.800')} 
+                            borderRadius='full'
+                            ml={2}
+                        />
+                    </Flex>
                     <LoginModal 
                         loginModalOpen={loginModalOpen}
                         openLoginModal={openLoginModal}
@@ -185,7 +188,6 @@ const Navbar = () => {
                         </Menu>
                     </Flex>
                 </Flex>
-
                 <Flex
                     bgColor='#A4BB9A'
                     p={3}
