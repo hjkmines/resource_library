@@ -37,7 +37,7 @@ const createEvent = async (req, res, next) => {
       .status(201)
       .setHeader('Content-Type', 'application/json')
       .json(event);
-  } catch {
+  } catch (err) {
       next(err)
   }
 };
