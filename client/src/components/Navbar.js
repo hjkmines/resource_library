@@ -34,18 +34,30 @@ import { useRef, useState } from 'react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import LoginModal  from './LoginModal';
 import SignupModal from './SignupModal';
+import UploadModal from './UploadModal';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [signupModalOpen, setSignupModalOpen] = useState(false);
+    const [uploadModalOpen, setUploadModalOpen] = useState(false);
 
 
     const btnRef = useRef();
 
-    function uploadFile(btn) {
-        btn.click();
-    }
+    // function uploadFile(btn) {
+    //     btn.click();
+    // }
+
+//opening the upload model on upload btn click
+const openUploadModal = () => {
+    setUploadModalOpen(true);
+}
+
+const closeUploadModal = () => {
+    setUploadModalOpen(false);
+}
+
 //opening the login modal on login btn click
     const openLoginModal = () => {
         setLoginModalOpen(true);
@@ -115,12 +127,16 @@ const Navbar = () => {
                         opacity={0.9}
                         variant='outline'
                         px={10}
-                        onClick={() => {
-                            uploadFile(upload);
-                        }}
+                        onClick={openUploadModal}
                     >
                         Upload
                     </Button>
+                    <UploadModal 
+                        uploadModalOpen={uploadModalOpen}
+                        openUploadModal={openUploadModal}
+                        closeUploadModal={closeUploadModal}
+                    
+                    />
                     <Button
                         borderRadius='10'
                         color='white'
