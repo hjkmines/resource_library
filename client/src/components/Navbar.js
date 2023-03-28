@@ -32,11 +32,17 @@ import {
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { useRef } from 'react';
 import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useRef, useState } from 'react';
+import LoginModal  from './LoginModal';
+import SignupModal from './SignupModal';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [loginModalOpen, setLoginModalOpen] = useState(false);
+    const [signupModalOpen, setSignupModalOpen] = useState(false);
+
+
     const btnRef = useRef();
 
     const { colorMode, toggleColorMode } = useColorMode();
@@ -44,6 +50,24 @@ const Navbar = () => {
     function uploadFile(btn) {
         btn.click();
     }
+//opening the login modal on login btn click
+    const openLoginModal = () => {
+        setLoginModalOpen(true);
+    };
+
+// closing login modal on "x" click->ModalCloseButton
+    const closeLoginModal = () => {
+        setLoginModalOpen(false);
+    };
+// opening signup modal
+    const openSignupModal = () => {
+        setSignupModalOpen(true);
+        setLoginModalOpen(false);
+    };
+// closing signup modal on "x" click or "cancel"
+    const closeSignupModal = () => {
+        setSignupModalOpen(false);
+    };
 
     return (
         <>
@@ -111,6 +135,16 @@ const Navbar = () => {
                             ml={2}
                         />
                     </Flex>
+                    <LoginModal 
+                        loginModalOpen={loginModalOpen}
+                        openLoginModal={openLoginModal}
+                        closeLoginModal={closeLoginModal}
+                        openSignupModal={openSignupModal}
+                    />
+                    <SignupModal 
+                        signupModalOpen={signupModalOpen}
+                        closeSignupModal={closeSignupModal}
+                    />
 
                     {/* Desktop Avatar */}
 
@@ -134,6 +168,15 @@ const Navbar = () => {
                             <MenuList>
                                 <Link
                                     as={NextLink}
+                                    onClick={openLoginModal}
+                                    _hover={{
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    <MenuItem>Login</MenuItem>
+                                    </Link>
+                                <Link
+                                    as={NextLink}
                                     href='/'
                                     _hover={{
                                         textDecoration: 'none',
@@ -153,7 +196,7 @@ const Navbar = () => {
                 >
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/videos'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -162,10 +205,10 @@ const Navbar = () => {
                     >
                         Videos
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/articles'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -174,10 +217,10 @@ const Navbar = () => {
                     >
                         Articles
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/tools'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -186,10 +229,10 @@ const Navbar = () => {
                     >
                         Tools
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/events'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -198,10 +241,10 @@ const Navbar = () => {
                     >
                         Events
                     </Link>
-                    <Divider orientation='vertical' h='9' />
+                    <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/'
+                        href='/humour'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -334,7 +377,7 @@ const Navbar = () => {
                                     marginTop={3}
                                     bgColor='#FCB22E'
                                     borderRadius={10}
-                                    height={150}
+                                    height={250}
                                 >
                                     <Stack spacing='24px'>
                                         <Flex>
@@ -378,6 +421,26 @@ const Navbar = () => {
                                         >
                                             Upload
                                         </Button>
+                                        <Button
+                                            borderRadius='10'
+                                            color='white'
+                                            bgColor='whiteAlpha.500'
+                                            opacity={0.9}
+                                            variant='outline'
+                                            px={10}
+                                            onClick={openLoginModal}
+                                        >
+                                            Login
+                                        </Button>
+                                        <LoginModal 
+                                            loginModalOpen={loginModalOpen}
+                                            openLoginModal={openLoginModal}
+                                            closeLoginModal={closeLoginModal}
+                                        />
+                                        <SignupModal 
+                                            signupModalOpen={signupModalOpen}
+                                            closeSignupModal={closeSignupModal}
+                                        />   
                                     </Stack>
                                 </DrawerFooter>
                             </DrawerBody>

@@ -1,23 +1,24 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import styles from '@/styles/Home.module.css';
-import Image from 'next/image';
 import Navbar from '../src/components/Navbar';
+import FeaturedBar from '../src/components/featured-section/FeatureBar';
+import FeaturedVideos from '../src/components/featured-section/FeaturedVideos';
+import EventBar from '../src/components/event/EventBar';
+import Events from '../src/components/event/Events';
+import Footer from '../src/components/Footer';
 import ArticlesSection from '@/components/ArticlesSection';
+
+
 
 const Page = () => {
     return (
         <ChakraProvider>
             <Navbar />
+            <FeaturedBar />
+            <FeaturedVideos />
+            <EventBar />
+            <Events />
             <ArticlesSection />
-            {/* <div align='center'>
-                <Image
-                    src='/next.svg'
-                    alt='Next.js Logo'
-                    className={styles.thirteen}
-                    width={180}
-                    height={37}
-                />
-            </div> */}
+            <Footer />
         </ChakraProvider>
     );
 };

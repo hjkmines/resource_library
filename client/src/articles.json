@@ -1,0 +1,56 @@
+{
+    "articles": [
+        {
+            "title": "How to Build a Gaming PC",
+            "body": "Building your own gaming PC can be a fun and rewarding experience. In this guide, we'll cover the components you'll need, how to put them together, and tips for optimizing performance.",
+            "comments": 18,
+            "time": "2022-03-01T12:00:00"
+        },
+        {
+            "title": "Artificial Intelligence and Ethics",
+            "body": "As AI technology advances, it raises important ethical questions about privacy, bias, and the impact on jobs. In this article, we'll explore some of these issues and how they can be addressed.",
+            "comments": 27,
+            "time": "2022-02-28T09:30:00"
+        },
+        {
+            "title": "The Future of Augmented Reality",
+            "body": "Augmented reality has the potential to revolutionize how we interact with digital content. In this article, we'll explore the current state of AR technology and what the future might hold.",
+            "comments": 14,
+            "time": "2022-02-27T15:45:00"
+        },
+        {
+            "title": "Blockchain Technology Explained",
+            "body": "Blockchain technology is the backbone of cryptocurrencies like Bitcoin, but it has applications beyond finance. In this article, we'll explain how blockchain works and some of its potential uses.",
+            "comments": 23,
+            "time": "2022-02-26T11:15:00"
+        },
+        {
+            "title": "The Dark Side of Social Media",
+            "body": "While social media has brought people closer together, it has also had negative effects on mental health, privacy, and democracy. In this article, we'll explore some of these issues and how they can be addressed.",
+            "comments": 32,
+            "time": "2022-02-25T14:00:00"
+        },
+        {
+            "title": "The Rise of Remote Work",
+            "body": "The COVID-19 pandemic has accelerated the trend of remote work, but it was already on the rise before. In this article, we'll explore the benefits and challenges of remote work and what the future might hold.",
+            "comments": 19,
+            "time": "2022-02-24T10:30:00"
+        },
+        {
+            "title": "The Impact of Cybersecurity Threats",
+            "body": "Cybersecurity threats like hacking, malware, and phishing attacks can have serious consequences for individuals and organizations. In this article, we'll explore the impact of these threats and some strategies for prevention.",
+            "comments": 25,
+            "time": "2022-02-23T13:15:00"
+        },
+        {
+            "title": "The Ethics of Gene Editing",
+            "body": "As gene editing technology advances, it raises important ethical questions about genetic modification, eugenics, and the potential for unintended consequences. In this article, we'll explore some of these issues and how they can be addressed.",
+            "comments": 16,
+            "time": "2022-02-22T11:45:00"
+        },
+        {
+            "title": "The Benefits of Cloud Computing",
+            "body": "Cloud computing has revolutionized how businesses and individuals store and access data. In this article, we'll explore"
+        }
+    ]
+}
