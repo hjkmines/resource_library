@@ -5,7 +5,7 @@ const logger = require('./utils/logger')
 // const user = require('./routes/user');
 const bodyParser = require('body-parser')
 const media = require('./routes/media')
-
+const event = require('./routes/event');
 dotenv.config({ path: './config/config.env' })
 
 connectDB(); 
