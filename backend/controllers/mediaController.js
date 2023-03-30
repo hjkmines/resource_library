@@ -44,7 +44,7 @@ const getMedia = async (req, res, next) => {
         const media = await Media.findById();
         res.status(200)
             .setHeader('Content-Type', 'application/json')
-            .json({ message: 'Found media', media });
+            .json({ message: 'Found media by Id', media });
     } catch (err) {
         next(err);
     }
