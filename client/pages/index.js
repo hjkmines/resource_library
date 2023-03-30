@@ -6,7 +6,6 @@ import EventBar from '../src/components/event/EventBar';
 import Events from '../src/components/event/Events';
 import Footer from '../src/components/Footer';
 import ArticlesSection from '@/components/ArticlesSection';
-// import Footer from '@/components/Footer';
 
 
 const Page = () => {
