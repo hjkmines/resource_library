@@ -31,7 +31,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 
     const media = {title, description}
 
-    const response = fetch("/api/media", {
+    const response = fetch("/media", {
         method: "POST",
         body: JSON.stringify(media),
         headers: {

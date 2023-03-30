@@ -4,16 +4,15 @@ const dotenv = require('dotenv'); // zero dependency module to read environment 
 const connectDB = require('./config/database') // Import database connection
 const logger = require('./utils/logger')
 const errorHandler = require('./utils/error')
-// const user = require('./routes/user');
-const event = require('./routes/event')
+// const event = require('./routes/event')
 const bodyParser = require('body-parser')
 const media = require('./routes/media')
 
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
-const express = require('express');
-const connectDB = require('./config/database');
-const logger = require('./utils/logger');
+// const express = require('express');
+// const connectDB = require('./config/database');
+// const logger = require('./utils/logger');
 const userRoutes = require('./routes/userRoutes');
 
 
