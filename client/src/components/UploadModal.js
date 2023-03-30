@@ -16,6 +16,7 @@ import {
 function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
     const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState(null);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -25,11 +26,31 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
     setDescription(event.target.value);
   };
 
-  const handleSubmit = () => {
-    // You can add your resource information
+  const handleSubmit =  async (e) => {
+    e.preventDefault();
+
+    const media = {title, description}
+
+    const response = fetch("/api/media", {
+        method: "POST",
+        body: JSON.stringify(media),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+        setError(json.error)
+    }
+
+    if (response.ok){
     console.log(`Title: ${title} description: ${description}`);
     setTitle();
     setDescription();
+    setError(null);
+    }
     closeUploadModal();
   };
 
