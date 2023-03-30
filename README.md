@@ -13,7 +13,7 @@
 * [License](#license)
 
 ## General info
-Resource Library aims to connect students to instructors who are knowledgeable in a variety of subjects. 
+A central location of resources for students to learn and develop as a software engineer through articles, links, and events.
 
 <div align="center">Welcome to Resource Library </div>
 <br/>
@@ -80,15 +80,10 @@ To use this project:
 
 
 ## Features
-* Full stack web application utilizing the MERN stack: MongoDB, Express.js, React, and Node.js. 
-* Authorization and authenication implemented with JWT and bcrypt. 
-* Front-End styles and chart components built with Materialize and Chart.js. 
+* Full stack web application utilizing the MERN stack: MongoDB, Express.js, React, and Node.js.  
+* Front-End styles and chart components built with Chakra UI. 
 * Users can create account through application. 
 * Users can add profile information, profile image, and team members. 
-* View and analyze ticket data through charts that includes: Ticket Severity Count, Pending/Completed Tickets, Frequency of Tickets Posted Per Month, Languages/Frameworks associated with Tickets.
-* Create new tickets and update them as they get processed. 
-* Add team members to your group to track tickets that you are associated with. 
-* Interact with team members utilizing the comments feature. 
 
 ## Status
 Project is: working progress
@@ -97,8 +92,8 @@ Project is: working progress
  
 
 ## Contact
-Created by [Kristina D., Mai Vang, Maria Delacruz, Thomas Bell, Jerry Victor, Tyson Mills](https://www.linkedin.com/in/hyung-kim/) 
-Feel free to contact me for any questions! 
+Created by [Kristina D.,](https://www.linkedin.com/in/krisdegtyareva/) [Mai Vang,](https://www.linkedin.com/in/mai-vang-software-engineer/) [Maria Delacruz,](https://www.linkedin.com/in/dlcrz-maria/) [Thomas Bell,](https://www.linkedin.com/in/thomasjbell065/) [Jerry Victor,](https://www.linkedin.com/in/jerry-victor-/) [Tyson Mills](https://www.linkedin.com/in/tmillsdev/)
+Feel free to contact us for any questions! 
 
 ## License
 [Click to view]()
