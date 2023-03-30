@@ -1,4 +1,3 @@
-const { update } = require('../models/media');
 const Media = require('../models/media');
 
 const getMedias = async (req, res, next) => {
