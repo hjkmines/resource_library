@@ -13,7 +13,17 @@ import {
     Input,
   } from "@chakra-ui/react";
 
-function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
+  // export const getStaticProps = async () => {
+  //   const res = await fetch ('/media');
+  //   const data = await res.json();
+
+  //   return {
+  //     props: { media: data}
+  //   }
+
+  // }
+
+function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal}) {
     const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
@@ -31,7 +41,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 
     const media = {title, description}
 
-    const response = fetch("/media", {
+    const response = await fetch("/media", {
         method: "POST",
         body: JSON.stringify(media),
         headers: {
