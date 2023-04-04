@@ -32,6 +32,7 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+
 userSchema.methods.matchPasswords = function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
 };
@@ -46,4 +47,6 @@ userSchema.pre('save', async function (next) {
 });
 
 const User = mongoose.model('User', userSchema);
+
 module.exports = User;
+
