@@ -14,7 +14,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 function TodayPic() {
   return (
-   
+   <>
       <SimpleGrid
         templateColumns="repeat(auto-fill, minmax(600px, 1fr))"
         ml={{ base: "20", sm: "10", md: "3", lg: "20" }}
@@ -75,7 +75,7 @@ function TodayPic() {
           </Heading>
         </Link>
       </Flex>
-    
+      </>
   );
 }
 

@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, Flex, Hide, Divider } from "@chakra-ui/react";
+import { Text, Box, Hide, Divider } from "@chakra-ui/react";
 
 function TodayBar() {
   return (
-    <Flex align="center" justify="space-around" mt={5} ml={10}>
+    <>
+    <Box align="center" justify="space-around" mt={5} ml={10}>
       <Hide below="md">
         <Divider
           orientation="horizontal"
@@ -29,7 +30,8 @@ function TodayBar() {
           borderColor="black"
         />
       </Hide>
-    </Flex>
+    </Box>
+    </>
   );
 }
 
