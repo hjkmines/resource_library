@@ -1,4 +1,3 @@
-
 const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
 const express = require('express');
@@ -10,6 +9,7 @@ const event = require('./routes/event')
 const bodyParser = require('body-parser')
 const media = require('./routes/media')
 const userRouter = require('./routes/userRouter');
+
 
 const app = express();
 
