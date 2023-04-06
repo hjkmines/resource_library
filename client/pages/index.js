@@ -6,7 +6,9 @@ import EventBar from '../src/components/event/EventBar';
 import Events from '../src/components/event/Events';
 import Footer from '../src/components/Footer';
 import ArticlesSection from '@/components/ArticlesSection';
-
+import TodayBar from '@/components/todays-pic/TodayBar';
+import TodayPic from '@/components/todays-pic/TodayPic';
+import Footer from '@/components/Footer';
 
 
 const Page = () => {
@@ -18,6 +20,8 @@ const Page = () => {
             <EventBar />
             <Events />
             <ArticlesSection />
+            <TodayBar />
+            <TodayPic />
             <Footer />
         </ChakraProvider>
     );
