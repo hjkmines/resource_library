@@ -28,7 +28,7 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 });
 
-//POST register user
+
 const registerUser = asyncHandler(async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 
