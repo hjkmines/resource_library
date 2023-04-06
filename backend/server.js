@@ -10,6 +10,7 @@ const media = require('./routes/media')
 const userRouter = require('./routes/userRouter');
 const cors = require('cors');
 
+
 const app = express();
 
 // Connect to database
