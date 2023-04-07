@@ -59,67 +59,67 @@ const SignupModal = ({ signupModalOpen, openSignupModal, closeSignupModal }) => 
       }
     } catch (error) {
       console.error(error.message);
-    }
-  };
+  }
+};
 
-  return (
-    <Modal
-      isOpen={signupModalOpen}
-      onClose={closeSignupModal}
-      isCentered
-    >
-      <ModalOverlay
-        backdropFilter='blur(10px) hue-rotate(90deg)'
-      />
-      <ModalContent>
-        <ModalHeader>Create your account</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody pb={6}>
-          <FormControl>
-            <FormLabel>First name</FormLabel>
-            <Input
-              type="text"
-              value={firstName}
-              onChange={handleFirstNameChange}
-            />
-          </FormControl>
+return (
+  <Modal
+    isOpen={signupModalOpen}
+    onClose={closeSignupModal}
+    isCentered
+  >
+    <ModalOverlay
+      backdropFilter='blur(10px) hue-rotate(90deg)'
+    />
+    <ModalContent>
+      <ModalHeader>Create your account</ModalHeader>
+      <ModalCloseButton />
+      <ModalBody pb={6}>
+        <FormControl>
+          <FormLabel>First name</FormLabel>
+          <Input
+            type="text"
+            value={firstName}
+            onChange={handleFirstNameChange}
+          />
+        </FormControl>
 
-          <FormControl mt={4}>
-            <FormLabel>Last name</FormLabel>
-            <Input
-              type="text"
-              value={lastName}
-              onChange={handleLastNameChange}
-            />
-          </FormControl>
+        <FormControl mt={4}>
+          <FormLabel>Last name</FormLabel>
+          <Input
+            type="text"
+            value={lastName}
+            onChange={handleLastNameChange}
+          />
+        </FormControl>
 
-          <FormControl mt={4}>
-            <FormLabel>Email</FormLabel>
-            <Input
-              type='email'
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </FormControl>
+        <FormControl mt={4}>
+          <FormLabel>Email</FormLabel>
+          <Input
+            type='email'
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </FormControl>
 
-          <FormControl mt={4}>
-            <FormLabel>Password</FormLabel>
-            <Input
-              type='password'
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </FormControl>
-        </ModalBody>
-        <ModalFooter>
-          <Button bg="#FCB22E" mr={3} onClick={handleSignup}>
-            Save
-          </Button>
-          <Button onClick={closeSignupModal}>Cancel</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
+        <FormControl mt={4}>
+          <FormLabel>Password</FormLabel>
+          <Input
+            type='password'
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </FormControl>
+      </ModalBody>
+      <ModalFooter>
+        <Button bg="#FCB22E" mr={3} onClick={handleSignup}>
+          Save
+        </Button>
+        <Button onClick={closeSignupModal}>Cancel</Button>
+      </ModalFooter>
+    </ModalContent>
+  </Modal>
+);
 }
 
 export default SignupModal;
