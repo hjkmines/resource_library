@@ -25,12 +25,28 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal, openSignu
     setPassword(event.target.value);
   };
 
-  const handleLogin = () => {
-    // You can add your login logic here
-    console.log(`Login Email: ${email} Login Password: ${password}`);
-    setEmail();
-    setPassword();
-    closeLoginModal();
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setEmail('');
+        setPassword('');
+        closeLoginModal();
+      } else {
+        throw new Error('Invalid email or password.');
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (

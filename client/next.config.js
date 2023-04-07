@@ -12,6 +12,14 @@ module.exports = () => {
         source: "/media",
         destination: "http://localhost:5001/media",
       },
+      {
+        source: "/users/register",
+        destination: "http://localhost:5001/users/register",
+      },
+      {
+        source: "/users/login",
+        destination: "http://localhost:5001/users/login",
+      },
     ];
   };
   return {
