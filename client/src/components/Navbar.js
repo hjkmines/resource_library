@@ -36,20 +36,32 @@ import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useRef, useState } from 'react';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
+import UploadModal from './UploadModal';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [signupModalOpen, setSignupModalOpen] = useState(false);
+    const [uploadModalOpen, setUploadModalOpen] = useState(false);
 
     const btnRef = useRef();
 
     const { colorMode, toggleColorMode } = useColorMode();
 
-    function uploadFile(btn) {
-        btn.click();
-    }
-    //opening the login modal on login btn click
+    // function uploadFile(btn) {
+    //     btn.click();
+    // }
+
+    //opening the upload model on upload btn click
+const openUploadModal = () => {
+    setUploadModalOpen(true);
+}
+
+const closeUploadModal = () => {
+    setUploadModalOpen(false);
+}
+
+//opening the login modal on login btn click
     const openLoginModal = () => {
         setLoginModalOpen(true);
     };
@@ -123,12 +135,16 @@ const Navbar = () => {
                         opacity={0.9}
                         variant='outline'
                         px={10}
-                        onClick={() => {
-                            uploadFile(upload);
-                        }}
+                        onClick={openUploadModal}
                     >
                         Upload
                     </Button>
+                    <UploadModal 
+                        uploadModalOpen={uploadModalOpen}
+                        openUploadModal={openUploadModal}
+                        closeUploadModal={closeUploadModal}
+                    
+                    />
                     <Flex alignItems='center'>
                         <IconButton
                             aria-label='Toggle dark mode'

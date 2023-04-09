@@ -4,8 +4,10 @@ import FeaturedBar from '../src/components/featured-section/FeatureBar';
 import FeaturedVideos from '../src/components/featured-section/FeaturedVideos';
 import EventBar from '../src/components/event/EventBar';
 import Events from '../src/components/event/[Events]';
-import Footer from '../src/components/Footer';
 import ArticlesSection from '@/components/[ArticlesSection]';
+import TodayBar from '@/components/todays-pic/TodayBar';
+import TodayPic from '@/components/todays-pic/TodayPic';
+import Footer from '@/components/Footer';
 
 const Page = () => {
     return (
@@ -16,6 +18,8 @@ const Page = () => {
             <EventBar />
             <Events />
             <ArticlesSection />
+            <TodayBar />
+            <TodayPic />
             <Footer />
         </ChakraProvider>
     );
