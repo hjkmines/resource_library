@@ -1,208 +1,60 @@
-import ReactPlayer from 'react-player/youtube';
-import {
-    Container,
-    AspectRatio,
-    SimpleGrid,
-    Heading,
-    Stack,
-    Card,
-    CardBody,
-    Flex,
-    Spacer,
-    useColorModeValue,
-} from '@chakra-ui/react';
-import FeaturedBar from './featured-section/FeatureBar';
-import { useRef } from 'react';
+import { Box, Heading, Text, Stack, Flex, Spacer, Link} from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import articlesData from '../articles.json';
 
-const Videos = () => {
-    const videoRef = useRef();
+export const getStaticProps = async () => {
+    const res = await fetch("/articles")
+    const data = await res.json();
 
-    const ReactPlayer = dynamic(() => import('react-player/youtube'), {
-        ssr: false,
-    });
+    return {
+        props: { articles: data }
+    }
+}
 
-    const mainScreen = 'https://www.youtube.com/embed/QhBnZ6NPOY0';
 
-    const screen1 = '';
-
-    const screen2 = '';
-
-    const screen3 = '';
-
-    const screen4 ='';
+const Articles = ( { articles} ) => {
 
     return (
         <>
-            <FeaturedBar />
-            <Container>
-                <AspectRatio maxW='560px' maxH={320} ratio={1} my={5}>
-                    <iframe
-                        src={mainScreen}
-                        type='video/mp4'
-                        allowFullScreen
-                        fallback='Loading...'
-                        ref={videoRef}
-                    />
-                </AspectRatio>
-            </Container>
-            <SimpleGrid
-                templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
-                ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
-                mt={{ base: '10', md: '10' }}
-                align='center'
+   <Box p={4}>
+      <Box textAlign='center'>
+        <Heading as="h2" size="xl" mb={4}
+          color="#747369"
+          fontSize="25px"
+          fontWeight="semibold"
+        >
+          Featured Articles
+        </Heading>
+      </Box>
+      <Stack spacing={2} maxWidth="70%">
+        {articles?.map(article => (
+          <Box key={article.title} boxShadow="md" p={2}>
+            <Heading as="h3" size="lg" mb={2}
+              color="#747369"
+              fontSize="18px"
+              fontWeight="semibold"
             >
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    rounded={'sm'}
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={screen1}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    rounded={'sm'}
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={screen2}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    rounded={'sm'}
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={screen3}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    rounded={'sm'}
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={screen4}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-            </SimpleGrid>
+              {article.title}
+            </Heading>
+            <Text mt={2} color="gray.500" fontSize="12px">
+              {article.comments} comments | {article.time}
+            </Text>
+          </Box>
+        ))}
+      </Stack>
+      <Flex mt={5}>
+                <Spacer />
+                <Link href='/allArticles/articles' color="#42413B" style={{textDecoration:"none"}}>
+                    <Heading as='h2' size='md' mr='100' color="#42413B">
+                        read all articles
+                        <ArrowForwardIcon boxSize={6} ml='5' color="#42413B"/>
+                    </Heading>
+                </Link>
+            </Flex>
+    </Box>
+
+            {/* Go back to Home page */}
             <Flex mt={5}>
                 <Spacer />
                 <Link href='/'>
@@ -216,4 +68,4 @@ const Videos = () => {
     );
 };
 
-export default Videos;
+export default Articles;
