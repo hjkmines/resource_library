@@ -28,13 +28,13 @@ import {
     Center,
     Stack,
     useColorModeValue,
-    useColorMode
+    useColorMode,
 } from '@chakra-ui/react';
 import { FiSearch, FiUploadCloud } from 'react-icons/fi';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useRef, useState } from 'react';
-import LoginModal  from './LoginModal';
+import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import UploadModal from './UploadModal';
 
@@ -66,16 +66,16 @@ const closeUploadModal = () => {
         setLoginModalOpen(true);
     };
 
-// closing login modal on "x" click->ModalCloseButton
+    // closing login modal on "x" click->ModalCloseButton
     const closeLoginModal = () => {
         setLoginModalOpen(false);
     };
-// opening signup modal
+    // opening signup modal
     const openSignupModal = () => {
         setSignupModalOpen(true);
         setLoginModalOpen(false);
     };
-// closing signup modal on "x" click or "cancel"
+    // closing signup modal on "x" click or "cancel"
     const closeSignupModal = () => {
         setSignupModalOpen(false);
     };
@@ -91,7 +91,12 @@ const closeUploadModal = () => {
                     bgColor={useColorModeValue('#FCB22E', 'gray.700')}
                     justifyContent='space-between'
                 >
-                    <Image ml={4} boxSize='3em' src='/logo.svg' />
+                    <Image
+                        ml={4}
+                        boxSize='3em'
+                        src='/logo.svg'
+                        alt='Hanawilo Engineers'
+                    />
                     <Hide below='xl'>
                         <Text fontSize='2xl'>Hanawilo Resource Library</Text>
                     </Hide>
@@ -143,20 +148,26 @@ const closeUploadModal = () => {
                     <Flex alignItems='center'>
                         <IconButton
                             aria-label='Toggle dark mode'
-                            icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                            icon={
+                                colorMode === 'light' ? (
+                                    <MoonIcon />
+                                ) : (
+                                    <SunIcon />
+                                )
+                            }
                             onClick={toggleColorMode}
-                            bg={useColorModeValue('white', 'gray.800')} 
+                            bg={useColorModeValue('white', 'gray.800')}
                             borderRadius='full'
                             ml={2}
                         />
                     </Flex>
-                    <LoginModal 
+                    <LoginModal
                         loginModalOpen={loginModalOpen}
                         openLoginModal={openLoginModal}
                         closeLoginModal={closeLoginModal}
                         openSignupModal={openSignupModal}
                     />
-                    <SignupModal 
+                    <SignupModal
                         signupModalOpen={signupModalOpen}
                         closeSignupModal={closeSignupModal}
                     />
@@ -172,13 +183,7 @@ const closeUploadModal = () => {
                                 cursor={'pointer'}
                                 minW={0}
                             >
-                                <Avatar
-                                    size={'md'}
-                                    mr={4}
-                                    src={
-                                        'https://media.licdn.com/dms/image/D5603AQEiGKFLtXqACw/profile-displayphoto-shrink_200_200/0/1668567666454?e=1681948800&v=beta&t=35iR1f4ZwZwzXYx874ZHtJOErESr68w56FsBA8Xu1Uk'
-                                    }
-                                />
+                                <Avatar size={'md'} mr={4} />
                             </MenuButton>
                             <MenuList>
                                 <Link
@@ -189,7 +194,7 @@ const closeUploadModal = () => {
                                     }}
                                 >
                                     <MenuItem>Login</MenuItem>
-                                    </Link>
+                                </Link>
                                 <Link
                                     as={NextLink}
                                     href='/'
@@ -211,7 +216,7 @@ const closeUploadModal = () => {
                 >
                     <Link
                         as={NextLink}
-                        href='/videos'
+                        href='/allVideos/videos'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -223,7 +228,7 @@ const closeUploadModal = () => {
                     <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/articles'
+                        href='/allArticles/articles'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -235,7 +240,7 @@ const closeUploadModal = () => {
                     <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/tools'
+                        href='/allTools/tools'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -247,7 +252,7 @@ const closeUploadModal = () => {
                     <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/events'
+                        href='/allEvents/events'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -259,7 +264,7 @@ const closeUploadModal = () => {
                     <Divider orientation='vertical' h='9' borderWidth={1} />
                     <Link
                         as={NextLink}
-                        href='/humour'
+                        href='/allHumour/humour'
                         fontSize='2xl'
                         color='white'
                         _hover={{
@@ -275,13 +280,14 @@ const closeUploadModal = () => {
 
             <Show below='md'>
                 <Flex p={1} bgColor='#FCB22E'>
-                    <Image ml={4} boxSize='3em' src='/logo.svg' />
-                    <Spacer />
-                    <Avatar
-                        src={
-                            'https://media.licdn.com/dms/image/D5603AQEiGKFLtXqACw/profile-displayphoto-shrink_200_200/0/1668567666454?e=1681948800&v=beta&t=35iR1f4ZwZwzXYx874ZHtJOErESr68w56FsBA8Xu1Uk'
-                        }
+                    <Image
+                        ml={4}
+                        boxSize='3em'
+                        src='/logo.svg'
+                        alt='Hanwilo Engineers'
                     />
+                    <Spacer />
+                    <Avatar />
                     <Spacer />
                     <IconButton
                         colorScheme='blue'
@@ -320,7 +326,7 @@ const closeUploadModal = () => {
                                 <Center height='50px'>
                                     <Link
                                         as={NextLink}
-                                        href='/'
+                                        href='/allVideos/videos'
                                         _hover={{
                                             textDecoration: 'none',
                                         }}
@@ -332,7 +338,7 @@ const closeUploadModal = () => {
                                 <Center height='50px'>
                                     <Link
                                         as={NextLink}
-                                        href='/'
+                                        href='/allArticles/articles'
                                         _hover={{
                                             textDecoration: 'none',
                                         }}
@@ -344,7 +350,7 @@ const closeUploadModal = () => {
                                 <Center height='50px'>
                                     <Link
                                         as={NextLink}
-                                        href='/'
+                                        href='/allTools/tools'
                                         _hover={{
                                             textDecoration: 'none',
                                         }}
@@ -356,7 +362,7 @@ const closeUploadModal = () => {
                                 <Center height='50px'>
                                     <Link
                                         as={NextLink}
-                                        href='/'
+                                        href='/allEvents/events'
                                         _hover={{
                                             textDecoration: 'none',
                                         }}
@@ -368,7 +374,7 @@ const closeUploadModal = () => {
                                 <Center height='50px'>
                                     <Link
                                         as={NextLink}
-                                        href='/'
+                                        href='/allHumour/humour'
                                         _hover={{
                                             textDecoration: 'none',
                                         }}
@@ -447,15 +453,15 @@ const closeUploadModal = () => {
                                         >
                                             Login
                                         </Button>
-                                        <LoginModal 
+                                        <LoginModal
                                             loginModalOpen={loginModalOpen}
                                             openLoginModal={openLoginModal}
                                             closeLoginModal={closeLoginModal}
                                         />
-                                        <SignupModal 
+                                        <SignupModal
                                             signupModalOpen={signupModalOpen}
                                             closeSignupModal={closeSignupModal}
-                                        />   
+                                        />
                                     </Stack>
                                 </DrawerFooter>
                             </DrawerBody>
