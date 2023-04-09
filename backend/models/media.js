@@ -11,7 +11,17 @@ const mediaSchema = new Schema({
     },
     image: {
         type: String
-    }
+    },
+    mediaCategory: {
+        type: String,
+        unique: false, 
+        enum: [
+            "Video",
+            "Article",
+            "Event",
+            "Humor"
+        ],
+    },
 }, { timestamps: true })
 module.exports = mongoose.model('Media', mediaSchema)
 
