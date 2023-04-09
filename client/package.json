@@ -12,6 +12,7 @@
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
+        "chakra-ui-search": "^1.1.1",
         "eslint": "8.34.0",
         "eslint-config-next": "13.1.6",
         "formik": "^2.2.9",

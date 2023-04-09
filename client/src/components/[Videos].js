@@ -2,36 +2,52 @@ import ReactPlayer from 'react-player/youtube';
 import {
     Container,
     AspectRatio,
+    SimpleGrid,
+    Heading,
+    Stack,
     Card,
     CardBody,
-    Stack,
-    Heading,
-    NextLink,
-    SimpleGrid,
-    useColorModeValue,
     Flex,
     Spacer,
+    useColorModeValue,
 } from '@chakra-ui/react';
+import FeaturedBar from './featured-section/FeatureBar';
+import { useRef } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-const FeaturedVideos = () => {
+const Videos = () => {
+    const videoRef = useRef();
+
     const ReactPlayer = dynamic(() => import('react-player/youtube'), {
         ssr: false,
     });
 
-    const trailer1 = 'https://www.youtube-nocookie.com/embed/Ixq-y_r-lkE';
+    const mainScreen = 'https://www.youtube.com/embed/QhBnZ6NPOY0';
 
-    const trailer2 = 'https://youtu.be/2Z4m4lnjxkY';
+    const screen1 = '';
 
-    const trailer3 = 'https://youtu.be/anZtoPo2Fpw';
+    const screen2 = '';
 
-    const trailer4 =
-        'https://youtu.be/5mpqhtK0NuU?list=PLCg4BmjNch8hKt_6BzvThMe-njUhFEM02';
+    const screen3 = '';
+
+    const screen4 ='';
 
     return (
         <>
+            <FeaturedBar />
+            <Container>
+                <AspectRatio maxW='560px' maxH={320} ratio={1} my={5}>
+                    <iframe
+                        src={mainScreen}
+                        type='video/mp4'
+                        allowFullScreen
+                        fallback='Loading...'
+                        ref={videoRef}
+                    />
+                </AspectRatio>
+            </Container>
             <SimpleGrid
                 templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
                 ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
@@ -57,7 +73,7 @@ const FeaturedVideos = () => {
                         <Container maxWidth='400px'>
                             <AspectRatio ratio={4 / 3}>
                                 <ReactPlayer
-                                    url={trailer1}
+                                    url={screen1}
                                     width='100%'
                                     height='100%'
                                     controls={false}
@@ -94,7 +110,7 @@ const FeaturedVideos = () => {
                         <Container maxWidth='400px'>
                             <AspectRatio ratio={4 / 3}>
                                 <ReactPlayer
-                                    url={trailer2}
+                                    url={screen2}
                                     width='100%'
                                     height='100%'
                                     controls={false}
@@ -131,7 +147,7 @@ const FeaturedVideos = () => {
                         <Container maxWidth='400px'>
                             <AspectRatio ratio={4 / 3}>
                                 <ReactPlayer
-                                    url={trailer3}
+                                    url={screen3}
                                     width='100%'
                                     height='100%'
                                     controls={false}
@@ -168,7 +184,7 @@ const FeaturedVideos = () => {
                         <Container maxWidth='400px'>
                             <AspectRatio ratio={4 / 3}>
                                 <ReactPlayer
-                                    url={trailer4}
+                                    url={screen4}
                                     width='100%'
                                     height='100%'
                                     controls={false}
@@ -189,9 +205,9 @@ const FeaturedVideos = () => {
             </SimpleGrid>
             <Flex mt={5}>
                 <Spacer />
-                <Link href='/allVideos/videos' as={NextLink}>
+                <Link href='/'>
                     <Heading as='h2' size='lg' mr='100'>
-                        see all videos
+                        Back
                         <ArrowForwardIcon boxSize={10} ml='5' />
                     </Heading>
                 </Link>
@@ -200,4 +216,4 @@ const FeaturedVideos = () => {
     );
 };
 
-export default FeaturedVideos;
+export default Videos;

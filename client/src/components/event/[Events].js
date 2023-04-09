@@ -100,7 +100,7 @@ function Events() {
       {/* Arrow to see more events */}
       <Flex mt={5} mb={5}>
         <Spacer />
-        <Link href="/events" as={NextLink}>
+        <Link href="/allEvents/events" as={NextLink}>
           <Heading as="h2" size="lg" mr="100">
             check all events
             <ArrowForwardIcon boxSize={10} ml="5" />
