@@ -37,12 +37,14 @@ import { useRef, useState } from 'react';
 import LoginModal  from './LoginModal';
 import SignupModal from './SignupModal';
 import UploadModal from './UploadModal';
+import SearchBar from './SearchBar'
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [signupModalOpen, setSignupModalOpen] = useState(false);
     const [uploadModalOpen, setUploadModalOpen] = useState(false);
+    const [search, setSearch] = useState("");
 
     const btnRef = useRef();
 
@@ -80,6 +82,11 @@ const closeUploadModal = () => {
         setSignupModalOpen(false);
     };
 
+    function handleSearchChange(newSearch) {
+        setSearch(newSearch)
+        console.log('search', newSearch)
+    }
+
     return (
         <>
             {/* Desktop View */}
@@ -97,28 +104,7 @@ const closeUploadModal = () => {
                     </Hide>
                     <Flex>
                         <InputGroup>
-                            <InputLeftElement
-                                children={<FiSearch />}
-                                color='white'
-                                fontSize={20}
-                                pointerEvents='none'
-                            />
-                            <Input
-                                placeholder='Search for resources...'
-                                _placeholder={{ color: 'white' }}
-                                textAlign={'center'}
-                                variant='outline'
-                                borderRadius={20}
-                                borderWidth={2}
-                                borderColor='white'
-                                size='md'
-                                width={{
-                                    md: 'md',
-                                    lg: 'xl',
-                                    xl: '2xl',
-                                    '2xl': '4xl',
-                                }}
-                            />
+                            <SearchBar onSearchChange={handleSearchChange} />
                         </InputGroup>
                     </Flex>
                     <Input type='file' id='upload' display='none' />
