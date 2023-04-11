@@ -45,7 +45,7 @@ const FeaturedVideos = () => {
                         md: '325px',
                         lg: '400px',
                     }}
-                    rounded={'sm'}
+                    borderRadius="md"
                     border={'1px'}
                     borderColor='black'
                     boxShadow={useColorModeValue(
@@ -53,7 +53,7 @@ const FeaturedVideos = () => {
                         '6px 6px 0 cyan'
                     )}
                 >
-                    <CardBody>
+                    <CardBody >
                         <Container maxWidth='400px'>
                             <AspectRatio ratio={4 / 3}>
                                 <ReactPlayer
@@ -82,7 +82,7 @@ const FeaturedVideos = () => {
                         md: '325px',
                         lg: '400px',
                     }}
-                    rounded={'sm'}
+                    borderRadius="md"
                     border={'1px'}
                     borderColor='black'
                     boxShadow={useColorModeValue(
@@ -119,7 +119,7 @@ const FeaturedVideos = () => {
                         md: '325px',
                         lg: '400px',
                     }}
-                    rounded={'sm'}
+                    borderRadius="md"
                     border={'1px'}
                     borderColor='black'
                     boxShadow={useColorModeValue(
@@ -156,7 +156,7 @@ const FeaturedVideos = () => {
                         md: '325px',
                         lg: '400px',
                     }}
-                    rounded={'sm'}
+                    borderRadius="md"
                     border={'1px'}
                     borderColor='black'
                     boxShadow={useColorModeValue(
@@ -190,9 +190,9 @@ const FeaturedVideos = () => {
             <Flex mt={5}>
                 <Spacer />
                 <Link href='/videos' as={NextLink}>
-                    <Heading as='h2' size='lg' mr='100'>
+                    <Heading as='h2' size='md' mr='100' color="#42413B">
                         see all videos
-                        <ArrowForwardIcon boxSize={10} ml='5' />
+                        <ArrowForwardIcon boxSize={8} ml='5' />
                     </Heading>
                 </Link>
             </Flex>

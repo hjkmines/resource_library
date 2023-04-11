@@ -18,7 +18,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 function Events() {
   return (
-    <div>
+    <>
       <SimpleGrid
         templateColumns="repeat(auto-fill, minmax(650px, 1fr))"
         ml={{ base: "20", sm: "10", md: "3", lg: "20" }}
@@ -100,14 +100,14 @@ function Events() {
       {/* Arrow to see more events */}
       <Flex mt={5} mb={5}>
         <Spacer />
-        <Link href="/events" as={NextLink}>
-          <Heading as="h2" size="lg" mr="100">
+        <Link href="/events" as={NextLink} style={{ textDecoration: "none" }}>
+          <Heading as="h2" size="md" mr="100" color="#42413B">
             check all events
-            <ArrowForwardIcon boxSize={10} ml="5" />
+            <ArrowForwardIcon boxSize={8} ml="5" />
           </Heading>
         </Link>
       </Flex>
-    </div>
+    </>
   );
 }
 

@@ -68,10 +68,10 @@ function TodayPic() {
       {/* Arrow to see more events */}
       <Flex mt={5} mb={5}>
         <Spacer />
-        <Link href="/events" as={NextLink}>
-          <Heading as="h2" size="lg" mr="100">
+        <Link href="/events" as={NextLink} style={{ textDecoration: "none" }}>
+          <Heading as="h2" size="md" mr="100" color="#42413B">
             more laughs
-            <ArrowForwardIcon boxSize={10} ml="5" />
+            <ArrowForwardIcon boxSize={8} ml="5" />
           </Heading>
         </Link>
       </Flex>
