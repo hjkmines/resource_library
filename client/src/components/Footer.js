@@ -38,8 +38,8 @@ const Footer = () => {
                             About
                         </Text>
                         <VStack spacing={2} alignItems="flex-start" color="gray.500">
-                            <CustomLink>Contrinute</CustomLink>
-                            <CustomLink>Media assets</CustomLink>
+                            <CustomLink>Contribute</CustomLink>
+                            <CustomLink>Media Assets</CustomLink>
                             <CustomLink>Changelog</CustomLink>
                             <CustomLink>Releases</CustomLink>
                         </VStack>
@@ -51,8 +51,8 @@ const Footer = () => {
                         <VStack spacing={2} alignItems="flex-start" color="gray.500">
                             <CustomLink>Discord</CustomLink>
                             <CustomLink>Twitter</CustomLink>
-                            <CustomLink>Github</CustomLink>
-                            <CustomLink>Github discussions</CustomLink>
+                            <CustomLink>GitHub</CustomLink>
+                            <CustomLink>GitHub Discussions</CustomLink>
                         </VStack>
                     </VStack>
                 </HStack>
