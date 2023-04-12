@@ -69,7 +69,7 @@ function Card({ image, index }) {
 				top={2}
 				position="absolute"
 			>
-				<Text>{`${index + 1}/${numberOfSlides}`}</Text>
+				{/*<Text>{`${index + 1}/${numberOfSlides}`}</Text>*/}
 			</Flex>
 
 			<Image

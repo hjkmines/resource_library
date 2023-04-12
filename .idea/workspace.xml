@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="705f138c-5a21-481b-b265-2f9cf696174d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/humour-section/Banner.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.js" afterDir="false" />
@@ -13,6 +12,8 @@
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/allHumour/humour.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/allHumour/humour.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Humour.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/humour-section/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/humour-section/Banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/humour-section/Memes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/humour-section/Memes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
       <workItem from="1678327519453" duration="79000" />
       <workItem from="1681142302129" duration="619000" />
       <workItem from="1681145299278" duration="11161000" />
-      <workItem from="1681255192139" duration="8883000" />
+      <workItem from="1681255192139" duration="9899000" />
     </task>
     <servers />
   </component>

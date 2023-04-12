@@ -96,8 +96,7 @@ const Memes = () => {
 						<Text color={'gray.500'}>
 							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
 							nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-							erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-							et ea rebum.
+							erat, sed diam voluptua.
 						</Text>
 					</Stack>
 					<Stack mt={6} direction={'row'} spacing={4} align={'center'}>
@@ -113,44 +112,44 @@ const Memes = () => {
 				</Box>
 			</Center>
 		{/*	Meme-End*/}
-			<Show below='md'>
-				<Box align='center'>
-					<Divider
-						marginTop={5}
-						orientation='horizontal'
-						w='2xs'
-						borderWidth={1}
-						borderColor='black'
-					/>
-				</Box>
-			</Show>
-			<Flex align='center' justify='space-around' mt={5}>
-				<Hide below='md'>
-					<Divider
-						orientation='horizontal'
-						w={['null', 'null', '2xs', 'sm', 'md', '30em']}
-						justifyContent='baseline'
-						borderWidth={1}
-						borderColor='black'
-					/>
-				</Hide>
-				<Text
-					style={{ letterSpacing: 5, wordWrap: 'break-word' }}
-					fontSize={['sm', 'md', 'lg', 'xl']}
-					color='gray.400'
-				>
-					Memes Recommended For You
-				</Text>
-				<Hide below='md'>
-					<Divider
-						orientation='horizontal'
-						w={['null', 'null', '2xs', 'sm', 'md', '30em']}
-						justifyContent='baseline'
-						borderWidth={1}
-						borderColor='black'
-					/>
-				</Hide>
-			</Flex>
+		{/*	<Show below='md'>*/}
+		{/*		<Box align='center'>*/}
+		{/*			<Divider*/}
+		{/*				marginTop={5}*/}
+		{/*				orientation='horizontal'*/}
+		{/*				w='2xs'*/}
+		{/*				borderWidth={1}*/}
+		{/*				borderColor='black'*/}
+		{/*			/>*/}
+		{/*		</Box>*/}
+		{/*	</Show>*/}
+		{/*	<Flex align='center' justify='space-around' mt={5}>*/}
+		{/*		<Hide below='md'>*/}
+		{/*			<Divider*/}
+		{/*				orientation='horizontal'*/}
+		{/*				w={['null', 'null', '2xs', 'sm', 'md', '30em']}*/}
+		{/*				justifyContent='baseline'*/}
+		{/*				borderWidth={1}*/}
+		{/*				borderColor='black'*/}
+		{/*			/>*/}
+		{/*		</Hide>*/}
+		{/*		<Text*/}
+		{/*			style={{ letterSpacing: 5, wordWrap: 'break-word' }}*/}
+		{/*			fontSize={['sm', 'md', 'lg', 'xl']}*/}
+		{/*			color='gray.400'*/}
+		{/*		>*/}
+		{/*			Memes Recommended For You*/}
+		{/*		</Text>*/}
+		{/*		<Hide below='md'>*/}
+		{/*			<Divider*/}
+		{/*				orientation='horizontal'*/}
+		{/*				w={['null', 'null', '2xs', 'sm', 'md', '30em']}*/}
+		{/*				justifyContent='baseline'*/}
+		{/*				borderWidth={1}*/}
+		{/*				borderColor='black'*/}
+		{/*			/>*/}
+		{/*		</Hide>*/}
+		{/*	</Flex>*/}
 		</>
 	);
 };
