@@ -3,10 +3,8 @@ import {
     Flex,
     Text,
     Heading,
-    Divider,
-    Show,
-    Hide,
 } from '@chakra-ui/react';
+import TitleDivider from '../TitleDivider';
 
 const FeaturedBar = () => {
     return (
@@ -22,27 +20,8 @@ const FeaturedBar = () => {
                     Latest
                 </Heading>
             </Box>
-            <Show below='md'>
-                <Box align='center'>
-                    <Divider
-                        marginTop={5}
-                        orientation='horizontal'
-                        w='2xs'
-                        borderWidth={1}
-                        borderColor='black'
-                    />
-                </Box>
-            </Show>
-            <Flex align='center' justify='space-around' mt={5}>
-                <Hide below='md'>
-                    <Divider
-                        orientation='horizontal'
-                        w={['null', 'null', '2xs', 'sm', 'md', '40em']}
-                        justifyContent='baseline'
-                        borderWidth={1}
-                        borderColor='black'
-                    />
-                </Hide>
+            <Flex align='center' justify='space-around' m={5}>
+                <TitleDivider />
                 <Text
                     style={{ letterSpacing: 5, wordWrap: 'break-word' }}
                     fontSize={['sm', 'md', 'lg', 'xl']}
@@ -50,15 +29,7 @@ const FeaturedBar = () => {
                 >
                     Featured Videos
                 </Text>
-                <Hide below='md'>
-                    <Divider
-                        orientation='horizontal'
-                        w={['null', 'null', '2xs', 'sm', 'md', '40em']}
-                        justifyContent='baseline'
-                        borderWidth={1}
-                        borderColor='black'
-                    />
-                </Hide>
+                <TitleDivider />
             </Flex>
         </>
     );
