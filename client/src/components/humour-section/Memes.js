@@ -102,7 +102,7 @@ const Memes = () => {
 					</Stack>
 					<Stack mt={6} direction={'row'} spacing={4} align={'center'}>
 						<Avatar
-							src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
+							src={'https://avatars.githubusercontent.com/u/95663147?v=4'}
 							alt={'Author'}
 						/>
 						<Stack direction={'column'} spacing={0} fontSize={'sm'}>
