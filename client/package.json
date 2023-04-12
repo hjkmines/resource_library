@@ -12,6 +12,9 @@
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
+        "carousel": "^0.0.3",
+        "chakra": "^0.0.3",
+        "chakra-framer-carousel": "^0.5.0",
         "eslint": "8.34.0",
         "eslint-config-next": "13.1.6",
         "formik": "^2.2.9",
@@ -28,7 +31,7 @@
         "yup": "^0.32.11"
     },
     "scripts": {
-        "dev": "concurrently \"next dev\" \"cd backend && npm run dev\"",
+        "dev": "concurrently \"next dev\" \"cd ../backend && npm run dev\"",
         "build": "next build",
         "start": "next start",
         "lint": "next lint"
