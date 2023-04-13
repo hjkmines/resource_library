@@ -29,6 +29,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
   const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
   const [error, setError] = useState(null);
+  const [isloading, setIsLoading] = useState(true);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);

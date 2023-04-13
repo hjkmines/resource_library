@@ -8,9 +8,15 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+// import { useState, useEffect } from "react";
 
 
-const Articles = ({ article }) => {
+
+const Articles = ({ data }) => {
+  // const [article, setArticle] = useState([]);
+
+  // useEffect(())
+  
   return (
     <>
       <Box p={4}>
@@ -27,8 +33,8 @@ const Articles = ({ article }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          
-            <Box key={article._id} boxShadow="md" p={2}>
+          {data?.map((article) => {
+            <h2 key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h3"
                 size="lg"
@@ -42,8 +48,8 @@ const Articles = ({ article }) => {
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description} comments 
               </Text>
-            </Box>
-      
+            </h2>
+      })}
         </Stack>
       </Box>
 
@@ -62,3 +68,16 @@ const Articles = ({ article }) => {
 };
 
 export default Articles;
+
+
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:5001/media");
+  const data = await res.json();
+
+// const query = context.query;
+// console.log(query)
+
+  return {
+    data
+  };
+};

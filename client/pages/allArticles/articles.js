@@ -4,23 +4,25 @@ import Articles from '@/components/[Articles]';
 import Footer from '@/components/Footer';
 
 
-export const getStaticProps = async () => {
-    const res = await fetch("http://localhost:5001/media");
-    const data = await res.json();
+// export async function getServerSideProps(context) {
+//     const res = await fetch("http://localhost:5001/media");
+//     const data = await res.json();
   
-    return {
-      props: { articles : data },
-    };
-  };
+//   const query = context.query;
+//   console.log(query)
 
-const Page = ( {articles} ) => {
+//     return {
+//       data
+//     };
+//   };
+
+const Page = () => {
+    
     return (
         <ChakraProvider>
             <Navbar />
-            {articles.map(article => (
-                <Articles key={article._id} article = {article} />
-            ))}
-            
+          
+            <Articles />
             <Footer />
         </ChakraProvider>
     );
