@@ -10,9 +10,21 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 // import { useState, useEffect } from "react";
 
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:5001/media");
+  const data = await res.json();
 
+// const query = context.query;
+// console.log(query)
 
-const Articles = ({ data }) => {
+  return {
+    props: {
+    articles : data,
+    },
+  };
+};
+
+const Articles = ({ articles }) => {
   // const [article, setArticle] = useState([]);
 
   // useEffect(())
@@ -33,7 +45,7 @@ const Articles = ({ data }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {data?.map((article) => {
+          {articles?.map((article) => {
             <h2 key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h3"
@@ -52,7 +64,7 @@ const Articles = ({ data }) => {
       })}
         </Stack>
       </Box>
-
+comments
       {/* Go back to Home page */}
       <Flex mt={5}>
         <Spacer />
@@ -70,14 +82,3 @@ const Articles = ({ data }) => {
 export default Articles;
 
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:5001/media");
-  const data = await res.json();
-
-// const query = context.query;
-// console.log(query)
-
-  return {
-    data
-  };
-};
