@@ -95,10 +95,10 @@ export default function App() {
 			justify="flex-start"
 			align="center"
 			flexDir="column"
-			bg="#F5F5F5"
+			bg="gray.200"
 			p={10}
 		>
-			<Flex bg="#F5F5F5" w="fit-content" gap="10" flexDir="column">
+			<Flex bg="gray.200" w="fit-content" gap="10" flexDir="column">
 				<Banner />
 			</Flex>
 		</Flex>

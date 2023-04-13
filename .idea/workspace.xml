@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="705f138c-5a21-481b-b265-2f9cf696174d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/allHumour/humour.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/allHumour/humour.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Humour.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/humour-section/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/humour-section/Banner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/humour-section/Memes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/humour-section/Memes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,21 +27,21 @@
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "task-humour",
-    "last_opened_file_path": "C:/Users/Twismfamily/Documents/Hanawilo/Coding-Ninjas/Code/resource_library",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;task-humour&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Twismfamily/Documents/Hanawilo/Coding-Ninjas/Code/resource_library&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="A:\Hanawilo\CodingNinjas\Code\resource_library\client\src\components\humour-section" />
@@ -66,6 +59,8 @@
       <workItem from="1681142302129" duration="619000" />
       <workItem from="1681145299278" duration="11161000" />
       <workItem from="1681255192139" duration="9899000" />
+      <workItem from="1681265535178" duration="32000" />
+      <workItem from="1681424353949" duration="1394000" />
     </task>
     <servers />
   </component>
