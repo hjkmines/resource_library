@@ -60,6 +60,7 @@ function Card({ image, index }) {
 			boxShadow="lg"
 			as="button"
 			onClick={onClickHandler}
+			marginTop={2}
 		>
 			<Flex
 				borderRadius="full"

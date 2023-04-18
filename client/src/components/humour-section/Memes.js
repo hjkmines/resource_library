@@ -57,7 +57,7 @@ const Memes = () => {
 		{/*	Meme-Start*/}
 			<Center py={6}>
 				<Box
-					maxW={'336px'}
+					maxW={'296px'}
 					w={'full'}
 					bg={useColorModeValue('white', 'gray.900')}
 					boxShadow={'2xl'}
@@ -76,6 +76,7 @@ const Memes = () => {
 								'https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/programming-or-googling.jpg'
 							}
 							layout={'fill'}
+							alt={'image'}
 						/>
 					</Box>
 					<Stack>
@@ -85,18 +86,17 @@ const Memes = () => {
 							fontWeight={800}
 							fontSize={'sm'}
 							letterSpacing={1.1}>
-							Blog
+							Comment:
 						</Text>
 						<Heading
 							color={useColorModeValue('gray.700', 'white')}
-							fontSize={'2xl'}
+							fontSize={'xl'}
 							fontFamily={'body'}>
 							Things that make you go hrmmm!
 						</Heading>
 						<Text color={'gray.500'}>
 							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-							nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-							erat, sed diam voluptua.
+							nonumy eirmod tempor invidunt.
 						</Text>
 					</Stack>
 					<Stack mt={6} direction={'row'} spacing={4} align={'center'}>
