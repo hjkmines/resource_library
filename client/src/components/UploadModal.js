@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
   FormControl,
+  FormHelperText,
   FormLabel,
   Input,
   Select,
@@ -42,6 +43,8 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
   const handleMediaCategoryChange= (event) => {
     setMediaCategory(event.target.value);
   };
+
+  const isError = error === ''
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,11 +83,18 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
           <ModalHeader>Resource Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl>
+            <FormControl isRequired isInvalid={isError}>
               <FormLabel>Name</FormLabel>
               <Input type="title" value={title} onChange={handleTitleChange} />
+              {!isError ? (
+        <FormHelperText>
+          Enter name of media you'd like to submit.
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>Email is required.</FormErrorMessage>
+      )}
             </FormControl>
-            <FormControl mt={4}>
+            <FormControl sRequired mt={4}>
               <FormLabel>Description</FormLabel>
               <Input
                 type="description"
@@ -92,7 +102,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
                 onChange={handleDescriptionChange}
               />
             </FormControl>
-            <FormControl>
+            <FormControl sRequired>
               <FormLabel>Type of Media</FormLabel>
               <Select 
               placeholder="What media are you uploading?"
