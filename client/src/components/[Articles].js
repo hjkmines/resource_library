@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Box,
   Heading,
@@ -8,26 +10,35 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:5001/media");
-  const data = await res.json();
+// export async function getServerSideProps(context) {
+//   const res = await fetch("http://localhost:5001/media");
+//   const data = await res.json();
 
 // const query = context.query;
 // console.log(query)
 
-  return {
-    props: {
-    articles : data,
-    },
-  };
-};
+  // return {
+  //   props: {
+  //   articles: data,
+  //   },
+  // };
+// };
 
-const Articles = ({ articles }) => {
-  // const [article, setArticle] = useState([]);
+const Articles = () => {
+  const [title, setTitle] = useState("");
 
-  // useEffect(())
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("http://localhost:5001/media");
+   const data = await res.json();
+   setTitle(data)
+    }
+    fetchData();
+
+  }, [])
+ 
   
   return (
     <>
@@ -41,11 +52,11 @@ const Articles = ({ articles }) => {
             fontSize="25px"
             fontWeight="semibold"
           >
-           Articles
+           Articles 
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {articles?.map((article) => {
+          {data.map((article) => {
             <h2 key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h3"
