@@ -83,7 +83,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
           <ModalHeader>Resource Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl isRequired isInvalid={isError}>
+            <FormControl isInvalid={isError}>
               <FormLabel>Name</FormLabel>
               <Input type="title" value={title} onChange={handleTitleChange} />
               {!isError ? (
@@ -94,15 +94,22 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
         <FormErrorMessage>Email is required.</FormErrorMessage>
       )}
             </FormControl>
-            <FormControl sRequired mt={4}>
+            <FormControl mt={4}>
               <FormLabel>Description</FormLabel>
               <Input
                 type="description"
                 value={description}
                 onChange={handleDescriptionChange}
               />
+               {!isError ? (
+        <FormHelperText>
+          Enter a description.
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>Description is required.</FormErrorMessage>
+      )}
             </FormControl>
-            <FormControl sRequired>
+            <FormControl >
               <FormLabel>Type of Media</FormLabel>
               <Select 
               placeholder="What media are you uploading?"
@@ -113,7 +120,15 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
                 <option>Event</option>
                 <option>Humor</option>
               </Select>
+              {!isError ? (
+        <FormHelperText>
+          Select an option
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>An option is required.</FormErrorMessage>
+      )}
             </FormControl>
+         
           </ModalBody>
           <ModalFooter alignItems="center">
             <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
