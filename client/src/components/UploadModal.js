@@ -13,7 +13,9 @@ import {
   FormLabel,
   Input,
   Select,
+  useToast
 } from "@chakra-ui/react";
+import { UnlockIcon } from "@chakra-ui/icons";
 
 // export const getStaticProps = async () => {
 //   const res = await fetch ('/media');
@@ -45,6 +47,20 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
   };
 
   const isError = error === ''
+
+  const toast = useToast();
+
+  const showToast = () => {
+    toast({
+      title: 'Successfully Uploaded',
+      description: "We received your submission",
+      duration: 5000,
+      isClosable: true,
+      status: 'success',
+      position: 'top',
+      icon: <UnlockIcon />
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -131,7 +147,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
          
           </ModalBody>
           <ModalFooter alignItems="center">
-            <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} onClick={showToast}>
               Submit
             </Button>
           </ModalFooter>
