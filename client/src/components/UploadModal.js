@@ -15,7 +15,7 @@ import {
   Select,
   useToast
 } from "@chakra-ui/react";
-import { UnlockIcon } from "@chakra-ui/icons";
+import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 // export const getStaticProps = async () => {
 //   const res = await fetch ('/media');
@@ -50,17 +50,17 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 
   const toast = useToast();
 
-  const showToast = () => {
-    toast({
-      title: 'Successfully Uploaded',
-      description: "We received your submission",
-      duration: 5000,
-      isClosable: true,
-      status: 'success',
-      position: 'top',
-      icon: <UnlockIcon />
-    })
-  }
+  // const showToast = () => {
+  //   toast({
+  //     title: 'Successfully Uploaded',
+  //     description: "We received your submission",
+  //     duration: 5000,
+  //     isClosable: true,
+  //     status: 'success',
+  //     position: 'top',
+  //     icon: <CheckIcon />
+  //   })
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,6 +79,15 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 
     if (!response.ok) {
       setError(json.error);
+      toast({
+        title: 'Missing information',
+        description: "Please correct the following information",
+        duration: 5000,
+        isClosable: true,
+        status: 'error',
+        position: 'top',
+        icon: <WarningIcon />
+      })
     }
 
     if (response.ok) {
@@ -87,6 +96,15 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
       setDescription();
       setMediaCategory();
       setError(null);
+      toast({
+            title: 'Successfully Uploaded',
+            description: "We received your submission",
+            duration: 5000,
+            isClosable: true,
+            status: 'success',
+            position: 'top',
+            icon: <CheckIcon />
+          })
     }
     closeUploadModal();
   };
@@ -147,7 +165,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
          
           </ModalBody>
           <ModalFooter alignItems="center">
-            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} onClick={showToast}>
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} >
               Submit
             </Button>
           </ModalFooter>
