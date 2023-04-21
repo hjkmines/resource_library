@@ -11,9 +11,37 @@ import {
 	Avatar,
 	Image,
 	useColorModeValue,
+	SimpleGrid,
 } from '@chakra-ui/react';
 
-const Memes = () => {
+const memePics = [
+	{
+		url: "https://qph.cf2.quoracdn.net/main-qimg-0592150d9923e5b59827bf094f0c1c08-lq",
+		header: "When you're trying to figure out how to fix a bug",
+		comment: "I'm not sure if this is a bug or a feature",
+		date: new Date().toLocaleDateString()
+	},
+	{
+		url: "https://qph.cf2.quoracdn.net/main-qimg-114c28c7f35c2ea3c7a84641f677ed5b-lq",
+		header: "Very puzzling",
+		comment: "I need ChatGPT  in my life",
+		date: new Date().toLocaleDateString()
+	},
+	{
+		url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHFTfq0winfOTTTWBZSM2KpNMYUespY_6Z7mU8PpdXKxAw_3KLeIuWMPEFkzByLWOlqn0&usqp=CAU",
+		header: "Smacks head on desk",
+		comment: "Turning to the Dark Side is imminent!",
+		date: new Date().toLocaleDateString()
+	},
+	{
+		url: "https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/programming-or-googling.jpg",
+		header: "Imposter Syndrome",
+		comment: "Software Engineering at its finest",
+		date: new Date().toLocaleDateString()
+	},
+];
+
+function TopSection() {
 	return (
 		<>
 			<Show below='md'>
@@ -54,27 +82,31 @@ const Memes = () => {
 					/>
 				</Hide>
 			</Flex>
-		{/*	Meme-Start*/}
-			<Center py={6}>
+		</>
+	);
+};
+
+function MemeCard() {
+
+	return memePics.map((meme, index) => (
+			<Center py={10} key={index}>
 				<Box
 					maxW={'296px'}
 					w={'full'}
-					bg={useColorModeValue('white', 'gray.900')}
+					bg={'white'}
 					boxShadow={'2xl'}
 					rounded={'md'}
 					p={6}
 					overflow={'hidden'}>
 					<Box
-						h={'210px'}
+						h={'256px'}
 						bg={'gray.100'}
 						mt={-6}
 						mx={-6}
 						mb={6}
 						pos={'relative'}>
 						<Image
-							src={
-								'https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/programming-or-googling.jpg'
-							}
+							src={meme.url}
 							layout={'fill'}
 							alt={'image'}
 						/>
@@ -89,14 +121,13 @@ const Memes = () => {
 							Comment:
 						</Text>
 						<Heading
-							color={useColorModeValue('gray.700', 'white')}
+							color={'gray.700'}
 							fontSize={'xl'}
 							fontFamily={'body'}>
-							Things that make you go hrmmm!
+							{meme.header}
 						</Heading>
 						<Text color={'gray.500'}>
-							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-							nonumy eirmod tempor invidunt.
+							{meme.comment}
 						</Text>
 					</Stack>
 					<Stack mt={6} direction={'row'} spacing={4} align={'center'}>
@@ -106,52 +137,21 @@ const Memes = () => {
 						/>
 						<Stack direction={'column'} spacing={0} fontSize={'sm'}>
 							<Text fontWeight={600}>Thomas Bell</Text>
-							<Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
+							<Text color={'gray.500'}>{meme.date}</Text>
 						</Stack>
 					</Stack>
 				</Box>
 			</Center>
-		{/*	Meme-End*/}
-		{/*	<Show below='md'>*/}
-		{/*		<Box align='center'>*/}
-		{/*			<Divider*/}
-		{/*				marginTop={5}*/}
-		{/*				orientation='horizontal'*/}
-		{/*				w='2xs'*/}
-		{/*				borderWidth={1}*/}
-		{/*				borderColor='black'*/}
-		{/*			/>*/}
-		{/*		</Box>*/}
-		{/*	</Show>*/}
-		{/*	<Flex align='center' justify='space-around' mt={5}>*/}
-		{/*		<Hide below='md'>*/}
-		{/*			<Divider*/}
-		{/*				orientation='horizontal'*/}
-		{/*				w={['null', 'null', '2xs', 'sm', 'md', '30em']}*/}
-		{/*				justifyContent='baseline'*/}
-		{/*				borderWidth={1}*/}
-		{/*				borderColor='black'*/}
-		{/*			/>*/}
-		{/*		</Hide>*/}
-		{/*		<Text*/}
-		{/*			style={{ letterSpacing: 5, wordWrap: 'break-word' }}*/}
-		{/*			fontSize={['sm', 'md', 'lg', 'xl']}*/}
-		{/*			color='gray.400'*/}
-		{/*		>*/}
-		{/*			Memes Recommended For You*/}
-		{/*		</Text>*/}
-		{/*		<Hide below='md'>*/}
-		{/*			<Divider*/}
-		{/*				orientation='horizontal'*/}
-		{/*				w={['null', 'null', '2xs', 'sm', 'md', '30em']}*/}
-		{/*				justifyContent='baseline'*/}
-		{/*				borderWidth={1}*/}
-		{/*				borderColor='black'*/}
-		{/*			/>*/}
-		{/*		</Hide>*/}
-		{/*	</Flex>*/}
+	));
+}
+
+export default function MemeData() {
+	return (
+		<>
+			<TopSection />
+			<SimpleGrid minChildWidth='120px' spacing={2}>
+				<MemeCard />
+			</SimpleGrid>
 		</>
 	);
-};
-
-export default Memes;
+}
