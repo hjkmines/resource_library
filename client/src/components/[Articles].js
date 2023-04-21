@@ -12,32 +12,20 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:5001/media");
-  const data = await res.json();
 
-const query = context.query;
-console.log(query)
 
-  return {
-    props: {
-    data: data,
-    },
-  };
-};
+const Articles = ( { allInfo }) => {
+  const [title, setTitle] = useState("");
 
-const Articles = ( {data}) => {
-//   const [title, setTitle] = useState("");
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("http://localhost:5001/media");
+   const data = await res.json();
+   setTitle(data)
+    }
+    fetchData();
 
-//   useEffect(() => {
-//     async function fetchData() {
-//       const res = await fetch("http://localhost:5001/media");
-//    const data = await res.json();
-//    setTitle(data)
-//     }
-//     fetchData();
-
-//   }, [])
+  }, [])
  
   
   return (
@@ -56,7 +44,7 @@ const Articles = ( {data}) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {data?.map((article) => {
+          {data.map((article) => {
             <h2 key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h3"
@@ -91,3 +79,20 @@ comments
 };
 
 export default Articles;
+
+// export async function getServerSideProps(context) {
+//     const query = context.query;
+
+//     const { id } = query;
+
+//     const res = await fetch(`http://localhost:5001/media/${id}`);
+//     const data = await res.json();
+//     const allInfo = data.data
+  
+//   console.log(allInfo)
+  
+  
+//     return {
+//       props: { allInfo },
+//     };
+//   };
