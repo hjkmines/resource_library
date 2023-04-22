@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import {
   Card,
   CardBody,
@@ -68,8 +68,8 @@ function TodayPic() {
       {/* Arrow to see more events */}
       <Flex mt={5} mb={5}>
         <Spacer />
-        <Link href="/events" as={NextLink} style={{ textDecoration: "none" }}>
-          <Heading as="h2" size="md" mr="100" color="#42413B">
+        <Link href="/allHumour/humour" as={NextLink}>
+          <Heading as="h2" size="lg" mr="100">
             more laughs
             <ArrowForwardIcon boxSize={8} ml="5" />
           </Heading>
