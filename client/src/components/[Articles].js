@@ -14,18 +14,18 @@ import { useState, useEffect } from "react";
 
 
 
-const Articles = ( { allInfo }) => {
-  const [title, setTitle] = useState("");
+const Articles = ( { title }) => {
+//   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("http://localhost:5001/media");
-   const data = await res.json();
-   setTitle(data)
-    }
-    fetchData();
+//   useEffect(() => {
+//     async function fetchData() {
+//       const res = await fetch("/api/mydata");
+//    const data = await res.json();
+//    setData(data)
+//     }
+//     fetchData();
 
-  }, [])
+//   }, [])
  
   
   return (
@@ -44,8 +44,8 @@ const Articles = ( { allInfo }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {data.map((article) => {
-            <h2 key={article._id} boxShadow="md" p={2}>
+          {/* {data?.map((article) => { */}
+            {/* <h2 boxShadow="md" p={2}> */}
               <Heading
                 as="h3"
                 size="lg"
@@ -54,13 +54,15 @@ const Articles = ( { allInfo }) => {
                 fontSize="18px"
                 fontWeight="semibold"
               >
-                {article.title}
+                {title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-                {article.description} comments 
+                {/* {article.description} comments  */}
+                
               </Text>
-            </h2>
-      })}
+            {/* </h2> */}
+      {/* } */}
+      {/* )} */}
         </Stack>
       </Box>
 comments
@@ -80,19 +82,20 @@ comments
 
 export default Articles;
 
-// export async function getServerSideProps(context) {
-//     const query = context.query;
+export async function getServerSideProps() {
+    // const query = context.query;
 
-//     const { id } = query;
+    // const { id } = query;
 
-//     const res = await fetch(`http://localhost:5001/media/${id}`);
-//     const data = await res.json();
-//     const allInfo = data.data
+    // const res = await fetch(`http://localhost:5001/media/${id}`);
+    // const data = await res.json();
+    // const allInfo = data.data
   
 //   console.log(allInfo)
   
   
-//     return {
-//       props: { allInfo },
-//     };
-//   };
+    return {
+      props: { 
+        title: 'Hello' },
+    };
+  };
