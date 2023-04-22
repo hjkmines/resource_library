@@ -9,7 +9,7 @@ import TodayBar from '@/components/todays-pic/TodayBar';
 import TodayPic from '@/components/todays-pic/[TodayPic]';
 import Footer from '@/components/Footer';
 
-const Page = () => {
+const Page = ( ) => {
     return (
         <ChakraProvider>
             <Navbar />
@@ -26,3 +26,4 @@ const Page = () => {
 };
 
 export default Page;
+
