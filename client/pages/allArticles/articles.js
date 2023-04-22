@@ -15,20 +15,20 @@ const Page = ( { title } ) => {
 
 export default Page;
 
+//runs on server and runs before components
 export async function getServerSideProps() {
     // const query = context.query;
 
     // const { id } = query;
 
-    // const res = await fetch(`http://localhost:5001/media/${id}`);
-    // const data = await res.json();
-    // const allInfo = data.data
-  
-//   console.log(allInfo)
+    const res = await fetch(`http://localhost:5001/media/`);
+    const data = await res.json();
+   
+ console.log(data)
   
   
     return {
       props: { 
-        title: 'Hello' },
+        data: data },
     };
   };

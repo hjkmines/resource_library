@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 
 
 
-const Articles = ( { title }) => {
+const Articles = ( { data }) => {
 //   const [data, setData] = useState([]);
 
 //   useEffect(() => {
@@ -44,8 +44,8 @@ const Articles = ( { title }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {/* {data?.map((article) => { */}
-            {/* <h2 boxShadow="md" p={2}> */}
+          {data?.map((article) => {
+            <h2 key={article._id} boxShadow="md" p={2}> 
               <Heading
                 as="h3"
                 size="lg"
@@ -54,15 +54,15 @@ const Articles = ( { title }) => {
                 fontSize="18px"
                 fontWeight="semibold"
               >
-                {title}
+                {article.title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-                {/* {article.description} comments  */}
+                {article.description}
                 
               </Text>
-            {/* </h2> */}
-      {/* } */}
-      {/* )} */}
+            </h2> 
+       } 
+      )}
         </Stack>
       </Box>
 comments
