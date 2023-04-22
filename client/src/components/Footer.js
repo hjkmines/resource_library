@@ -12,10 +12,12 @@ import {
     LinkProps
 } from '@chakra-ui/react';
 import { FiLinkedin, FiTwitter, FiYoutube } from 'react-icons/fi';
+import TitleDivider from './TitleDivider';
 
 const Footer = () => {
     return (
-        <Box p={{ base: 5, md: 8 }} maxW="5xl" marginInline="auto">
+        <Box p={{ base: 5, md: 8 }} maxW="5xl" marginInline="auto">    
+        <Divider mb={10} borderColor={'#718096'}/>
             <Stack
                 spacing={{ base: 8, md: 0 }}
                 justifyContent="space-between"
@@ -56,8 +58,7 @@ const Footer = () => {
                 </HStack>
             </Stack>
 
-            <Divider my={3} />
-            <Center>
+            <Center mt={10}>
                 <Stack spacing={3} direction={{ base: 'column', md: 'row' }}>
                     <Button
                         leftIcon={<FiLinkedin />}

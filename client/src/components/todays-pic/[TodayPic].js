@@ -71,7 +71,7 @@ function TodayPic() {
         <Link href="/allHumour/humour" as={NextLink}>
           <Heading as="h2" size="lg" mr="100">
             more laughs
-            <ArrowForwardIcon boxSize={10} ml="5" />
+            <ArrowForwardIcon boxSize={8} ml="5" />
           </Heading>
         </Link>
       </Flex>

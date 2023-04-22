@@ -1,7 +1,8 @@
-import { Box, Heading, Text, Stack, Flex, Spacer, Link} from '@chakra-ui/react';
+import { Box, Heading, Text, Stack, Flex, Spacer, Link } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import articlesData from '../articles.json';
+import TitleDivider from './TitleDivider';
 
 const ArticlesSection = () => {
   const [articles, setArticles] = useState([]);
@@ -11,17 +12,19 @@ const ArticlesSection = () => {
   }, []);
 
   return (
-    <Box p={4}>
-      <Box textAlign='center'>
-        <Heading as="h2" size="xl" mb={4}
-          color="#747369"
-          fontSize="25px"
-          fontWeight="semibold"
+    <Box m={10}>
+      <Flex align="center" justify="space-around" m={5} >
+        <TitleDivider />
+        <Text
+          style={{ letterSpacing: 5, wordWrap: "break-word" }}
+          fontSize={["sm", "md", "lg", "xl"]}
+          color="gray.400"
         >
           Featured Articles
-        </Heading>
-      </Box>
-      <Stack spacing={2} maxWidth="70%">
+        </Text>
+        <TitleDivider />
+      </Flex>
+      <Stack spacing={2} maxWidth="100%">
         {articles.map((article) => (
           <Box key={article.title} boxShadow="md" p={2}>
             <Heading as="h3" size="lg" mb={2}
@@ -38,14 +41,14 @@ const ArticlesSection = () => {
         ))}
       </Stack>
       <Flex mt={5}>
-                <Spacer />
-                <Link href='/allArticles/articles' color="#42413B" style={{textDecoration:"none"}}>
-                    <Heading as='h2' size='md' mr='100' color="#42413B">
-                        read all articles
-                        <ArrowForwardIcon boxSize={6} ml='5' color="#42413B"/>
-                    </Heading>
-                </Link>
-            </Flex>
+        <Spacer />
+        <Link href='/articles' color="#42413B" style={{ textDecoration: "none" }}>
+          <Heading as='h2' size='md' mr='100' color="#42413B">
+            read all articles
+            <ArrowForwardIcon boxSize={8} ml='5' color="#42413B" />
+          </Heading>
+        </Link>
+      </Flex>
     </Box>
   );
 };
