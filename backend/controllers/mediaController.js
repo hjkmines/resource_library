@@ -6,7 +6,7 @@ const getMedias = async (req, res, next) => {
         res
         .status(200)
         .setHeader('Content-Type', 'application/json')
-        .json({message: 'Found media', media});
+        .json({ message: 'Found media', media});
     } catch (err){
         next(err);
     }

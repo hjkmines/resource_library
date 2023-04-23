@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Box,
@@ -10,24 +10,8 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { useState, useEffect } from "react";
 
-
-
-const Articles = ( { data }) => {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       const res = await fetch("/api/mydata");
-//    const data = await res.json();
-//    setData(data)
-//     }
-//     fetchData();
-
-//   }, [])
- 
-  
+const Articles = ({ data }) => {
   return (
     <>
       <Box p={4}>
@@ -40,12 +24,12 @@ const Articles = ( { data }) => {
             fontSize="25px"
             fontWeight="semibold"
           >
-           Articles 
+            Articles
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
           {data?.map((article) => {
-             <h2 key={article._id} boxShadow="md" p={2}> 
+            <h2 key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h3"
                 size="lg"
@@ -57,15 +41,14 @@ const Articles = ( { data }) => {
                 {article.title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-                {article.description} comments 
-                
+                {article.description} comments
               </Text>
-            </h2> 
-       } 
-       )}
+            </h2>;
+          })}
+          comments
         </Stack>
       </Box>
-comments
+      comments
       {/* Go back to Home page */}
       <Flex mt={5}>
         <Spacer />
@@ -81,21 +64,3 @@ comments
 };
 
 export default Articles;
-
-export async function getServerSideProps() {
-    // const query = context.query;
-
-    // const { id } = query;
-
-    // const res = await fetch(`http://localhost:5001/media/${id}`);
-    // const data = await res.json();
-    // const allInfo = data.data
-  
-//   console.log(allInfo)
-  
-  
-    return {
-      props: { 
-        title: 'Hello' },
-    };
-  };

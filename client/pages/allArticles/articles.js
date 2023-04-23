@@ -3,11 +3,11 @@ import Navbar from '@/components/Navbar';
 import Articles from '@/components/articles/[Articles]';
 import Footer from '@/components/Footer';
 
-const Page = ( { title } ) => {
+const Page = ( { data } ) => {
     return (
         <ChakraProvider>
             <Navbar />
-            <Articles title={title} />
+            <Articles data={data} />
             <Footer />
         </ChakraProvider>
     );
