@@ -45,7 +45,7 @@ const Articles = ( { data }) => {
         </Box>
         <Stack spacing={2} maxWidth="70%">
           {data?.map((article) => {
-            <h2 key={article._id} boxShadow="md" p={2}> 
+             <h2 key={article._id} boxShadow="md" p={2}> 
               <Heading
                 as="h3"
                 size="lg"
@@ -57,12 +57,12 @@ const Articles = ( { data }) => {
                 {article.title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-                {article.description}
+                {article.description} comments 
                 
               </Text>
             </h2> 
        } 
-      )}
+       )}
         </Stack>
       </Box>
 comments
