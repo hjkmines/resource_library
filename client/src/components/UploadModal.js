@@ -1,32 +1,38 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
-    Button,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalCloseButton,
-    ModalBody,
-    ModalFooter,
-    FormControl,
-    FormLabel,
-    Input,
-  } from "@chakra-ui/react";
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
+  Select,
+  useToast
+} from "@chakra-ui/react";
+import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
-  // export const getStaticProps = async () => {
-  //   const res = await fetch ('/media');
-  //   const data = await res.json();
+// export const getStaticProps = async () => {
+//   const res = await fetch ('/media');
+//   const data = await res.json();
 
-  //   return {
-  //     props: { media: data}
-  //   }
+//   return {
+//     props: { media: data}
+//   }
 
-  // }
+// }
 
-function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal}) {
-    const [title, setTitle] = useState("");
+function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [mediaCategory, setMediaCategory] = useState("");
   const [error, setError] = useState(null);
+  const [isloading, setIsLoading] = useState(true);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -36,69 +42,128 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal}) {
     setDescription(event.target.value);
   };
 
-  const handleSubmit =  async (e) => {
+  const handleMediaCategoryChange= (event) => {
+    setMediaCategory(event.target.value);
+  };
+
+  //to signal error messages
+  const isError = error === ''
+
+  //Toast notifications
+  const toast = useToast();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const media = {title, description}
+    const media = { title, description, mediaCategory };
 
     const response = await fetch("/media", {
-        method: "POST",
-        body: JSON.stringify(media),
-        headers: {
-            "Content-Type": "application/json",
-        },
+      method: "POST",
+      body: JSON.stringify(media),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     const json = await response.json();
 
     if (!response.ok) {
-        setError(json.error)
+      setError(json.error);
+      toast({
+        title: 'Missing information',
+        description: "Please correct the following information",
+        duration: 5000,
+        isClosable: true,
+        status: 'error',
+        position: 'top',
+        icon: <WarningIcon />
+      })
     }
 
-    if (response.ok){
-    console.log(`Title: ${title} description: ${description}`);
-    setTitle();
-    setDescription();
-    setError(null);
+    if (response.ok) {
+      console.log(`Title: ${title} description: ${description}`);
+      setTitle();
+      setDescription();
+      setMediaCategory();
+      setError(null);
+      toast({
+            title: 'Successfully Uploaded',
+            description: "We received your submission",
+            duration: 5000,
+            isClosable: true,
+            status: 'success',
+            position: 'top',
+            icon: <CheckIcon />
+          })
     }
     closeUploadModal();
   };
 
-    return (
+  return (
     <div>
-        <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
-      <ModalOverlay
-        backdropFilter='blur(10px) hue-rotate(90deg)'
-      />
-      <ModalContent
-      >
-        <ModalHeader>Resource Information</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <FormControl>
-            <FormLabel>Name</FormLabel>
-            <Input type="title" value={title} onChange={handleTitleChange} />
-          </FormControl>
-          <FormControl mt={4}>
-            <FormLabel>Description</FormLabel>
-            <Input
-              type="description"
-              value={description}
-              onChange={handleDescriptionChange}
-            />
-          </FormControl>
-
-        </ModalBody>
-        <ModalFooter alignItems='center'>
-          <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
-            Submit
-          </Button>
-
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+       <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
+        <ModalOverlay backdropFilter="blur(10px) hue-rotate(90deg)" />
+        <ModalContent>
+          <ModalHeader>Resource Information</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormControl isInvalid={isError}>
+              <FormLabel>Name</FormLabel>
+              <Input type="title" value={title} onChange={handleTitleChange} />
+              {!isError ? (
+        <FormHelperText>
+          Enter name of media you'd like to submit.
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>Email is required.</FormErrorMessage>
+      )}
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Description</FormLabel>
+              <Input
+                type="description"
+                value={description}
+                onChange={handleDescriptionChange}
+              />
+               {!isError ? (
+        <FormHelperText>
+          Enter a description.
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>Description is required.</FormErrorMessage>
+      )}
+            </FormControl>
+            <FormControl >
+              <FormLabel>Type of Media</FormLabel>
+              <Select 
+              placeholder="What media are you uploading?"
+              value={mediaCategory}
+              onChange={handleMediaCategoryChange}>
+                <option>Video</option>
+                <option>Article</option>
+                <option>Event</option>
+                <option>Humor</option>
+              </Select>
+              {!isError ? (
+        <FormHelperText>
+          Select an option
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>An option is required.</FormErrorMessage>
+      )}
+            </FormControl>
+         
+          </ModalBody>
+          <ModalFooter alignItems="center">
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} >
+              Submit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
-  )
+  );
 }
 
-export default UploadModal
+export default UploadModal;
+
