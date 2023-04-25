@@ -20,6 +20,10 @@ module.exports = () => {
         source: "/users/login",
         destination: "http://localhost:5001/users/login",
       },
+      {
+        source: "/humour",
+        destination: "http://localhost:5001/humour",
+      },
     ];
   };
   return {
