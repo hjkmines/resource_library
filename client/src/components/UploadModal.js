@@ -1,30 +1,30 @@
 import { useState } from 'react'
 import {
-    Button,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalCloseButton,
-    ModalBody,
-    ModalFooter,
-    FormControl,
-    FormLabel,
-    Input,
-  } from "@chakra-ui/react";
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
 
-  // export const getStaticProps = async () => {
-  //   const res = await fetch ('/media');
-  //   const data = await res.json();
+// export const getStaticProps = async () => {
+//   const res = await fetch ('/media');
+//   const data = await res.json();
 
-  //   return {
-  //     props: { media: data}
-  //   }
+//   return {
+//     props: { media: data}
+//   }
 
-  // }
+// }
 
-function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal}) {
-    const [title, setTitle] = useState("");
+function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, loggedIn }) {
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
@@ -36,67 +36,71 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal}) {
     setDescription(event.target.value);
   };
 
-  const handleSubmit =  async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const media = {title, description}
+    const media = { title, description }
 
     const response = await fetch("/media", {
-        method: "POST",
-        body: JSON.stringify(media),
-        headers: {
-            "Content-Type": "application/json",
-        },
+      method: "POST",
+      body: JSON.stringify(media),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     const json = await response.json();
 
     if (!response.ok) {
-        setError(json.error)
+      setError(json.error)
     }
 
-    if (response.ok){
-    console.log(`Title: ${title} description: ${description}`);
-    setTitle();
-    setDescription();
-    setError(null);
+    if (response.ok) {
+      console.log(`Title: ${title} description: ${description}`);
+      setTitle();
+      setDescription();
+      setError(null);
     }
     closeUploadModal();
   };
 
-    return (
+  return (
     <div>
-        <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
-      <ModalOverlay
-        backdropFilter='blur(10px) hue-rotate(90deg)'
-      />
-      <ModalContent
-      >
-        <ModalHeader>Resource Information</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <FormControl>
-            <FormLabel>Name</FormLabel>
-            <Input type="title" value={title} onChange={handleTitleChange} />
-          </FormControl>
-          <FormControl mt={4}>
-            <FormLabel>Description</FormLabel>
-            <Input
-              type="description"
-              value={description}
-              onChange={handleDescriptionChange}
-            />
-          </FormControl>
-
-        </ModalBody>
-        <ModalFooter alignItems='center'>
-          <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
-            Submit
-          </Button>
-
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+      <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
+        <ModalOverlay
+          backdropFilter='blur(10px) hue-rotate(90deg)'
+        />
+        <ModalContent
+        >
+          <ModalHeader>Resource Information</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {loggedIn ? (
+              <>
+                <FormControl>
+                  <FormLabel>Name</FormLabel>
+                  <Input type="title" value={title} onChange={handleTitleChange} />
+                </FormControl>
+                <FormControl mt={4}>
+                  <FormLabel>Description</FormLabel>
+                  <Input
+                    type="description"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                  />
+                </FormControl>
+              </>
+            ) : (
+              <p>Please log in to upload a file.</p>
+            )}
+          </ModalBody>
+          <ModalFooter alignItems='center'>
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   )
 }
