@@ -189,7 +189,7 @@ const FeaturedVideos = () => {
             </SimpleGrid>
             <Flex mt={5}>
                 <Spacer />
-                <Link href='/videos' as={NextLink}>
+                <Link href='/allVideos/videos' as={NextLink}>
                     <Heading as='h2' size='md' mr='100' color="#42413B">
                         see all videos
                         <ArrowForwardIcon boxSize={8} ml='5' />
