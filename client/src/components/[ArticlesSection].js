@@ -42,7 +42,7 @@ const ArticlesSection = () => {
       </Stack>
       <Flex mt={5}>
         <Spacer />
-        <Link href='/articles' color="#42413B" style={{ textDecoration: "none" }}>
+        <Link href='/allArticles/articles' color="#42413B" style={{ textDecoration: "none" }}>
           <Heading as='h2' size='md' mr='100' color="#42413B">
             read all articles
             <ArrowForwardIcon boxSize={8} ml='5' color="#42413B" />
