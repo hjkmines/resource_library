@@ -12,7 +12,10 @@ import {
 	Image,
 	useColorModeValue,
 	SimpleGrid,
+	Spacer,
+	Link,
 } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 const memePics = [
 	{
@@ -145,6 +148,22 @@ function MemeCard() {
 	));
 }
 
+function BackButton() {
+	return (
+        <>
+            <Flex mt={5}>
+                <Spacer />
+                <Link href='/'>
+                    <Heading as='h2' size='lg' mr='100'>
+                        Back
+                        <ArrowForwardIcon boxSize={8} ml='5' />
+                    </Heading>
+                </Link>
+            </Flex>
+        </>
+    );
+}
+
 export default function MemeData() {
 	return (
 		<>
@@ -152,6 +171,7 @@ export default function MemeData() {
 			<SimpleGrid minChildWidth='120px' spacing={2}>
 				<MemeCard />
 			</SimpleGrid>
+			<BackButton />
 		</>
 	);
 }
