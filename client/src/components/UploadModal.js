@@ -13,7 +13,8 @@ import {
   FormLabel,
   Input,
   Select,
-  useToast
+  useToast,
+  Textarea,
 } from "@chakra-ui/react";
 import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
@@ -29,6 +30,7 @@ import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
   const [title, setTitle] = useState("");
+  const [videoLink, setVideoLink] = useState("");
   const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
   const [error, setError] = useState(null);
@@ -38,16 +40,20 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
     setTitle(event.target.value);
   };
 
+  const handleVideoChange = (event) => {
+    setVideoLink(event.target.value);
+  };
+
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
 
-  const handleMediaCategoryChange= (event) => {
+  const handleMediaCategoryChange = (event) => {
     setMediaCategory(event.target.value);
   };
 
   //to signal error messages
-  const isError = error === ''
+  const isError = error === "";
 
   //Toast notifications
   const toast = useToast();
@@ -70,14 +76,14 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
     if (!response.ok) {
       setError(json.error);
       toast({
-        title: 'Missing information',
+        title: "Missing information",
         description: "Please correct the following information",
         duration: 5000,
         isClosable: true,
-        status: 'error',
-        position: 'top',
-        icon: <WarningIcon />
-      })
+        status: "error",
+        position: "top",
+        icon: <WarningIcon />,
+      });
     }
 
     if (response.ok) {
@@ -87,21 +93,21 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
       setMediaCategory();
       setError(null);
       toast({
-            title: 'Successfully Uploaded',
-            description: "We received your submission",
-            duration: 5000,
-            isClosable: true,
-            status: 'success',
-            position: 'top',
-            icon: <CheckIcon />
-          })
+        title: "Successfully Uploaded",
+        description: "We received your submission",
+        duration: 5000,
+        isClosable: true,
+        status: "success",
+        position: "top",
+        icon: <CheckIcon />,
+      });
     }
     closeUploadModal();
   };
 
   return (
     <div>
-       <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
+      <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
         <ModalOverlay backdropFilter="blur(10px) hue-rotate(90deg)" />
         <ModalContent>
           <ModalHeader>Resource Information</ModalHeader>
@@ -111,51 +117,55 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
               <FormLabel>Name</FormLabel>
               <Input type="title" value={title} onChange={handleTitleChange} />
               {!isError ? (
-        <FormHelperText>
-          Enter name of media you'd like to submit.
-        </FormHelperText>
-      ) : (
-        <FormErrorMessage>Email is required.</FormErrorMessage>
-      )}
+                <FormHelperText>
+                  Enter name of media you'd like to submit.
+                </FormHelperText>
+              ) : (
+                <FormErrorMessage>Name is required.</FormErrorMessage>
+              )}
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Video Link</FormLabel>
+              <Input
+                type="videolink"
+                value={videoLink}
+                onChange={handleVideoChange}
+              />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>Description</FormLabel>
-              <Input
+              <Textarea
                 type="description"
                 value={description}
                 onChange={handleDescriptionChange}
               />
-               {!isError ? (
-        <FormHelperText>
-          Enter a description.
-        </FormHelperText>
-      ) : (
-        <FormErrorMessage>Description is required.</FormErrorMessage>
-      )}
+              {!isError ? (
+                <FormHelperText>Enter a description.</FormHelperText>
+              ) : (
+                <FormErrorMessage>Description is required.</FormErrorMessage>
+              )}
             </FormControl>
-            <FormControl >
+            <FormControl>
               <FormLabel>Type of Media</FormLabel>
-              <Select 
-              placeholder="What media are you uploading?"
-              value={mediaCategory}
-              onChange={handleMediaCategoryChange}>
+              <Select
+                placeholder="What media are you uploading?"
+                value={mediaCategory}
+                onChange={handleMediaCategoryChange}
+              >
                 <option>Video</option>
                 <option>Article</option>
                 <option>Event</option>
                 <option>Humor</option>
               </Select>
               {!isError ? (
-        <FormHelperText>
-          Select an option
-        </FormHelperText>
-      ) : (
-        <FormErrorMessage>An option is required.</FormErrorMessage>
-      )}
+                <FormHelperText>Select an option</FormHelperText>
+              ) : (
+                <FormErrorMessage>An option is required.</FormErrorMessage>
+              )}
             </FormControl>
-         
           </ModalBody>
           <ModalFooter alignItems="center">
-            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} >
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
               Submit
             </Button>
           </ModalFooter>
@@ -166,4 +176,3 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 }
 
 export default UploadModal;
-
