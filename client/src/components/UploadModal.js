@@ -31,6 +31,7 @@ import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
   const [title, setTitle] = useState("");
   const [videoLink, setVideoLink] = useState("");
+  const [attachment, setAttachment] = useState("");
   const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
   const [error, setError] = useState(null);
@@ -42,6 +43,10 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 
   const handleVideoChange = (event) => {
     setVideoLink(event.target.value);
+  };
+
+  const handleAttachment = (event) => {
+    setAttachment(event.target.value);
   };
 
   const handleDescriptionChange = (event) => {
@@ -133,6 +138,14 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
               />
             </FormControl>
             <FormControl mt={4}>
+              <FormLabel>Upload Attachment</FormLabel>
+              <Input
+                type="attachment"
+                value={attachment}
+                onChange={handleAttachment}
+              />
+            </FormControl>
+            <FormControl mt={4}>
               <FormLabel>Description</FormLabel>
               <Textarea
                 type="description"
@@ -145,6 +158,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
                 <FormErrorMessage>Description is required.</FormErrorMessage>
               )}
             </FormControl>
+
             <FormControl>
               <FormLabel>Type of Media</FormLabel>
               <Select
