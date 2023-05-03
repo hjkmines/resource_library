@@ -5,6 +5,12 @@ const mediaSchema = new Schema({
         type: String,
         required: true
     },
+    videoLink: {
+        type: String
+    }, 
+    attachment: {
+        type: String
+    }, 
     description: {
         type: String,
         required: true
