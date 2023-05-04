@@ -30,23 +30,17 @@ import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
   const [title, setTitle] = useState("");
-  const [videoLink, setVideoLink] = useState("");
-  const [attachment, setAttachment] = useState("");
+  const [resourceLink, setResourceLink] = useState("");
   const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
   const [error, setError] = useState(null);
-  const [isloading, setIsLoading] = useState(true);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
 
-  const handleVideoChange = (event) => {
-    setVideoLink(event.target.value);
-  };
-
-  const handleAttachment = (event) => {
-    setAttachment(event.target.value);
+  const handleResourceChange = (event) => {
+    setResourceLink(event.target.value);
   };
 
   const handleDescriptionChange = (event) => {
@@ -130,21 +124,14 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
               )}
             </FormControl>
             <FormControl mt={4}>
-              <FormLabel>Video Link</FormLabel>
+              <FormLabel> Link</FormLabel>
               <Input
-                type="videolink"
-                value={videoLink}
-                onChange={handleVideoChange}
+                type="resourcelink"
+                value={resourceLink}
+                onChange={handleResourceChange}
               />
             </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Upload Attachment</FormLabel>
-              <Input
-                type="attachment"
-                value={attachment}
-                onChange={handleAttachment}
-              />
-            </FormControl>
+
             <FormControl mt={4}>
               <FormLabel>Description</FormLabel>
               <Textarea
