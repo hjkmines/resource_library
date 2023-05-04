@@ -10,7 +10,10 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const Articles = ({ data }) => {
-//   console.log(data);
+  console.log(data);
+
+// const {allArticle} = data.find(data => data.mediaCategory === 'article');
+// console.log(allArticle)
 
   return (
     <>
@@ -40,6 +43,9 @@ const Articles = ({ data }) => {
               >
                 {article.title}
               </Heading>
+              <Text mt={2} color="gray.500" fontSize="12px">
+                {article.mediaCategory}
+              </Text>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
