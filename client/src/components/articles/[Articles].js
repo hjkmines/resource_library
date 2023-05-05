@@ -9,10 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-const Articles = ({ data }) => {
-  console.log(data);
+const Articles = ({ resources }) => {
+  console.log(resources);
 
-// const {allArticle} = data.find(data => data.mediaCategory === 'article');
+// const allArticle = resources.find(resources => resources.mediaCategory === 'Article');
 // console.log(allArticle)
 
   return (
@@ -31,7 +31,7 @@ const Articles = ({ data }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {data.map((article) => (
+          {resources.map((article) => (
             <Stack key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h4"
@@ -44,7 +44,7 @@ const Articles = ({ data }) => {
                 {article.title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-                {article.mediaCategory}
+             {article.mediaCategory}
               </Text>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}

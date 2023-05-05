@@ -3,11 +3,11 @@ import Navbar from '@/components/Navbar';
 import Articles from '@/components/articles/[Articles]';
 import Footer from '@/components/Footer';
 
-const Page = ( { data } ) => {
+const Page = ( { resources } ) => {
     return (
         <ChakraProvider>
             <Navbar />
-            <Articles data={data} />
+            <Articles resources={resources} />
             <Footer />
         </ChakraProvider>
     );
@@ -20,13 +20,13 @@ export async function getServerSideProps() {
   
 
     const res = await fetch(`http://localhost:5001/media/`);
-    const data = await res.json();
+    const resources = await res.json();
    
-//  console.log(data)
+//  console.log(resources)
   
   
     return {
       props: { 
-        data: data.media },
+        resources: resources.media },
     };
   };
