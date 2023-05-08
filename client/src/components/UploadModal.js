@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   Button,
   Modal,
@@ -11,7 +11,13 @@ import {
   FormControl,
   FormLabel,
   Input,
+  FormHelperText,
+  FormErrorMessage,
+  Select,
+  useToast
 } from "@chakra-ui/react";
+import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
+
 
 // export const getStaticProps = async () => {
 //   const res = await fetch ('/media');
@@ -23,10 +29,14 @@ import {
 
 // }
 
+
 function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, loggedIn }) {
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [mediaCategory, setMediaCategory] = useState("");
   const [error, setError] = useState(null);
+  const [isloading, setIsLoading] = useState(true);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -36,10 +46,21 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
     setDescription(event.target.value);
   };
 
+  const handleMediaCategoryChange= (event) => {
+    setMediaCategory(event.target.value);
+  };
+
+  //to signal error messages
+  const isError = error === ''
+
+  //Toast notifications
+  const toast = useToast();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const media = { title, description }
+    const media = { title, description, mediaCategory };
+ 
 
     const response = await fetch("/media", {
       method: "POST",
@@ -52,14 +73,33 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
     const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error)
+      setError(json.error);
+      toast({
+        title: 'Missing information',
+        description: "Please correct the following information",
+        duration: 5000,
+        isClosable: true,
+        status: 'error',
+        position: 'top',
+        icon: <WarningIcon />
+      })
     }
 
     if (response.ok) {
       console.log(`Title: ${title} description: ${description}`);
       setTitle();
       setDescription();
+      setMediaCategory();
       setError(null);
+      toast({
+            title: 'Successfully Uploaded',
+            description: "We received your submission",
+            duration: 5000,
+            isClosable: true,
+            status: 'success',
+            position: 'top',
+            icon: <CheckIcon />
+          })
     }
     closeUploadModal();
   };
@@ -77,9 +117,16 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
           <ModalBody>
             {loggedIn ? (
               <>
-                <FormControl>
+                <FormControl isInvalid={isError}>
                   <FormLabel>Name</FormLabel>
                   <Input type="title" value={title} onChange={handleTitleChange} />
+                {!isError ? (
+                    <FormHelperText>
+                      Enter name of media you'd like to submit.
+                    </FormHelperText>
+                  ) : (
+                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                  )}
                 </FormControl>
                 <FormControl mt={4}>
                   <FormLabel>Description</FormLabel>
@@ -88,7 +135,33 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
                     value={description}
                     onChange={handleDescriptionChange}
                   />
+                   {!isError ? (
+              <FormHelperText>
+                  Enter a description.
+                 </FormHelperText>
+                ) : (
+            <FormErrorMessage>Description is required.</FormErrorMessage>
+              )}
                 </FormControl>
+                 <FormControl >
+              <FormLabel>Type of Media</FormLabel>
+              <Select 
+              placeholder="What media are you uploading?"
+              value={mediaCategory}
+              onChange={handleMediaCategoryChange}>
+                <option>Video</option>
+                <option>Article</option>
+                <option>Event</option>
+                <option>Humor</option>
+              </Select>
+              {!isError ? (
+        <FormHelperText>
+          Select an option
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>An option is required.</FormErrorMessage>
+      )}
+            </FormControl>
               </>
             ) : (
               <p>Please log in to upload a file.</p>
@@ -102,7 +175,8 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
         </ModalContent>
       </Modal>
     </div>
-  )
+  );
 }
 
-export default UploadModal
+export default UploadModal;
+
