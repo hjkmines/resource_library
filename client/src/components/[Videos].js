@@ -7,15 +7,13 @@ import {
     Stack,
     Card,
     CardBody,
-    Flex,
-    Spacer,
     useColorModeValue,
 } from '@chakra-ui/react';
 import FeaturedBar from './featured-section/FeatureBar';
 import { useRef } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
+import BackButton from './humour-section/Back';
 
 const Videos = () => {
     const videoRef = useRef();
@@ -57,7 +55,7 @@ const Videos = () => {
                 }}
                 rounded={'sm'}
                 border={'1px'}
-                borderRadius="md"
+                borderRadius='md'
                 borderColor='black'
                 boxShadow={useColorModeValue(
                     '6px 6px 0 black',
@@ -65,7 +63,7 @@ const Videos = () => {
                 )}
             >
                 <CardBody>
-                    <Container maxWidth='400px' >
+                    <Container maxWidth='400px'>
                         <AspectRatio ratio={4 / 3}>
                             <ReactPlayer
                                 url={video.url}
@@ -90,38 +88,30 @@ const Videos = () => {
     };
 
     return (
-    <>
-        <FeaturedBar />
-        <Container >
-            <AspectRatio maxW="560px"  maxH={320} ratio={1} my={5}>
-                <iframe
-                    src={mainScreen}
-                    allowFullScreen
-                    title="Main Video"
-                    fallback="Loading..."
-                    ref={videoRef}
-                />
-            </AspectRatio>
-        </Container>
-        <SimpleGrid
-            templateColumns="repeat(auto-fill, minmax(400px, 1fr))"
-            ml={{ base: "20", sm: "10", md: "3", lg: "20" }}
-            mt={{ base: "10", md: "10" }}
-            align="center"
-        >
-            {renderCards()}
-        </SimpleGrid>
-        <Flex mt={5}>
-            <Spacer />
-            <Link href="/">
-                <Heading as="h2" size="lg" mr="100">
-                    Back
-                    <ArrowForwardIcon boxSize={8} ml='5' />
-                </Heading>
-            </Link>
-        </Flex>
-    </>
-);
+        <>
+            <FeaturedBar />
+            <Container>
+                <AspectRatio maxW='560px' maxH={320} ratio={1} my={5}>
+                    <iframe
+                        src={mainScreen}
+                        allowFullScreen
+                        title='Main Video'
+                        fallback='Loading...'
+                        ref={videoRef}
+                    />
+                </AspectRatio>
+            </Container>
+            <SimpleGrid
+                templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
+                ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
+                mt={{ base: '10', md: '10' }}
+                align='center'
+            >
+                {renderCards()}
+            </SimpleGrid>
+            <BackButton />
+        </>
+    );
 };
 
-export default Videos; 
+export default Videos;
