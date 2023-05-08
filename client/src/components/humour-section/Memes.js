@@ -13,7 +13,7 @@ import {
 	useColorModeValue,
 	SimpleGrid,
 } from '@chakra-ui/react';
-import BackButton from './Back';
+import BackButton from '../helpers/Back';
 
 
 const memePics = [

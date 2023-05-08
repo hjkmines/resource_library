@@ -13,7 +13,7 @@ import FeaturedBar from './featured-section/FeatureBar';
 import { useRef } from 'react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import dynamic from 'next/dynamic';
-import BackButton from './humour-section/Back';
+import BackButton from '../components/helpers/Back';
 
 const Videos = () => {
     const videoRef = useRef();
