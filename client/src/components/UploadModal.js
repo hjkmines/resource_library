@@ -9,13 +9,15 @@ import {
   ModalBody,
   ModalFooter,
   FormControl,
-  FormHelperText,
   FormLabel,
   Input,
+  FormHelperText,
+  FormErrorMessage,
   Select,
   useToast
 } from "@chakra-ui/react";
 import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
+
 
 // export const getStaticProps = async () => {
 //   const res = await fetch ('/media');
@@ -27,7 +29,9 @@ import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 // }
 
-function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
+
+function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, loggedIn }) {
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
@@ -56,6 +60,7 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
     e.preventDefault();
 
     const media = { title, description, mediaCategory };
+ 
 
     const response = await fetch("/media", {
       method: "POST",
@@ -101,39 +106,44 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
 
   return (
     <div>
-       <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
-        <ModalOverlay backdropFilter="blur(10px) hue-rotate(90deg)" />
-        <ModalContent>
+      <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
+        <ModalOverlay
+          backdropFilter='blur(10px) hue-rotate(90deg)'
+        />
+        <ModalContent
+        >
           <ModalHeader>Resource Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl isInvalid={isError}>
-              <FormLabel>Name</FormLabel>
-              <Input type="title" value={title} onChange={handleTitleChange} />
-              {!isError ? (
-        <FormHelperText>
-          Enter name of media you'd like to submit.
-        </FormHelperText>
-      ) : (
-        <FormErrorMessage>Email is required.</FormErrorMessage>
-      )}
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Description</FormLabel>
-              <Input
-                type="description"
-                value={description}
-                onChange={handleDescriptionChange}
-              />
-               {!isError ? (
-        <FormHelperText>
-          Enter a description.
-        </FormHelperText>
-      ) : (
-        <FormErrorMessage>Description is required.</FormErrorMessage>
-      )}
-            </FormControl>
-            <FormControl >
+            {loggedIn ? (
+              <>
+                <FormControl isInvalid={isError}>
+                  <FormLabel>Name</FormLabel>
+                  <Input type="title" value={title} onChange={handleTitleChange} />
+                {!isError ? (
+                    <FormHelperText>
+                      Enter name of media you'd like to submit.
+                    </FormHelperText>
+                  ) : (
+                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                  )}
+                </FormControl>
+                <FormControl mt={4}>
+                  <FormLabel>Description</FormLabel>
+                  <Input
+                    type="description"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                  />
+                   {!isError ? (
+              <FormHelperText>
+                  Enter a description.
+                 </FormHelperText>
+                ) : (
+            <FormErrorMessage>Description is required.</FormErrorMessage>
+              )}
+                </FormControl>
+                 <FormControl >
               <FormLabel>Type of Media</FormLabel>
               <Select 
               placeholder="What media are you uploading?"
@@ -152,10 +162,13 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal }) {
         <FormErrorMessage>An option is required.</FormErrorMessage>
       )}
             </FormControl>
-         
+              </>
+            ) : (
+              <p>Please log in to upload a file.</p>
+            )}
           </ModalBody>
-          <ModalFooter alignItems="center">
-            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} >
+          <ModalFooter alignItems='center'>
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
               Submit
             </Button>
           </ModalFooter>

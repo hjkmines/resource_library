@@ -43,25 +43,22 @@ const Navbar = () => {
     const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [signupModalOpen, setSignupModalOpen] = useState(false);
     const [uploadModalOpen, setUploadModalOpen] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const btnRef = useRef();
 
     const { colorMode, toggleColorMode } = useColorMode();
 
-    // function uploadFile(btn) {
-    //     btn.click();
-    // }
-
     //opening the upload model on upload btn click
-const openUploadModal = () => {
-    setUploadModalOpen(true);
-}
+    const openUploadModal = () => {
+        setUploadModalOpen(true);
+    }
 
-const closeUploadModal = () => {
-    setUploadModalOpen(false);
-}
+    const closeUploadModal = () => {
+        setUploadModalOpen(false);
+    }
 
-//opening the login modal on login btn click
+    //opening the login modal on login btn click
     const openLoginModal = () => {
         setLoginModalOpen(true);
     };
@@ -139,11 +136,12 @@ const closeUploadModal = () => {
                     >
                         Upload
                     </Button>
-                    <UploadModal 
+                    <UploadModal
                         uploadModalOpen={uploadModalOpen}
                         openUploadModal={openUploadModal}
                         closeUploadModal={closeUploadModal}
-                    
+                        loggedIn={loggedIn}
+
                     />
                     <Flex alignItems='center'>
                         <IconButton
@@ -166,6 +164,7 @@ const closeUploadModal = () => {
                         openLoginModal={openLoginModal}
                         closeLoginModal={closeLoginModal}
                         openSignupModal={openSignupModal}
+                        setLoggedIn={setLoggedIn}
                     />
                     <SignupModal
                         signupModalOpen={signupModalOpen}
