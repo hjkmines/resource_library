@@ -19,20 +19,12 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
-
-// export const getStaticProps = async () => {
-//   const res = await fetch ('/media');
-//   const data = await res.json();
-
-//   return {
-//     props: { media: data}
-//   }
-
-// }
-
-
-function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, loggedIn }) {
-
+function UploadModal({
+  uploadModalOpen,
+  openUploadModal,
+  closeUploadModal,
+  loggedIn,
+}) {
   const [title, setTitle] = useState("");
   const [resourceLink, setResourceLink] = useState("");
   const [description, setDescription] = useState("");
@@ -65,7 +57,6 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
     e.preventDefault();
 
     const media = { title, description, mediaCategory };
- 
 
     const response = await fetch("/media", {
       method: "POST",
@@ -112,11 +103,8 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
   return (
     <div>
       <Modal isOpen={uploadModalOpen} onClose={closeUploadModal} isCentered>
-        <ModalOverlay
-          backdropFilter='blur(10px) hue-rotate(90deg)'
-        />
-        <ModalContent
-        >
+        <ModalOverlay backdropFilter="blur(10px) hue-rotate(90deg)" />
+        <ModalContent>
           <ModalHeader>Resource Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -124,8 +112,12 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
               <>
                 <FormControl isInvalid={isError}>
                   <FormLabel>Name</FormLabel>
-                  <Input type="title" value={title} onChange={handleTitleChange} />
-                {!isError ? (
+                  <Input
+                    type="title"
+                    value={title}
+                    onChange={handleTitleChange}
+                  />
+                  {!isError ? (
                     <FormHelperText>
                       Enter name of media you'd like to submit.
                     </FormHelperText>
@@ -140,38 +132,38 @@ function UploadModal({ uploadModalOpen, openUploadModal, closeUploadModal, logge
                     value={description}
                     onChange={handleDescriptionChange}
                   />
-                   {!isError ? (
-              <FormHelperText>
-                  Enter a description.
-                 </FormHelperText>
-                ) : (
-            <FormErrorMessage>Description is required.</FormErrorMessage>
-              )}
+                  {!isError ? (
+                    <FormHelperText>Enter a description.</FormHelperText>
+                  ) : (
+                    <FormErrorMessage>
+                      Description is required.
+                    </FormErrorMessage>
+                  )}
                 </FormControl>
-                 <FormControl >
-              <FormLabel>Type of Media</FormLabel>
-              <Select
-                placeholder="What media are you uploading?"
-                value={mediaCategory}
-                onChange={handleMediaCategoryChange}
-              >
-                <option>Video</option>
-                <option>Article</option>
-                <option>Event</option>
-                <option>Humor</option>
-              </Select>
-              {!isError ? (
-                <FormHelperText>Select an option</FormHelperText>
-              ) : (
-                <FormErrorMessage>An option is required.</FormErrorMessage>
-              )}
-            </FormControl>
+                <FormControl>
+                  <FormLabel>Type of Media</FormLabel>
+                  <Select
+                    placeholder="What media are you uploading?"
+                    value={mediaCategory}
+                    onChange={handleMediaCategoryChange}
+                  >
+                    <option>Video</option>
+                    <option>Article</option>
+                    <option>Event</option>
+                    <option>Humor</option>
+                  </Select>
+                  {!isError ? (
+                    <FormHelperText>Select an option</FormHelperText>
+                  ) : (
+                    <FormErrorMessage>An option is required.</FormErrorMessage>
+                  )}
+                </FormControl>
               </>
             ) : (
               <p>Please log in to upload a file.</p>
             )}
           </ModalBody>
-          <ModalFooter alignItems='center'>
+          <ModalFooter alignItems="center">
             <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
               Submit
             </Button>
