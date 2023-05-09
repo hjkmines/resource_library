@@ -3,13 +3,13 @@ import Navbar from '@/components/Navbar';
 import Articles from '@/components/articles/[Articles]';
 import Footer from '@/components/Footer';
 
-const Page = ( { resources, articles } ) => {
+const Page = ( { resources, files } ) => {
 
 
     return (
         <ChakraProvider>
             <Navbar />
-            <Articles resources={resources} articles={articles}/>
+            <Articles resources={resources} files={files}/>
             <Footer />
         </ChakraProvider>
     );
@@ -23,23 +23,12 @@ export async function getServerSideProps() {
 
     const res = await fetch(`http://localhost:5001/media/`);
     const resources = await res.json();
-    const articles = resources.media.filter(item => item.mediaCategory === 'Article');
-
-  //console.log(resources.media.title[0])
-// console.log(resources)
-  
-    // if (resources.media.mediaCategory === 'Article') {
-    //     return {
-    //         props: {
-    //             article : resources.media.mediaCategory
-    //         }
-    //     }
-    // }
+    const files = resources.media.filter(item => item.mediaCategory === 'Article');
   
     return {
 
       props: { 
         resources: resources.media,
-    articles: articles},
+    files: files},
     };
   };
