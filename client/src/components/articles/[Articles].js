@@ -9,12 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-const Articles = ({ resources, files }) => {
-  console.log(resources, files);
+const Articles = ({ allArticles }) => {
+  console.log(allArticles);
 
   return (
     <>
-    
       <Box p={4}>
         <Box textAlign="center">
           <Heading
@@ -29,7 +28,7 @@ const Articles = ({ resources, files }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {files.map((article) => (
+          {allArticles.map((article) => (
             <Stack key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h4"
@@ -42,9 +41,7 @@ const Articles = ({ resources, files }) => {
                 {article.title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-             Media: {article.mediaCategory}
-         
-            
+                Media: {article.mediaCategory}
               </Text>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
@@ -53,14 +50,6 @@ const Articles = ({ resources, files }) => {
           ))}
         </Stack>
       </Box>
-
-      {/* {files.map((file) => (
-        <div key={file._id}>
-          <h2>{file.title}</h2>
-          <p>{file.description}</p>
-          <p>{file.createdAt}</p>
-        </div>
-      ))} */}
 
       {/* Go back to Home page */}
       <Flex mt={5}>
