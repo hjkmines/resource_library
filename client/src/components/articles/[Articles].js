@@ -9,8 +9,9 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-const Articles = ({ resources }) => {
-  console.log(resources);
+const Articles = ({ resources, articles }) => {
+  console.log(resources, articles);
+ 
 
 // const allArticle = resources.find(resources => resources.mediaCategory === 'Article');
 // console.log(allArticle)
@@ -44,7 +45,8 @@ const Articles = ({ resources }) => {
                 {article.title}
               </Heading>
               <Text mt={2} color="gray.500" fontSize="12px">
-             {article.mediaCategory}
+             Media: {article.mediaCategory}
+            
               </Text>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
@@ -53,6 +55,8 @@ const Articles = ({ resources }) => {
           ))}
         </Stack>
       </Box>
+
+
 
       {/* Go back to Home page */}
       <Flex mt={5}>
