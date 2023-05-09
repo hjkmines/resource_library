@@ -13,7 +13,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal, openSignupModal }) => {
+const LoginModal = ({ loginModalOpen, closeLoginModal, openSignupModal, setLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,13 +34,14 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal, openSignu
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         console.log(data);
         setEmail('');
         setPassword('');
         closeLoginModal();
+        setLoggedIn(true);
       } else {
         throw new Error('Invalid email or password.');
       }
@@ -71,7 +72,6 @@ const LoginModal = ({ loginModalOpen, openLoginModal, closeLoginModal, openSignu
               onChange={handlePasswordChange}
             />
           </FormControl>
-
         </ModalBody>
         <ModalFooter alignItems='center'>
           <Button mr={3} bg="#FCB22E" onClick={handleLogin}>
