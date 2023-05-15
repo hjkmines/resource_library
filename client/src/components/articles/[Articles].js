@@ -9,8 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-const Articles = ({ data }) => {
-//   console.log(data);
+const Articles = ({ allArticles }) => {
+  console.log(allArticles);
 
   return (
     <>
@@ -28,7 +28,7 @@ const Articles = ({ data }) => {
           </Heading>
         </Box>
         <Stack spacing={2} maxWidth="70%">
-          {data.map((article) => (
+          {allArticles.map((article) => (
             <Stack key={article._id} boxShadow="md" p={2}>
               <Heading
                 as="h4"
@@ -40,6 +40,9 @@ const Articles = ({ data }) => {
               >
                 {article.title}
               </Heading>
+              <Text mt={2} color="gray.500" fontSize="12px">
+                Media: {article.mediaCategory}
+              </Text>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
