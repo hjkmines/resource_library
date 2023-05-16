@@ -17,47 +17,45 @@ const Articles = ({ allArticles, deleteArticle }) => {
   //Toast notifications
   const toast = useToast();
 
-  const handleSubmit = async (_id) => {
-    e.preventDefault();
+  const handleDelete = async (id) => {
 
-    const media = { _id, title, description, mediaCategory };
-
-    const response = await fetch(`/media/${_id}`, {
+    const response = await fetch(`/media/${id}`, {
       method: "DELETE",
-      headers: {
-        Accept: "application/json",
-      },
-    });
+      headers: {Accept: "application/json" },
+    }).then((r)=> {
+      console.log(r)
+      if (r.ok) {
+        deleteArticle(id)
+      }
+    })
 
-    const json = await response.json();
+    // if (!response.ok) {
+    //   setError(json.error);
+    //   toast({
+    //     title: "Missing information",
+    //     description: "Please correct the following information",
+    //     duration: 5000,
+    //     isClosable: true,
+    //     status: "error",
+    //     position: "top",
+    //     icon: <WarningIcon />,
+    //   });
+    // }
 
-    if (!response.ok) {
-      setError(json.error);
-      toast({
-        title: "Missing information",
-        description: "Please correct the following information",
-        duration: 5000,
-        isClosable: true,
-        status: "error",
-        position: "top",
-        icon: <WarningIcon />,
-      });
-    }
+    // if (response.ok) {
+    //   console.log(`Title: ${title} description: ${description}`);
+    //   deleteArticle(_id);
+    //   toast({
+    //     title: "Successfully Deleted",
+    //     description: "Article was deleted",
+    //     duration: 5000,
+    //     isClosable: true,
+    //     status: "success",
+    //     position: "top",
+    //     icon: <CheckIcon />,
+    //   });
+    // }
 
-    if (response.ok) {
-      console.log(`Title: ${title} description: ${description}`);
-      deleteArticle(_id);
-      toast({
-        title: "Successfully Deleted",
-        description: "Article was deleted",
-        duration: 5000,
-        isClosable: true,
-        status: "success",
-        position: "top",
-        icon: <CheckIcon />,
-      });
-    }
-    closeUploadModal();
   };
 
   return (
@@ -94,7 +92,7 @@ const Articles = ({ allArticles, deleteArticle }) => {
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
-              <Button mr={1} bg="#FCB22E" onClick={handleSubmit}>
+              <Button mr={1} bg="#FCB22E" onClick={handleDelete}>
                 Delete
               </Button>
             </Stack>
