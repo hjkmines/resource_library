@@ -11,22 +11,21 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-const Articles = ({ allArticles }) => {
+const Articles = ({ allArticles, deleteArticle }) => {
   console.log(allArticles);
 
   //Toast notifications
   const toast = useToast();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (_id) => {
     e.preventDefault();
 
-    const media = { title, description, mediaCategory };
+    const media = { _id, title, description, mediaCategory };
 
-    const response = await fetch("/media", {
+    const response = await fetch(`/media/${_id}`, {
       method: "DELETE",
-      body: JSON.stringify(media),
       headers: {
-        "Content-Type": "application/json",
+        Accept: "application/json",
       },
     });
 
@@ -47,13 +46,10 @@ const Articles = ({ allArticles }) => {
 
     if (response.ok) {
       console.log(`Title: ${title} description: ${description}`);
-      setTitle();
-      setDescription();
-      setMediaCategory();
-      setError(null);
+      deleteArticle(_id);
       toast({
-        title: "Successfully Uploaded",
-        description: "We received your submission",
+        title: "Successfully Deleted",
+        description: "Article was deleted",
         duration: 5000,
         isClosable: true,
         status: "success",
