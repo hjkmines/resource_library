@@ -19,14 +19,18 @@ const Articles = ({ allArticles, deleteArticle }) => {
 
   const handleDelete = async (id) => {
 
-    const response = await fetch(`/media/${id}`, {
+    const response = await fetch(`/media/`, {
       method: "DELETE",
-      headers: {Accept: "application/json" },
-    }).then((r)=> {
+      headers: {"Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+    })
+  }).then((r)=> {
       console.log(r)
-      if (r.ok) {
-        deleteArticle(id)
-      }
+      // if (r.ok) {
+      //   deleteArticle(id)
+      // }
     })
 
     // if (!response.ok) {
