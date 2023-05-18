@@ -23,14 +23,9 @@ const Articles = ({ allArticles, deleteArticle }) => {
       method: "DELETE",
       headers: {"Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      id,
-    })
   }).then((r)=> {
       console.log(r)
-      // if (r.ok) {
-      //   deleteArticle(id)
-      // }
+      
     })
 
     // if (!response.ok) {
