@@ -12,21 +12,27 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 const Articles = ({ allArticles, deleteArticle }) => {
-  console.log(allArticles);
+  //console.log(allArticles);
 
   //Toast notifications
   const toast = useToast();
 
   const handleDelete = async (id) => {
-
     const response = await fetch(`/media/`, {
       method: "DELETE",
-      headers: {"Content-Type": "application/json",
-    },
-  }).then((r)=> {
-      console.log(r)
-      
-    })
+        headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      })
+    }).then((r) => {
+      console.log(r);
+
+      // if (r.ok) {
+      //   deleteArticle(id)
+      // }
+    });
 
     // if (!response.ok) {
     //   setError(json.error);
@@ -54,7 +60,6 @@ const Articles = ({ allArticles, deleteArticle }) => {
     //     icon: <CheckIcon />,
     //   });
     // }
-
   };
 
   return (
