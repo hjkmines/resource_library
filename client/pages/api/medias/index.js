@@ -13,6 +13,7 @@ export default function medias(req, res) {
 
     let mediaDelete = data.find((media) => media.id === id);
 
+    console.log(mediaDelete)
     res.status(200).json(mediaDelete);
   }
 }

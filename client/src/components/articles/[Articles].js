@@ -18,21 +18,23 @@ const Articles = ({ allArticles, deleteArticle }) => {
   const toast = useToast();
 
   const handleDelete = async (id) => {
-    const response = await fetch(`/media/`, {
+    const response = await fetch(`http://localhost:5001/media/${id}`, {
       method: "DELETE",
         headers: {
           "Content-Type": "application/json",
       },
-      body: ({
-        id,
-      })
+      // body: ({
+      //   id,
+      // })
     }).then((r) => {
       console.log(r);
 
-      // if (r.ok) {
-      //   deleteArticle(id)
-      // }
+      if (r.ok) {
+        deleteArticle(id)
+      }
     });
+
+//! got objectobject for id - didn't deconstruct yet?
 
     // if (!response.ok) {
     //   setError(json.error);
