@@ -17,7 +17,3 @@ export default function medias(req, res) {
     res.status(200).json(mediaDelete);
   }
 }
-
-//the delete request deleted everything;
-//just need it to delete one ID
-//thinking I need to use the find and findIndex

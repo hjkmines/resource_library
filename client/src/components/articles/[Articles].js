@@ -9,7 +9,7 @@ import {
   Spacer,
   Link,
 } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 const Articles = ({ allArticles, deleteArticle }) => {
   //console.log(allArticles);
@@ -46,8 +46,7 @@ const Articles = ({ allArticles, deleteArticle }) => {
       //   deleteArticle(id);
       // }
 
-      if (response.ok) {
-        console.log(`Title: ${title} description: ${description}`);
+      if (r.ok) {
         deleteArticle(id);
         toast({
           title: "Successfully Deleted",
