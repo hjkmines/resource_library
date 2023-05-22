@@ -20,8 +20,8 @@ const Articles = ({ allArticles, deleteArticle }) => {
   const handleDelete = async (id) => {
     const response = await fetch(`http://localhost:5001/media/${id}`, {
       method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
+      headers: {
+        "Content-Type": "application/json",
       },
       // body: ({
       //   id,
@@ -29,38 +29,37 @@ const Articles = ({ allArticles, deleteArticle }) => {
     }).then((r) => {
       console.log(r);
 
-      if (r.ok) {
-        deleteArticle(id)
+      if (!r.ok) {
+        setError(json.error);
+        toast({
+          title: "Item not deleted",
+          description: "Please correct the following information",
+          duration: 5000,
+          isClosable: true,
+          status: "error",
+          position: "top",
+          icon: <WarningIcon />,
+        });
+      }
+
+      // if (r.ok) {
+      //   deleteArticle(id);
+      // }
+
+      if (response.ok) {
+        console.log(`Title: ${title} description: ${description}`);
+        deleteArticle(id);
+        toast({
+          title: "Successfully Deleted",
+          description: "Article was deleted",
+          duration: 5000,
+          isClosable: true,
+          status: "success",
+          position: "top",
+          icon: <CheckIcon />,
+        });
       }
     });
-
-
-    // if (!response.ok) {
-    //   setError(json.error);
-    //   toast({
-    //     title: "Missing information",
-    //     description: "Please correct the following information",
-    //     duration: 5000,
-    //     isClosable: true,
-    //     status: "error",
-    //     position: "top",
-    //     icon: <WarningIcon />,
-    //   });
-    // }
-
-    // if (response.ok) {
-    //   console.log(`Title: ${title} description: ${description}`);
-    //   deleteArticle(_id);
-    //   toast({
-    //     title: "Successfully Deleted",
-    //     description: "Article was deleted",
-    //     duration: 5000,
-    //     isClosable: true,
-    //     status: "success",
-    //     position: "top",
-    //     icon: <CheckIcon />,
-    //   });
-    // }
   };
 
   return (
@@ -97,7 +96,11 @@ const Articles = ({ allArticles, deleteArticle }) => {
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
-              <Button mr={1} bg="#FCB22E" onClick={() => handleDelete(article._id)}>
+              <Button
+                mr={1}
+                bg="#FCB22E"
+                onClick={() => handleDelete(article._id)}
+              >
                 Delete
               </Button>
             </Stack>
