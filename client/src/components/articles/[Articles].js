@@ -34,7 +34,6 @@ const Articles = ({ allArticles, deleteArticle }) => {
       }
     });
 
-//! got objectobject for id - didn't deconstruct yet?
 
     // if (!response.ok) {
     //   setError(json.error);
@@ -98,7 +97,7 @@ const Articles = ({ allArticles, deleteArticle }) => {
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
-              <Button mr={1} bg="#FCB22E" onClick={handleDelete}>
+              <Button mr={1} bg="#FCB22E" onClick={() => handleDelete(article._id)}>
                 Delete
               </Button>
             </Stack>
