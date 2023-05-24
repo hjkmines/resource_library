@@ -2,12 +2,20 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Articles from "@/components/articles/[Articles]";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const Page = ({ allArticles }) => {
+  const [articles, setArticles] = useState([]);
+
+  function deleteArticle(id) {
+    const deletedArticle = articles.filter((article) => article.id !== id);
+    setArticles(deletedArticle);
+  }
+
   return (
     <ChakraProvider>
       <Navbar />
-      <Articles allArticles={allArticles} />
+      <Articles allArticles={allArticles} deleteArticle={deleteArticle}/>
       <Footer />
     </ChakraProvider>
   );
