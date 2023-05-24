@@ -23,9 +23,6 @@ const Articles = ({ allArticles, deleteArticle }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      // body: ({
-      //   id,
-      // })
     }).then((r) => {
       console.log(r);
 
@@ -41,10 +38,6 @@ const Articles = ({ allArticles, deleteArticle }) => {
           icon: <WarningIcon />,
         });
       }
-
-      // if (r.ok) {
-      //   deleteArticle(id);
-      // }
 
       if (r.ok) {
         deleteArticle(id);
