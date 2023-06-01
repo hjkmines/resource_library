@@ -88,12 +88,14 @@ const Navbar = () => {
                     bgColor={useColorModeValue('#FCB22E', 'gray.700')}
                     justifyContent='space-between'
                 >
-                    <Image
-                        ml={4}
-                        boxSize='3em'
-                        src='/logo.svg'
-                        alt='Hanawilo Engineers'
-                    />
+                    <Link as={NextLink} href="/" style={{ cursor: "pointer"}}>
+                        <Image
+                            ml={4}
+                            boxSize='3em'
+                            src='/logo.svg'
+                            alt='Hanawilo Engineers'
+                        />
+                    </Link>
                     <Hide below='xl'>
                         <Text fontSize='2xl'>Hanawilo Resource Library</Text>
                     </Hide>
@@ -156,7 +158,7 @@ const Navbar = () => {
                             onClick={toggleColorMode}
                             bg={useColorModeValue('white', 'gray.800')}
                             borderRadius='full'
-                            ml={2}
+                           
                         />
                     </Flex>
                     <LoginModal
