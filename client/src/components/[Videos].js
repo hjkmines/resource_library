@@ -15,6 +15,9 @@ import {
 import FeaturedBar from './featured-section/FeatureBar';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import BackButton from '../components/helpers/Back';
+
 
 const Videos = () => {
   const [mediaList, setMediaList] = useState([]);
@@ -108,3 +111,4 @@ const Videos = () => {
 };
 
 export default Videos;
+

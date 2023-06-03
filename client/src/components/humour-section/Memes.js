@@ -13,6 +13,8 @@ import {
 	useColorModeValue,
 	SimpleGrid,
 } from '@chakra-ui/react';
+import BackButton from '../helpers/Back';
+
 
 const memePics = [
 	{
@@ -152,6 +154,7 @@ export default function MemeData() {
 			<SimpleGrid minChildWidth='120px' spacing={2}>
 				<MemeCard />
 			</SimpleGrid>
+			<BackButton />
 		</>
 	);
 }
