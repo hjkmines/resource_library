@@ -1,15 +1,15 @@
 // import React from "react";
 import {
-  Card,
-  CardBody,
-  Image,
-  Heading,
-  Flex,
-  Spacer,
-  NextLink,
-  Link,
-  SimpleGrid,
-  Show,
+    Card,
+    CardBody,
+    Image,
+    Heading,
+    Flex,
+    Spacer,
+    NextLink,
+    Link,
+    SimpleGrid,
+    Show,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
@@ -30,8 +30,28 @@ const cardPics = [
         borderRadius: 'lg',
     },
     {
-        src: '../fruit.png',
+        src: '../introverted.png',
         alt: 'Eventbrite display',
+        borderRadius: 'lg',
+    },
+    {
+        src: '../rain-blue.jpg',
+        alt: 'stop rain',
+        borderRadius: 'lg',
+    },
+    {
+        src: '../time.jpg',
+        alt: 'cookie monster',
+        borderRadius: 'lg',
+    },
+    {
+        src: '../codeArtboard.png',
+        alt: 'artboard',
+        borderRadius: 'lg',
+    },
+    {
+        src: '../python.jpg',
+        alt: 'pass on python',
         borderRadius: 'lg',
     },
 ];
@@ -39,11 +59,11 @@ const cardPics = [
 function ShowCard() {
 
     return cardPics.map((card, index) => (
-      <Card
+        <Card
             key={index}
             variant='outline'
             maxW={{
-                base: '350px',
+                base: '325px',
             }}
             spacing='3'
         >
@@ -57,33 +77,33 @@ function ShowCard() {
 }
 
 export default function TodayPic() {
-  return (
-      <>
-          <SimpleGrid
-              templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
-              ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
-              mt={{ base: '10', md: '10' }}
-              align='center'
-              spacing={2}
-          >
+    return (
+        <>
+            <SimpleGrid
+                templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
+                ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
+                mt={{ base: '10', md: '10' }}
+                align='center'
+                spacing={2}
+            >
 
-          <ShowCard />
-          </SimpleGrid>
+            <ShowCard />
+            </SimpleGrid>
 
-          {/* Arrow to see more events */}
-          <Flex mt={5} mb={5}>
-              <Spacer />
-              <Link
-                  href='/allHumour/humour'
-                  as={NextLink}
-                  style={{ textDecoration: 'none' }}
-              >
-                  <Heading as='h2' size='md' mr='100'>
-                      more laughs
-                      <ArrowForwardIcon boxSize={8} ml='5' color="#42413B" />
-                  </Heading>
-              </Link>
-          </Flex>
-      </>
-  );
+            {/* Arrow to see more events */}
+            <Flex mt={5} mb={5}>
+                <Spacer />
+                <Link
+                    href='/allHumour/humour'
+                    as={NextLink}
+                    style={{ textDecoration: 'none' }}
+                >
+                    <Heading as='h2' size='md' mr='100'>
+                        more laughs
+                        <ArrowForwardIcon boxSize={8} ml='5' color="#42413B" />
+                    </Heading>
+                </Link>
+            </Flex>
+        </>
+    );
 }
