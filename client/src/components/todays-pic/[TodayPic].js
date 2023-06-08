@@ -80,7 +80,7 @@ export default function TodayPic() {
               >
                   <Heading as='h2' size='md' mr='100'>
                       more laughs
-                      <ArrowForwardIcon boxSize={8} ml='5' />
+                      <ArrowForwardIcon boxSize={8} ml='5' color="#42413B" />
                   </Heading>
               </Link>
           </Flex>
