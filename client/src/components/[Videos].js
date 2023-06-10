@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import {
   Container,
@@ -11,18 +11,25 @@ import {
   Flex,
   Spacer,
   useColorModeValue,
+  Center,
 } from '@chakra-ui/react';
-import FeaturedBar from './featured-section/FeatureBar';
+import FeaturedBar from '@/components/featured-section/FeatureBar';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
 const Videos = ({ allVideos }) => {
+  const [renderedVideos, setRenderedVideos] = useState([]);
+
+  useEffect(() => {
+    setRenderedVideos(allVideos);
+  }, [allVideos]);
+
   const renderCards = () => {
-    if (!Array.isArray(allVideos)) {
+    if (!Array.isArray(renderedVideos)) {
       return null;
     }
 
-    return allVideos.map((video, index) => (
+    return renderedVideos.map((video, index) => (
       <Card
         key={index}
         my={5}
@@ -43,16 +50,18 @@ const Videos = ({ allVideos }) => {
         <CardBody>
           <Container maxWidth="400px">
             <AspectRatio ratio={4 / 3}>
-              <ReactPlayer
-                url={video.description}
-                width="100%"
-                height="100%"
-                controls={false}
-                volume={0}
-                muted={true}
-                playing={false}
-                fallback="Loading..."
-              />
+              <Center>
+                <ReactPlayer
+                  url={video.description}
+                  width="100%"
+                  height="100%"
+                  controls={false}
+                  volume={0}
+                  muted={true}
+                  playing={false}
+                  fallback="Loading..."
+                />
+              </Center>
             </AspectRatio>
             <Stack mt="6" spacing="3">
               <Heading size="md" letterSpacing={3}>
@@ -61,8 +70,8 @@ const Videos = ({ allVideos }) => {
             </Stack>
           </Container>
         </CardBody>
-      </Card>)
-    );
+      </Card>
+    ));
   };
 
   return (
@@ -73,6 +82,7 @@ const Videos = ({ allVideos }) => {
         ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
         mt={{ base: '10', md: '10' }}
         align="center"
+        spacing={3}
       >
         {renderCards()}
       </SimpleGrid>

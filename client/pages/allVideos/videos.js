@@ -14,18 +14,18 @@ const Page = ({ allVideos }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:5001/media/");
-  const resources = await res.json();
+    const res = await fetch("http://localhost:5001/media/");
+    const resources = await res.json();
 
-  const allVideos = resources.media.filter(
-    (item) => item.mediaCategory === "Video"
-  );
+    const allVideos = resources.media.filter(
+        (item) => item.mediaCategory === "Video"
+    );
 
-  return {
-    props: {
-      allVideos: allVideos,
-    },
-  };
+    return {
+        props: {
+            allVideos: allVideos,
+        },
+    };
 }
 
 export default Page;
