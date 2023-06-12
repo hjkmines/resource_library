@@ -110,6 +110,7 @@ function UploadModal({
           <ModalBody>
             {loggedIn ? (
               <>
+               {/* Title */}
                 <FormControl isInvalid={isError}>
                   <FormLabel>Name</FormLabel>
                   <Input
@@ -125,9 +126,28 @@ function UploadModal({
                     <FormErrorMessage>Email is required.</FormErrorMessage>
                   )}
                 </FormControl>
+
+              {/* Resource Link */}
+                <FormControl mt={4}>
+                  <FormLabel>Resource Link</FormLabel>
+                  <Input
+                    type="resourcelink"
+                    value={resourceLink}
+                    onChange={handleResourceChange}
+                  />
+                  {!isError ? (
+                    <FormHelperText>Paste in link.</FormHelperText>
+                  ) : (
+                    <FormErrorMessage>
+                      Description is required.
+                    </FormErrorMessage>
+                  )}
+                </FormControl>
+
+                 {/* Description */}
                 <FormControl mt={4}>
                   <FormLabel>Description</FormLabel>
-                  <Input
+                  <Textarea
                     type="description"
                     value={description}
                     onChange={handleDescriptionChange}
@@ -140,6 +160,8 @@ function UploadModal({
                     </FormErrorMessage>
                   )}
                 </FormControl>
+
+                 {/* Media options*/}
                 <FormControl>
                   <FormLabel>Type of Media</FormLabel>
                   <Select
