@@ -15,12 +15,10 @@ import {
   FormErrorMessage,
   Select,
   useToast,
-  Alert,
-  AlertIcon,
-  AlertDescription,
   Textarea,
 } from "@chakra-ui/react";
 import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 
 function UploadModal({
   uploadModalOpen,
@@ -49,6 +47,9 @@ function UploadModal({
   const handleMediaCategoryChange = (event) => {
     setMediaCategory(event.target.value);
   };
+
+ //redirect to the same page with updates
+  const router = useRouter();
 
   //to signal error messages
   // let isError = errors === "";
@@ -102,6 +103,7 @@ function UploadModal({
         icon: <WarningIcon />,
       });
     }
+    router.push("/");
     closeUploadModal();
   };
 
