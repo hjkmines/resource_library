@@ -14,7 +14,6 @@ import {
 import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 const Articles = ({ allArticles, deleteArticle }) => {
-  //console.log(allArticles);
 
   //Toast notifications
   const toast = useToast();
