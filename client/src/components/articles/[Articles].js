@@ -7,8 +7,12 @@ import {
   Button,
   useToast,
   Spacer,
+  Badge,
   Link,
 } from "@chakra-ui/react";
+
+// ! Make the Article Link pop up as a Link
+
 import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 const Articles = ({ allArticles, deleteArticle }) => {
@@ -85,9 +89,11 @@ const Articles = ({ allArticles, deleteArticle }) => {
               <Text mt={2} color="gray.500" fontSize="12px">
                 Media: {article.mediaCategory}
               </Text>
-              <Text mt={4} color="gray.500" fontSize="12px">
+              <Badge ml='1' colorScheme='green'>
+              <Link mt={4} color="gray.500" fontSize="12px">
                 {article.resourceLink}
-              </Text>
+              </Link>
+              </Badge>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>

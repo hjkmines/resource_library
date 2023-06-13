@@ -56,7 +56,7 @@ function UploadModal({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const media = { title, description, mediaCategory };
+    const media = { title, description, resourceLink, mediaCategory };
 
     const response = await fetch("/media", {
       method: "POST",
