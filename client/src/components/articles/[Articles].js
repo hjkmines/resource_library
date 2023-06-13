@@ -10,7 +10,6 @@ import {
   Badge,
   Link,
 } from "@chakra-ui/react";
-
 import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
 
 const Articles = ({ allArticles, deleteArticle }) => {
@@ -52,7 +51,8 @@ const Articles = ({ allArticles, deleteArticle }) => {
           icon: <CheckIcon />,
         });
       }
-    });
+    })
+    .then(navigate("/"));
   };
 
   return (

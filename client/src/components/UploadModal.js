@@ -15,6 +15,9 @@ import {
   FormErrorMessage,
   Select,
   useToast,
+  Alert,
+  AlertIcon,
+  AlertDescription,
   Textarea,
 } from "@chakra-ui/react";
 import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
@@ -29,7 +32,7 @@ function UploadModal({
   const [resourceLink, setResourceLink] = useState("");
   const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -48,7 +51,7 @@ function UploadModal({
   };
 
   //to signal error messages
-  let isError = error === "";
+  // let isError = errors === "";
 
   //Toast notifications
   const toast = useToast();
@@ -58,6 +61,7 @@ function UploadModal({
 
     const media = { title, description, resourceLink, mediaCategory };
 
+    try{
     const response = await fetch("/media", {
       method: "POST",
       body: JSON.stringify(media),
@@ -68,26 +72,13 @@ function UploadModal({
 
     const json = await response.json();
 
-    if (!response.ok) {
-      setError(json.error);
-      toast({
-        title: "Missing information",
-        description: "Please correct the following information",
-        duration: 5000,
-        isClosable: true,
-        status: "error",
-        position: "top",
-        icon: <WarningIcon />,
-      });
-    }
-
     if (response.ok) {
       console.log(`Title: ${title} description: ${description}`);
       setTitle();
       setResourceLink();
       setDescription();
       setMediaCategory();
-      setError(null);
+      setErrors([]);
       toast({
         title: "Successfully Uploaded",
         description: "We received your submission",
@@ -96,6 +87,18 @@ function UploadModal({
         status: "success",
         position: "top",
         icon: <CheckIcon />,
+      });
+    }} catch (error){
+      setErrors(error);
+      console.log(error);
+      toast({
+        title: "Missing information",
+        description: "Please correct the following information",
+        duration: 5000,
+        isClosable: true,
+        status: "error",
+        position: "top",
+        icon: <WarningIcon />,
       });
     }
     closeUploadModal();
@@ -112,18 +115,18 @@ function UploadModal({
             {loggedIn ? (
               <>
                 {/* Title */}
-                <FormControl isInvalid={isError.title} isRequired>
+                <FormControl isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input
                     type="title"
                     value={title}
                     onChange={handleTitleChange}
                   />
-                  {!isError ? (
+                  {/* {!isError ? (
                     <FormHelperText>Enter name of media.</FormHelperText>
                   ) : (
-                    <FormErrorMessage>{isError.title}</FormErrorMessage>
-                  )}
+                    <FormErrorMessage>{errors.title}</FormErrorMessage>
+                  )} */}
                 </FormControl>
 
                 {/* Resource Link */}
@@ -134,11 +137,11 @@ function UploadModal({
                     value={resourceLink}
                     onChange={handleResourceChange}
                   />
-                  {!isError ? (
+                  {/* {!isError ? (
                     <FormHelperText>Paste in link.</FormHelperText>
                   ) : (
                     <FormErrorMessage>Link is required.</FormErrorMessage>
-                  )}
+                  )} */}
                 </FormControl>
 
                 {/* Description */}
@@ -149,13 +152,13 @@ function UploadModal({
                     value={description}
                     onChange={handleDescriptionChange}
                   />
-                  {!isError ? (
+                  {/* {!isError ? (
                     <FormHelperText>Enter a description.</FormHelperText>
                   ) : (
                     <FormErrorMessage>
                       Description is required.
                     </FormErrorMessage>
-                  )}
+                  )} */}
                 </FormControl>
                 <br />
                 {/* Media options*/}
@@ -171,11 +174,11 @@ function UploadModal({
                     <option>Event</option>
                     <option>Humor</option>
                   </Select>
-                  {!isError ? (
+                  {/* {!isError ? (
                     <FormHelperText>Select an option</FormHelperText>
                   ) : (
                     <FormErrorMessage>An option is required.</FormErrorMessage>
-                  )}
+                  )} */}
                 </FormControl>
               </>
             ) : (
@@ -183,9 +186,17 @@ function UploadModal({
             )}
           </ModalBody>
           <ModalFooter alignItems="center">
-            <Button mr={3} bg="#FCB22E" onClick={handleSubmit}>
+            <Button mr={3} bg="#FCB22E" onClick={handleSubmit} type="submit">
               Submit
             </Button>
+            {/* {errors.map((err) => (
+              <Alert status="error" borderRadius={4}>
+                <AlertIcon />
+                <AlertDescription>
+                  <p>{err}</p>
+                </AlertDescription>
+              </Alert>
+            ))} */}
           </ModalFooter>
         </ModalContent>
       </Modal>
