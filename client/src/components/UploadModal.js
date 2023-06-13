@@ -110,10 +110,10 @@ function UploadModal({
           <ModalBody>
             {loggedIn ? (
               <>
-                <FormControl isInvalid={isError}>
+               {/* Title */}
+                <FormControl isInvalid={isError} isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input
-                    type="title"
                     value={title}
                     onChange={handleTitleChange}
                   />
@@ -125,9 +125,28 @@ function UploadModal({
                     <FormErrorMessage>Email is required.</FormErrorMessage>
                   )}
                 </FormControl>
-                <FormControl mt={4}>
-                  <FormLabel>Description</FormLabel>
+
+              {/* Resource Link */}
+                <FormControl mt={4} isRequired>
+                  <FormLabel>Resource Link</FormLabel>
                   <Input
+                    type="resourcelink"
+                    value={resourceLink}
+                    onChange={handleResourceChange}
+                  />
+                  {!isError ? (
+                    <FormHelperText>Paste in link.</FormHelperText>
+                  ) : (
+                    <FormErrorMessage>
+                     Link is required.
+                    </FormErrorMessage>
+                  )}
+                </FormControl>
+                  
+                 {/* Description */}
+                <FormControl mt={4} isRequired>
+                  <FormLabel>Description</FormLabel>
+                  <Textarea
                     type="description"
                     value={description}
                     onChange={handleDescriptionChange}
@@ -140,7 +159,9 @@ function UploadModal({
                     </FormErrorMessage>
                   )}
                 </FormControl>
-                <FormControl>
+                    <br />
+                 {/* Media options*/}
+                <FormControl isRequired>
                   <FormLabel>Type of Media</FormLabel>
                   <Select
                     placeholder="What media are you uploading?"
