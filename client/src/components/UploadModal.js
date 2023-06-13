@@ -48,7 +48,7 @@ function UploadModal({
   };
 
   //to signal error messages
-  const isError = error === "";
+  let isError = error === "";
 
   //Toast notifications
   const toast = useToast();
@@ -84,6 +84,7 @@ function UploadModal({
     if (response.ok) {
       console.log(`Title: ${title} description: ${description}`);
       setTitle();
+      setResourceLink();
       setDescription();
       setMediaCategory();
       setError(null);
@@ -110,40 +111,37 @@ function UploadModal({
           <ModalBody>
             {loggedIn ? (
               <>
-               {/* Title */}
-                <FormControl isInvalid={isError} isRequired>
+                {/* Title */}
+                <FormControl isInvalid={isError.title} isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input
+                    type="title"
                     value={title}
                     onChange={handleTitleChange}
                   />
                   {!isError ? (
-                    <FormHelperText>
-                      Enter name of media you'd like to submit.
-                    </FormHelperText>
+                    <FormHelperText>Enter name of media.</FormHelperText>
                   ) : (
-                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                    <FormErrorMessage>{isError.title}</FormErrorMessage>
                   )}
                 </FormControl>
 
-              {/* Resource Link */}
+                {/* Resource Link */}
                 <FormControl mt={4} isRequired>
                   <FormLabel>Resource Link</FormLabel>
                   <Input
-                    type="resourcelink"
+                    type="resourceLink"
                     value={resourceLink}
                     onChange={handleResourceChange}
                   />
                   {!isError ? (
                     <FormHelperText>Paste in link.</FormHelperText>
                   ) : (
-                    <FormErrorMessage>
-                     Link is required.
-                    </FormErrorMessage>
+                    <FormErrorMessage>Link is required.</FormErrorMessage>
                   )}
                 </FormControl>
-                  
-                 {/* Description */}
+
+                {/* Description */}
                 <FormControl mt={4} isRequired>
                   <FormLabel>Description</FormLabel>
                   <Textarea
@@ -159,8 +157,8 @@ function UploadModal({
                     </FormErrorMessage>
                   )}
                 </FormControl>
-                    <br />
-                 {/* Media options*/}
+                <br />
+                {/* Media options*/}
                 <FormControl isRequired>
                   <FormLabel>Type of Media</FormLabel>
                   <Select

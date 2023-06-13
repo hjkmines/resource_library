@@ -85,6 +85,9 @@ const Articles = ({ allArticles, deleteArticle }) => {
               <Text mt={2} color="gray.500" fontSize="12px">
                 Media: {article.mediaCategory}
               </Text>
+              <Text mt={4} color="gray.500" fontSize="12px">
+                {article.resourceLink}
+              </Text>
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
