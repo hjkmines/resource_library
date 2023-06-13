@@ -61,34 +61,35 @@ function UploadModal({
 
     const media = { title, description, resourceLink, mediaCategory };
 
-    try{
-    const response = await fetch("/media", {
-      method: "POST",
-      body: JSON.stringify(media),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const json = await response.json();
-
-    if (response.ok) {
-      console.log(`Title: ${title} description: ${description}`);
-      setTitle();
-      setResourceLink();
-      setDescription();
-      setMediaCategory();
-      setErrors([]);
-      toast({
-        title: "Successfully Uploaded",
-        description: "We received your submission",
-        duration: 5000,
-        isClosable: true,
-        status: "success",
-        position: "top",
-        icon: <CheckIcon />,
+    try {
+      const response = await fetch("/media", {
+        method: "POST",
+        body: JSON.stringify(media),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-    }} catch (error){
+
+      const json = await response.json();
+
+      if (response.ok) {
+        console.log(`Title: ${title} description: ${description}`);
+        setTitle();
+        setResourceLink();
+        setDescription();
+        setMediaCategory();
+        setErrors([]);
+        toast({
+          title: "Successfully Uploaded",
+          description: "We received your submission",
+          duration: 5000,
+          isClosable: true,
+          status: "success",
+          position: "top",
+          icon: <CheckIcon />,
+        });
+      }
+    } catch (error) {
       setErrors(error);
       console.log(error);
       toast({
@@ -189,14 +190,6 @@ function UploadModal({
             <Button mr={3} bg="#FCB22E" onClick={handleSubmit} type="submit">
               Submit
             </Button>
-            {/* {errors.map((err) => (
-              <Alert status="error" borderRadius={4}>
-                <AlertIcon />
-                <AlertDescription>
-                  <p>{err}</p>
-                </AlertDescription>
-              </Alert>
-            ))} */}
           </ModalFooter>
         </ModalContent>
       </Modal>

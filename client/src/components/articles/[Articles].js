@@ -11,8 +11,10 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
+import { useRouter } from 'next/router'
 
 const Articles = ({ allArticles, deleteArticle }) => {
+const router = useRouter();
 
   //Toast notifications
   const toast = useToast();
@@ -52,7 +54,7 @@ const Articles = ({ allArticles, deleteArticle }) => {
         });
       }
     })
-    .then(navigate("/"));
+    router.push('/allArticles/articles');
   };
 
   return (
