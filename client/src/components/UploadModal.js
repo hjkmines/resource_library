@@ -28,7 +28,7 @@ function UploadModal({
 }) {
   const [title, setTitle] = useState("");
   const [resourceLink, setResourceLink] = useState("");
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [mediaCategory, setMediaCategory] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -40,9 +40,9 @@ function UploadModal({
     setResourceLink(event.target.value);
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
+  // const handleDescriptionChange = (event) => {
+  //   setDescription(event.target.value);
+  // };
 
   const handleMediaCategoryChange = (event) => {
     setMediaCategory(event.target.value);
@@ -77,7 +77,7 @@ function UploadModal({
         console.log(`Title: ${title} description: ${description}`);
         setTitle();
         setResourceLink();
-        setDescription();
+        // setDescription();
         setMediaCategory();
         setErrors([]);
         toast({
@@ -148,13 +148,13 @@ function UploadModal({
                 </FormControl>
 
                 {/* Description */}
-                <FormControl mt={4} isRequired>
+                {/* <FormControl mt={4} isRequired>
                   <FormLabel>Description</FormLabel>
                   <Textarea
                     type="description"
                     value={description}
                     onChange={handleDescriptionChange}
-                  />
+                  /> */}
                   {/* {!isError ? (
                     <FormHelperText>Enter a description.</FormHelperText>
                   ) : (
@@ -162,7 +162,7 @@ function UploadModal({
                       Description is required.
                     </FormErrorMessage>
                   )} */}
-                </FormControl>
+                {/* </FormControl> */}
                 <br />
                 {/* Media options*/}
                 <FormControl isRequired>
