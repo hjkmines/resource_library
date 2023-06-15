@@ -8,6 +8,7 @@ const mediaSchema = new Schema(
     },
     resourceLink: {
       type: String,
+      required: true,
     },
     description: {
       type: String,
