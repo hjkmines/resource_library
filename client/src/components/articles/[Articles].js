@@ -95,7 +95,10 @@ const Articles = ({ allArticles, deleteArticle }) => {
               mt={4} 
               color="blue" 
               fontSize="12px">
-              Link:  {article.resourceLink}
+              <Text mt={2} color="gray.500" fontSize="20px">
+              Link: 
+              </Text>  
+               {article.resourceLink}
               </Link>
 
               <Text mt={2} color="gray.500" fontSize="12px">
