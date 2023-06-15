@@ -7,12 +7,16 @@ import {
   Button,
   useToast,
   Spacer,
+  Badge,
   Link,
+  NextLink,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
+
 
 const Articles = ({ allArticles, deleteArticle }) => {
-  //console.log(allArticles);
+  const router = useRouter();
 
   //Toast notifications
   const toast = useToast();
@@ -52,6 +56,7 @@ const Articles = ({ allArticles, deleteArticle }) => {
         });
       }
     });
+    router.push("/allArticles/articles");
   };
 
   return (
@@ -81,10 +86,18 @@ const Articles = ({ allArticles, deleteArticle }) => {
                 fontWeight="semibold"
               >
                 {article.title}
+                <Badge ml="1" colorScheme="green">
+                  Media: {article.mediaCategory}
+                </Badge>
               </Heading>
-              <Text mt={2} color="gray.500" fontSize="12px">
-                Media: {article.mediaCategory}
-              </Text>
+
+              <Link to={article.resourceLink}
+              mt={4} 
+              color="blue" 
+              fontSize="12px">
+                {article.resourceLink}
+              </Link>
+
               <Text mt={2} color="gray.500" fontSize="12px">
                 {article.description}
               </Text>
