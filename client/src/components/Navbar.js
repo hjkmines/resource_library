@@ -80,7 +80,6 @@ const Navbar = () => {
     return (
         <>
             {/* Desktop View */}
-
             <Hide below='md'>
                 <Flex
                     alignItems='center'
@@ -276,7 +275,6 @@ const Navbar = () => {
             </Hide>
 
             {/* Mobile View */}
-
             <Show below='md'>
                 <Flex p={1} bgColor='#FCB22E'>
                     <Image
