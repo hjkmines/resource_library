@@ -8,11 +8,11 @@ import {
   useToast,
   Spacer,
   Badge,
-  Link,
-  NextLink,
+  // Link,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CheckIcon, WarningIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
+import Link from 'next/link';
 
 
 const Articles = ({ allArticles, deleteArticle }) => {
@@ -91,11 +91,14 @@ const Articles = ({ allArticles, deleteArticle }) => {
                 </Badge>
               </Heading>
 
-              <Link to={article.resourceLink}
+              <Link href={article.resourceLink}
               mt={4} 
               color="blue" 
               fontSize="12px">
-                {article.resourceLink}
+              <Text mt={2} color="gray.500" fontSize="20px">
+              Link: 
+              </Text>  
+               {article.resourceLink}
               </Link>
 
               <Text mt={2} color="gray.500" fontSize="12px">
