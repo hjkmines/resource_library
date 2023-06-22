@@ -98,7 +98,7 @@ export default function TodayPic() {
                     as={NextLink}
                     style={{ textDecoration: 'none' }}
                 >
-                    <Heading as='h2' size='md' mr='100'>
+                    <Heading as='h2' size='md' mr='100' color="#42413B">
                         more laughs
                         <ArrowForwardIcon boxSize={8} ml='5' color="#42413B" />
                     </Heading>
