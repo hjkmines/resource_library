@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactPlayer from 'react-player/youtube';
 import {
     Container,
@@ -6,196 +7,86 @@ import {
     CardBody,
     Stack,
     Heading,
-    NextLink,
-    SimpleGrid,
+    Link,
+    Grid,
     useColorModeValue,
     Flex,
     Spacer,
+    Box,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 
-const FeaturedVideos = () => {
+const FeaturedVideos = ({ videos }) => {
     const ReactPlayer = dynamic(() => import('react-player/youtube'), {
         ssr: false,
     });
 
-    const trailer1 = 'https://www.youtube-nocookie.com/embed/Ixq-y_r-lkE';
-
-    const trailer2 = 'https://youtu.be/2Z4m4lnjxkY';
-
-    const trailer3 = 'https://youtu.be/anZtoPo2Fpw';
-
-    const trailer4 =
-        'https://youtu.be/5mpqhtK0NuU?list=PLCg4BmjNch8hKt_6BzvThMe-njUhFEM02';
-
     return (
         <>
-            <SimpleGrid
-                templateColumns='repeat(auto-fill, minmax(400px, 1fr))'
-                ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
-                mt={{ base: '10', md: '10' }}
-                align='center'
-            >
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    borderRadius="md"
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
+        <Flex justifyContent="center" alignItems="center" width="100%" padding={10}>
+           
+                <Grid
+                    templateColumns={{ 
+                        base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" }} 
+                        gap={10}
                 >
-                    <CardBody >
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={trailer1}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    borderRadius="md"
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={trailer2}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    borderRadius="md"
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={trailer3}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-                <Card
-                    my={5}
-                    maxW={{
-                        base: '250px',
-                        md: '325px',
-                        lg: '400px',
-                    }}
-                    borderRadius="md"
-                    border={'1px'}
-                    borderColor='black'
-                    boxShadow={useColorModeValue(
-                        '6px 6px 0 black',
-                        '6px 6px 0 cyan'
-                    )}
-                >
-                    <CardBody>
-                        <Container maxWidth='400px'>
-                            <AspectRatio ratio={4 / 3}>
-                                <ReactPlayer
-                                    url={trailer4}
-                                    width='100%'
-                                    height='100%'
-                                    controls={false}
-                                    volume={0}
-                                    muted={true}
-                                    playing={false}
-                                    fallback='Loading...'
-                                />
-                            </AspectRatio>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md' letterSpacing={3}>
-                                    Lorem Ipsum
-                                </Heading>
-                            </Stack>
-                        </Container>
-                    </CardBody>
-                </Card>
-            </SimpleGrid>
-            <Flex mt={5}>
-                <Spacer />
-                <Link href='/allVideos/videos' as={NextLink}>
-                    <Heading as='h2' size='md' mr='100' color="#42413B">
-                        see all videos
-                        <ArrowForwardIcon boxSize={8} ml='5' />
-                    </Heading>
-                </Link>
-            </Flex>
+                    {videos.map((video, index) => (
+                        <Card
+                            key={index}
+                            my={5}
+                            maxW={{
+                                base: '250px',
+                                md: '325px',
+                                lg: '400px',
+                            }}
+                            borderRadius="md"
+                            border={'1px'}
+                            borderColor='black'
+                            boxShadow={useColorModeValue(
+                                '6px 6px 0 black',
+                                '6px 6px 0 cyan'
+                            )}
+                        >
+                            <CardBody padding={3}>
+                                <Container maxWidth='600px'>
+                                    <AspectRatio ratio={4 / 3}>
+                                        <ReactPlayer
+                                            url={video.resourceLink}
+                                            width='100%'
+                                            height='100%'
+                                            controls={false}
+                                            volume={0}
+                                            muted={true}
+                                            playing={false}
+                                            fallback='Loading...'
+                                        />
+                                    </AspectRatio>
+                                    <Stack mt='3' >
+                                        <Heading 
+                                        size={{ base: 'sm', md: 'sm', lg: 'sm', xl: 'md' }}
+                                        letterSpacing={2}
+                                        textAlign={'center'}
+                                        >
+                                            {video.title}
+                                        </Heading>
+                                    </Stack>
+                                </Container>
+                            </CardBody>
+                        </Card>
+                    ))}
+                </Grid>
+      
+        </Flex>
+        <Flex mt={5}>
+            <Spacer />
+            <Link href='/allVideos/videos'>
+                <Heading as='h2' size='md' mr='100' color="#42413B">
+                    see all videos
+                    <ArrowForwardIcon boxSize={8} ml='5' />
+                </Heading>
+            </Link>
+        </Flex>
         </>
     );
 };

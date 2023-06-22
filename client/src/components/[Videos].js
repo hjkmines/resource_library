@@ -64,7 +64,7 @@ const Videos = ({ allVideos }) => {
               </Center>
             </AspectRatio>
             <Stack mt="6" spacing="3">
-              <Heading size="md" letterSpacing={3}>
+              <Heading size={{ base: 'sm', md: 'sm', lg: 'md', xl: 'md' }}>
                 {video.title}
               </Heading>
             </Stack>
@@ -77,15 +77,17 @@ const Videos = ({ allVideos }) => {
   return (
     <>
       <FeaturedBar />
-      <SimpleGrid
-        templateColumns="repeat(3, 1fr)" // Update this line
-        ml={{ base: '20', sm: '10', md: '3', lg: '20' }}
-        mt={{ base: '10', md: '10' }}
-        align="center"
-        spacing={3}
-      >
-        {renderCards()}
-      </SimpleGrid>
+      <Flex justifyContent="center" alignItems="center" width="100%" padding={10}>
+        <SimpleGrid
+          templateColumns="repeat(4, 1fr)"
+          mt={{ base: '10', md: '10' }}
+          align="center"
+          spacing={{ base: 4, md: 6, lg: 10, xl: 10 }}
+          justifyContent="center"
+        >
+          {renderCards()}
+        </SimpleGrid>
+      </Flex>
       <Flex mt={5}>
         <Spacer />
         <Link href="/">

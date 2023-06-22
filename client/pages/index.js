@@ -9,12 +9,12 @@ import TodayBar from '@/components/todays-pic/TodayBar';
 import TodayPic from '@/components/todays-pic/[TodayPic]';
 import Footer from '@/components/Footer';
 
-const Page = () => {
+const Page = ({ featuredVideos }) => {
     return (
         <ChakraProvider>
             <Navbar />
             <FeaturedBar />
-            <FeaturedVideos />
+            <FeaturedVideos videos={featuredVideos} />
             <EventBar />
             <Events />
             <ArticlesSection />
@@ -24,5 +24,22 @@ const Page = () => {
         </ChakraProvider>
     );
 };
+
+export async function getServerSideProps() {
+    const res = await fetch("http://localhost:5001/media/");
+    const resources = await res.json();
+
+    const allVideos = resources.media.filter(
+        (item) => item.mediaCategory === "Video"
+    );
+
+    const featuredVideos = allVideos.slice(-4);
+
+    return {
+        props: {
+            featuredVideos: featuredVideos,
+        },
+    };
+}
 
 export default Page;
